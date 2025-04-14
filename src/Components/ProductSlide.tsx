@@ -48,7 +48,7 @@ const ProductCarousel = () => {
                     padding: '0 40px', // space for arrows
                 }}
             >
-                {cardData.map((item, index) => (
+                {cardData?.map((item, index) => (
                     //   <Card
                     //     key={index}
                     //     title={item.title}
