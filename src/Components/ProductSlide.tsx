@@ -1,0 +1,83 @@
+'use client';
+
+import React, { useRef } from 'react';
+import { Card, Button } from 'antd';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import CardComponent from './CardComponent';
+
+const cardData = Array.from({ length: 12 }, (_, i) => ({
+    title: `Product ${i + 1}`,
+    description: `This is product ${i + 1}`,
+}));
+
+const ProductCarousel = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const scrollAmount = 720; // adjust based on card width * number of cards to scroll
+
+    const scrollLeft = () => {
+        containerRef.current?.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    };
+
+    const scrollRight = () => {
+        containerRef.current?.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    };
+
+    return (
+        <div style={{ position: 'relative', padding: '20px' }}>
+            {/* Scroll Buttons */}
+            <Button
+                icon={<LeftOutlined />}
+                onClick={scrollLeft}
+                style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    zIndex: 1,
+                    borderRadius: '50%',
+                }}
+            />
+
+            <div
+                ref={containerRef}
+                style={{
+                    display: 'flex',
+                    overflowX: 'hidden',
+                    scrollBehavior: 'smooth',
+                    gap: '16px',
+                    padding: '0 40px', // space for arrows
+                }}
+            >
+                {cardData.map((item, index) => (
+                    //   <Card
+                    //     key={index}
+                    //     title={item.title}
+                    //     bordered={false}
+                    //     style={{
+                    //       width: 240,
+                    //       flex: '0 0 auto',
+                    //     }}
+                    //   >
+                    //     <p>{item.description}</p>
+                    //   </Card>
+                    <CardComponent />
+                ))}
+            </div>
+
+            <Button
+                icon={<RightOutlined />}
+                onClick={scrollRight}
+                style={{
+                    position: 'absolute',
+                    right: 0,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    zIndex: 1,
+                    borderRadius: '50%',
+                }}
+            />
+        </div>
+    );
+};
+
+export default ProductCarousel;
