@@ -10,8 +10,8 @@ const ProductCarousel = dynamic(() => import('../../../Components/ProductSlide')
 const NavBar = () => {
     return (
         <div>
-            {/* <NavbarComp /> */}
-            {/* <CardComponent/> */}
+            <NavbarComp />
+            <CardComponent/>
             <ProductCarousel/>
         </div>
     )
