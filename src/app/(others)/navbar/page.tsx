@@ -4,11 +4,15 @@
 import dynamic from 'next/dynamic';
 
 const NavbarComp = dynamic(() => import('../../../Components/NabarComp'));
+const CardComponent = dynamic(() => import('../../../Components/CardComponent'));
+const ProductCarousel = dynamic(() => import('../../../Components/ProductSlide'));
 
 const NavBar = () => {
     return (
         <div>
-            <NavbarComp />
+            {/* <NavbarComp /> */}
+            {/* <CardComponent/> */}
+            <ProductCarousel/>
         </div>
     )
 }
