@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-// import "./globals.css";
+import "./globals.css";
 import "../styles/navbar.scss"
+import "../styles/CardComponent.scss";
+import StyledComponentsRegistry from "@/lib/AntdRegistry";
 
 
 export const metadata: Metadata = {
@@ -17,8 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="bg-white"
       >
-        {children}
+        <StyledComponentsRegistry>
+          {children}
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
