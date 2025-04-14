@@ -1,8 +1,8 @@
-
 'use client';
+
 const NavbarComp = () => {
-    return(
-        <div className="navbar-container">
+    return (
+        <div className="navbar-container ">
             "NabarComp"
         </div>
     )
