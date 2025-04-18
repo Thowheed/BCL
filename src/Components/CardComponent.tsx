@@ -5,7 +5,7 @@ import Image from "next/image"
 
 const CardComponent = () => {
     return (
-        <div className="card-container" style={{ flex: '0 0 auto'}}>
+        <div className="card-container" style={{ flex: '0 0 auto' }}>
             <div className="image-container">
                 <Image src={appImages?.GRASS_IMAGE} height={200} width={200} alt={""} />
             </div>

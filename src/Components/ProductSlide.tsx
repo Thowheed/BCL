@@ -60,7 +60,7 @@ const ProductCarousel = () => {
                     //   >
                     //     <p>{item.description}</p>
                     //   </Card>
-                    <CardComponent />
+                    <CardComponent key={index} />
                 ))}
             </div>
 
