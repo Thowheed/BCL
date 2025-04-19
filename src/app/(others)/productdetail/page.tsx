@@ -4,7 +4,7 @@ const ProductDetailComp = dynamic(() => import('../../../Components/ProductDetai
 
 const ProductDetail = () => {
     return (
-        <div className="product-detail-container">
+        <div>
             <ProductDetailComp />
         </div>
     )   

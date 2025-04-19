@@ -1,15 +1,20 @@
 'use client'
 import appImages from "@/Globals/AppImages";
 import { Button } from "antd";
+import dynamic from "next/dynamic";
 import Image from "next/image"
 
-const ProductDetailComp = () => {
+const NavbarComp = dynamic(() => import('./NabarComp'));
+const FooterComp = dynamic(() => import('./FooterCompo'));
+const ProductSlide = dynamic(() => import('./ProductSlide'));
+
+const ProductDetail = () => {
     let list = new Array(5).fill(0);
     return (
-        <div>
+        <div style={{ margin: "5% 0% 1% 5%" }}>
             <div className="product-detail-container">
                 <div className="product-image">
-                    <Image src={appImages?.GRASS_IMAGE} alt="Product" width={500} height={500} />
+                    <Image src={appImages?.GRASS_IMAGE} alt="Product" width={700} height={700} />
                 </div>
                 <div className="product-detail-content">
                     <div className="product-title-conatainer">
@@ -47,15 +52,33 @@ const ProductDetailComp = () => {
                 </div>
 
             </div>
-            <div className="flex items-center flex-row">
+            <div className="flex items-center flex-row mt-5 gap-6">
                 {list.map((item: any, index: any) => {
                     return (
                         <div className="image-list-container" key={index}>
-                            <Image src={appImages?.GRASS_IMAGE} alt="Product" width={100} height={100} />
+                            <Image src={appImages?.GRASS_IMAGE} alt="Product" width={123} height={150} />
                         </div>
                     )
                 })}
             </div>
+
+        </div>
+    )
+}
+const ProductDetailComp = () => {
+
+    return (
+        <div>
+            <NavbarComp />
+
+            <ProductDetail />
+            <div className="text-bold mx-15">
+                More Items
+            </div>
+            <div className="m-12">
+                <ProductSlide />
+            </div>
+            <FooterComp />
         </div>
     )
 };

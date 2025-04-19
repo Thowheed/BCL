@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { Card, Button } from 'antd';
+import { Card, Button, Divider } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import CardComponent from './CardComponent';
 
@@ -26,7 +26,7 @@ const ProductCarousel = () => {
         <div style={{ position: 'relative', padding: '20px' }}>
             {/* Scroll Buttons */}
             <Button
-                icon={<LeftOutlined />}
+                icon={<LeftOutlined style={{ color: 'white '}} />}
                 onClick={scrollLeft}
                 style={{
                     position: 'absolute',
@@ -35,6 +35,7 @@ const ProductCarousel = () => {
                     transform: 'translateY(-50%)',
                     zIndex: 1,
                     borderRadius: '50%',
+                    backgroundColor: 'black',
                 }}
             />
 
@@ -45,7 +46,7 @@ const ProductCarousel = () => {
                     overflowX: 'hidden',
                     scrollBehavior: 'smooth',
                     gap: '16px',
-                    padding: '0 40px', // space for arrows
+                    // padding: '0 40px', // space for arrows
                 }}
             >
                 {cardData?.map((item, index) => (
@@ -65,7 +66,7 @@ const ProductCarousel = () => {
             </div>
 
             <Button
-                icon={<RightOutlined />}
+                icon={<RightOutlined style={{ color: 'white '}}/>}
                 onClick={scrollRight}
                 style={{
                     position: 'absolute',
@@ -74,6 +75,7 @@ const ProductCarousel = () => {
                     transform: 'translateY(-50%)',
                     zIndex: 1,
                     borderRadius: '50%',
+                    backgroundColor: 'black',
                 }}
             />
         </div>
