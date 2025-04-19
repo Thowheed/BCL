@@ -55,6 +55,7 @@ const columns = [
         title: 'Product',
         dataIndex: 'productName',
         key: 'productName',
+        width: 300,
         render: (text: any, record: any) => (
             <div className="flex flex-row items-center">
                  <Image src={record?.productImage} alt="Product" width={50} height={50} />

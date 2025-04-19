@@ -18,22 +18,31 @@
         .product-title-conatainer {
             border: 2px solid #CCCCCCBF;
             border-radius: 10px;
-            padding: 10px;
-            width: 70%;
+            // padding: 10px;
+            padding: 15px;
+            width: 80%;
             margin-bottom: 20px;
 
             .product-breadcrumbs {
-                margin-bottom: 10px;
+                margin-bottom: 20px;
             }
 
             .product-title {
-                margin-bottom: 10px;
+                margin-bottom: 20px;
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .product-weight{
+                margin-bottom: 20px;
+                color: #666666;
             }
 
             .card-price-container {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                margin-top: 20px;
 
                 .card-price {
                     color: #000 !important;
@@ -60,11 +69,17 @@
         .product-description-container {
             border: 2px solid #CCCCCCBF;
             border-radius: 10px;
-            width: 70%;
-            padding: 10px;
+            width: 80%;
+            padding: 15px;
 
             .product-detail-title {
-                margin-bottom: 10px
+                margin-bottom: 10px;
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .product-description{
+                color: #666666
             }
         }
     }

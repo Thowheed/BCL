@@ -1,11 +1,11 @@
+
 import dynamic from 'next/dynamic';
-const CartTable = dynamic(() => import('../../../Components/CartTable'));
-const CartTotal = dynamic(() => import('../../../Components/CartTotal'));
+const CartComponent = dynamic(() => import('../../../Components/CartComponent'));
+
 const Cart = () => {
     return (
-        <div className='flex flex-row'>
-            <CartTable />
-            <CartTotal />
+        <div>
+            <CartComponent />
         </div>
     )
 };

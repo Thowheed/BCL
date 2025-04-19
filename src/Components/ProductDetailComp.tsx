@@ -72,10 +72,10 @@ const ProductDetailComp = () => {
             <NavbarComp />
 
             <ProductDetail />
-            <div className="text-bold mx-15">
+            <div className="text-bold mx-15 mt-10">
                 More Items
             </div>
-            <div className="m-12">
+            <div className="mx-12">
                 <ProductSlide />
             </div>
             <FooterComp />
