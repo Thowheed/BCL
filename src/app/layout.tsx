@@ -3,6 +3,9 @@ import "./globals.css";
 import "../styles/navbar.scss"
 import "../styles/CardComponent.scss";
 import StyledComponentsRegistry from "@/lib/AntdRegistry";
+import "../styles/ProductDetailComp.scss";
+// import "../styles/CartTable.scss";
+import "../styles/CartTotal.scss";
 
 
 export const metadata: Metadata = {
