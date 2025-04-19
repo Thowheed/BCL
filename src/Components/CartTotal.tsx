@@ -46,8 +46,8 @@ const CartTotal = () => {
                 <div className="address-payment-container flex flex-col items-center justify-between mt-3">
                     <div className="address-details flex flex-row items-center justify-between w-[90%]">
                         <div className="flex flex-row items-center">
-                            <Image src={appImages?.LOCATION_ICON} alt="Location" width={30} height={30} />
-                            <div className="my-3"> Willsiong street, Church colony,
+                            <Image src={appImages?.LOCATION_ICON} alt="Location" width={30} height={30}  />
+                            <div className="my-3 mx-2"> Willsiong street, Church colony,
                                 <br />united kingdom
                             </div>
                         </div>

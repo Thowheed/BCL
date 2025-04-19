@@ -11,10 +11,10 @@ const ProductSlide = dynamic(() => import('./ProductSlide'));
 const ProductDetail = () => {
     let list = new Array(5).fill(0);
     return (
-        <div style={{ margin: "5% 0% 1% 5%" }}>
+        <div style={{ margin: "16vh auto 0" }}>
             <div className="product-detail-container">
                 <div className="product-image">
-                    <Image src={appImages?.GRASS_IMAGE} alt="Product" width={700} height={700} />
+                    <Image src={appImages?.GRASS_IMAGE} alt="Product" width={600} height={200} />
                 </div>
                 <div className="product-detail-content">
                     <div className="product-title-conatainer">
@@ -23,7 +23,7 @@ const ProductDetail = () => {
                         </div>
                         <div className="product-title">Vallarai Keerai</div>
                         <div className="product-weight">100 - 150g</div>
-
+ 
                         <div className="border-line"></div>
                         <div className="card-price-container">
                             <div className="card-price">
@@ -52,11 +52,11 @@ const ProductDetail = () => {
                 </div>
 
             </div>
-            <div className="flex items-center flex-row mt-5 gap-6">
+            <div className="flex items-center flex-row mt-5 gap-6 ml-[6.5%] ">
                 {list.map((item: any, index: any) => {
                     return (
                         <div className="image-list-container" key={index}>
-                            <Image src={appImages?.GRASS_IMAGE} alt="Product" width={123} height={150} />
+                            <Image src={appImages?.GRASS_IMAGE} alt="Product" width={103} height={150} />
                         </div>
                     )
                 })}
@@ -68,14 +68,15 @@ const ProductDetail = () => {
 const ProductDetailComp = () => {
 
     return (
-        <div>
+        <div className="">
             <NavbarComp />
 
             <ProductDetail />
-            <div className="text-bold mx-15 mt-10">
-                More Items
-            </div>
-            <div className="mx-12">
+                <div className=' text-bold py-10 flex justify-between !text-lg mx-18 mt-10' >
+                    <span>More Items</span> 
+                    <span className="text-[#2EAF4B]">View All</span> 
+                </div>
+            <div className="mx-12 pb-[8vh] ">
                 <ProductSlide />
             </div>
             <FooterComp />

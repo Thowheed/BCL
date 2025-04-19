@@ -73,7 +73,7 @@ const columns = [
         dataIndex: 'quantity',
         key: 'quantity',
         render: (text: any, record: any) => (
-            <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-row items-center justify-center w-26">
                  <InputNumber addonBefore="-" addonAfter="+" defaultValue={record?.quantity} />
             </div>
         )
