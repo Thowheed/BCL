@@ -15,20 +15,29 @@
     align-items: center;
     gap: 85px
 }
-.navbar-input{
+
+.navbar-input {
 
     color: #2b2727;
 }
+
 .brand {
     width: 170px;
 }
 
+.drop-nav {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    font-weight: 500;
+
+}
+
 .delivery-text {
 
-    height: 42px;
-    width: 188px;
-    gap: 6px;
-    font-weight: 600;
+    padding: 5px;
+    gap: 40px;
+    font-weight: 700;
     color: black;
 
 }
@@ -44,7 +53,7 @@
 
 .login-cart-button {
     height: 44px;
-    width: 240px;
+    width: 210px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -55,7 +64,9 @@
 .cart-button {
     padding: 12px;
     color: white;
-    width: 94px;
+    width: 100px;
+    display: flex;
+    gap: 14px;
     font-weight: 600;
     border-radius: 12px;
     background-color: var(--primary-color);
