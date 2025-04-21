@@ -8,12 +8,10 @@ import { Menu, Dropdown, Button } from 'antd';
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
 
 const Usercompo = () => {
+
     const menu = (
         <Menu>
-            {/* <Menu.Item key="1">Profile</Menu.Item>
-            <Menu.Item key="2">Settings</Menu.Item>
-            <Menu.Divider />
-            <Menu.Item key="3">Logout</Menu.Item> */}
+
 
             <div className="drop-down ">
 
@@ -33,8 +31,6 @@ const Usercompo = () => {
                     </div>
 
                     <div className="line"></div>
-
-
 
 
                     <div className="button-user">
@@ -70,6 +66,7 @@ const Usercompo = () => {
 
 
                     </div>
+
                     <div className="line"></div>
 
 
@@ -78,6 +75,7 @@ const Usercompo = () => {
                         <img src="" alt="logo" />
                         <span>Log Out</span>
                     </div>
+
                 </div>
 
             </div>
