@@ -13,8 +13,8 @@ const CartComponent = () => {
     return (
         <div>
             <NavbarComp />
-            <div className='flex flex-col mt-10'>
-            <div className='mt-10 mx-30'>
+            <div className='flex flex-col'>
+            <div className='pt-[16vh] mx-30'>
                     <div className='flex flex-row items-center justify-between w-[80px] cursor-pointer' onClick={() => router.push('/home')}>
                         <ArrowLeftOutlined />
                         <span>My Cart</span>
@@ -26,8 +26,8 @@ const CartComponent = () => {
 
                 </div>
 
-                <div className='mt-10 mx-30'>
-                    <Button className='flex flex-row items-center justify-between mt-5' onClick={() => router.push('/home')}>
+                <div className=' mx-30'>
+                    <Button className='flex flex-row items-center justify-between ' onClick={() => router.push('/home')}>
                         <ArrowLeftOutlined />
                         <div>Continue Shopping</div>
                     </Button>

@@ -72,7 +72,7 @@ const FotterComp = () => {
                         <span>info@veggieverse.com</span>
                     </div>
 
-                    <div className="margin-top-40">
+                    <div className="margin-top-20">
                         <span>
                             Monday - Friday: 8:00 AM - 6:00 PM<br />
                             Saturday: 9:00 AM - 5:00 PM<br />

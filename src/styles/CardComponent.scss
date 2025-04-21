@@ -1,7 +1,7 @@
 .card-container{
     background: white !important;
     padding: 10px;
-    border: 2px solid #CCCCCCBF;
+    border: 1px solid #CCCCCCBF;
     width: fit-content;
     // height: 100vh;
     border-radius: 10px;
@@ -9,10 +9,11 @@
     .card-title{
         margin-bottom: 5px;
         color: #000000 !important;
+        font-weight: 600;
     }
 
     .card-weight{
-        font-size: 8px;
+        font-size: 12px;
         color: #666666 !important;
         margin-bottom: 5px;
     }
@@ -24,12 +25,14 @@
 
         .card-price{
             color: #000 !important;
+            font-weight: 600;
         }
 
         .card-button{
             background-color: #EAF7ED!important;
-            color: #73C986 !important;
-            border-radius: 2px solid #2EAF4B !important;
+            color: var(--primary-color) !important;
+            border: 1px solid #2EAF4B !important;
+            border-radius: 8px;
             width: 70px;
         }
     }

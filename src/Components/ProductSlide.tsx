@@ -23,14 +23,14 @@ const ProductCarousel = () => {
     };
 
     return (
-        <div style={{ position: 'relative', padding: '20px' }}>
+        <div style={{ position: 'relative', padding: '10px 0px ' }}>
             {/* Scroll Buttons */}
             <Button
                 icon={<LeftOutlined style={{ color: 'white '}} />}
                 onClick={scrollLeft}
                 style={{
                     position: 'absolute',
-                    left: 0,
+                    left: '0px',
                     top: '50%',
                     transform: 'translateY(-50%)',
                     zIndex: 1,

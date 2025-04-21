@@ -62,16 +62,13 @@
         color: #58BF6F;
         margin-top: 20px;
         margin-left: 65%;
-        // text-decoration: none;
     }
 
 
 }
 
 .brand-login {
-    // height: 55px;
-    // // width: 722px;
-    // padding: 5px;
+
     width: 300px;
     height: 70px;
     margin: 0 5% 30px;
@@ -147,8 +144,8 @@
     width: 100%;
     font-weight: 500;
     border: none;
-    color: white !important;                // 👈 Force override Ant Design default
-    background-color: #2EAF4B !important;  
+    color: white !important; // 👈 Force override Ant Design default
+    background-color: #2EAF4B !important;
 }
 
 .divider {
@@ -203,29 +200,30 @@
     margin-left: 8px;
 }
 
-.ant-input-address{
+.ant-input-address {
     height: 85px;
     width: 100%;
 
 }
 
-.gps-logo{
+.gps-logo {
     margin-top: 8px;
 }
 
-.current-gps{
+.current-gps {
     font-size: 18px;
     font-weight: 600;
     color: #2EAF4B;
 }
-.using-gps{
+
+.using-gps {
     font-size: 14px;
     color: #2EAF4B;
 
 
 }
 
-.arrow-logo{
+.arrow-logo {
 
     margin-left: 5px;
     margin-top: 3px;
