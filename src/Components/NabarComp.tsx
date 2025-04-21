@@ -21,7 +21,7 @@ const NavbarComp = () => {
 
                         <img src="/user.png" alt="username" className="h-[40px] w-[40px]" />
                         <div className="span-useername-div">
-                            <span >Mohamed Uvaish</span><br></br>
+                            <span className='font-bold'>Mohamed Uvaish</span><br></br>
                             <span>Uvaishmoahamedn@gmail.com</span>
 
                         </div>
@@ -29,7 +29,7 @@ const NavbarComp = () => {
 
                     </div>
 
-                    <div className="line"></div>
+                    <div className="line my-4"></div>
 
 
 
@@ -41,14 +41,14 @@ const NavbarComp = () => {
                         <span>Profile</span>
                     </div>
 
-                    <div className="small-logo">
+                    <div className="small-logo mt-2">
 
                         <img src="/checkout.png" alt="username" className="h-[20px] w-[20px]" />
                         <span>My Orders</span>
                     </div>
 
 
-                    <div className="small-logo">
+                    {/* <div className="small-logo">
 
                         <img src="/bill.png" alt="username" className="h-[20px] w-[20px]" />
                         <span>Billing</span>
@@ -62,16 +62,16 @@ const NavbarComp = () => {
 
                         <img src="/location.png" alt="username" className="h-[20px] w-[20px]" />
                         <span>Address</span>
-                    </div>
+                    </div> */}
 
 
-                    <div className="line"></div>
+                    <div className="line my-4"></div>
 
 
-                    <div className="small-logoout">
+                    <div className="small-logo text-[#EF4444]">
 
-                        <img src="/logout.png" alt="username" className="h-[20px] w-[20px]" />
-                        <span>Log Out</span>
+                        <img src="/logout.png" alt="username" className="h-[20px] w-[20px] " />
+                        <span>Logout</span>
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@ const NavbarComp = () => {
     );
 
     return (
-        <div className="navbar-container  ">
+        <div className="navbar-container ">
 
             <div className="inside-container">
 

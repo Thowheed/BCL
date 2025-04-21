@@ -2,7 +2,6 @@
 
 
 import dynamic from 'next/dynamic';
-import "../../../styles/index.scss"
 
 const NavbarComp = dynamic(() => import('../../../Components/NabarComp'));
 const CardComponent = dynamic(() => import('../../../Components/CardComponent'));
