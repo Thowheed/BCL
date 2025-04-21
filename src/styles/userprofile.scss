@@ -2,61 +2,138 @@
     height: 370px;
     width: 360px;
     border-radius: 6px;
-    border: 1px solid #cccccc;
+    border: 1px solid #ccc;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
-
+    .drop-down-inside {
+        height: 93%;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
 
 }
 
-.drop-down-inside {
-    height: 93%;
-    width: 90%;
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    .user-details {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+    }
+
+    .avatar {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+
+}
+
+.divider {
+    border-bottom: 1px solid #eee;
+    margin: 10px 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 6px 0;
+    cursor: pointer;
+
+}
+
+.menu-item:hover {
+    background-color: #457b52;
+    color: white;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.logout {
+    color: red;
+}
+
+
+
+
+
+
+.user-wrapper {
+    height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.ant-dropdown-menu {
-
-    background-color: red;
-}
-
-.logo-username {
-
-    width: 90%;
-    padding: 2px;
-    display: flex;
-    justify-content: space-around;
-    font-size: 14px;
-    margin-left: 5px;
-}
-
-.span-useername-div {
-    font-size: 14px;
-}
-
-.line {
-    width: 95%;
-    border-bottom: 1px solid #cccccc;
-}
-
-.small-logo {
-
-    width: 45%;
-
-    display: flex;
-    justify-content: space-around;
-}
-
-.small-logoout {
-    width: 45%;
-    color: red;
-    display: flex;
+    align-items: center;
     justify-content: space-evenly;
 
+    .account-header {
+        padding: 24px;
+        width: 75%;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 56px;
+    }
+
+    .account-title {
+        font-weight: 700;
+        font-size: 20px;
+    }
+
+    .account-description {
+        font-size: 16px;
+    }
+}
 
 
+
+
+.profile-card {
+    padding: 40px;
+    width: 75%;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+
+
+    .profile-title {
+        color: black;
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+
+    .profile-inputs {
+        padding: 8px;
+
+        .input-label {
+            margin: 12px;
+            margin-left: 0%;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .ant-input {
+            height: 50px;
+        }
+    }
 }
