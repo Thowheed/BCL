@@ -14,7 +14,7 @@ const CartComponent = () => {
         <div>
             <NavbarComp />
             <div className='flex flex-col'>
-            <div className='pt-[16vh] mx-30'>
+                <div className='pt-[16vh] mx-30'>
                     <div className='flex flex-row items-center justify-between w-[80px] cursor-pointer' onClick={() => router.push('/home')}>
                         <ArrowLeftOutlined />
                         <span>My Cart</span>

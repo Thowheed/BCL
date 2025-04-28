@@ -35,9 +35,9 @@ export default function LoginCompo() {
 
 
                     <Form form={form}>
-                        <p className="input-p-texts">Email </p>
+                        <p className="input-labels">Email </p>
                         <Input placeholder="Email" className="ant-input" />
-                        <p className="input-p-texts">Password  </p>
+                        <p className="input-labels">Password  </p>
                         <Input.Password
                             className="ant-input"
                             placeholder="Password"
