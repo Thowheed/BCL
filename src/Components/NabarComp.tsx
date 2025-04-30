@@ -1,138 +1,77 @@
 'use client';
 
-
-import { Menu, Dropdown, Button, Badge, Avatar, Input } from 'antd';
-import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import { Dropdown, Badge, Avatar, Input } from 'antd';
+import { DownOutlined, UserOutlined, SearchOutlined } from '@ant-design/icons';
 import "../styles/userprofile.scss";
-import { SearchOutlined } from '@ant-design/icons';
-
 
 const NavbarComp = () => {
-    const menu = (
-        <Menu>
+    const dropdownContent = (
+        <div className="drop-down">
+            <div className="drop-down-inside">
 
-
-            <div className="drop-down ">
-
-                <div className="drop-down-inside ">
-
-
-                    <div className="logo-username ">
-
-                        <img src="/user.png" alt="username" className="h-[40px] w-[40px]" />
-                        <div className="span-useername-div">
-                            <span className='font-bold'>Mohamed Uvaish</span><br></br>
-                            <span>Uvaishmoahamedn@gmail.com</span>
-
-                        </div>
-
-
-                    </div>
-
-                    <div className="line my-4"></div>
-
-
-
-
-
-                    <div className="small-logo">
-
-                        <img src="/user.png" alt="username" className="h-[20px] w-[20px]" />
-                        <span>Profile</span>
-                    </div>
-
-                    <div className="small-logo mt-2">
-
-                        <img src="/checkout.png" alt="username" className="h-[20px] w-[20px]" />
-                        <span>My Orders</span>
-                    </div>
-
-
-                    {/* <div className="small-logo">
-
-                        <img src="/bill.png" alt="username" className="h-[20px] w-[20px]" />
-                        <span>Billing</span>
-                    </div>
-
-
-
-
-
-                    <div className="small-logo">
-
-                        <img src="/location.png" alt="username" className="h-[20px] w-[20px]" />
-                        <span>Address</span>
-                    </div> */}
-
-
-                    <div className="line my-4"></div>
-
-
-                    <div className="small-logo text-[#EF4444]">
-
-                        <img src="/logout.png" alt="username" className="h-[20px] w-[20px] " />
-                        <span>Logout</span>
+                <div className="user-info">
+                    <img src="/user.png" alt="user" className="avatar" />
+                    <div className="user-details">
+                        <span className="name">Mohamed Uvaish</span>
+                        <span className="email">Uvaishmoahamedn@gmail.com</span>
                     </div>
                 </div>
 
+                <div className="divider"></div>
+
+                <div className="menu-item">
+                    <img src="/user.png" alt="profile" className="icon" />
+                    <span>Profile</span>
+                </div>
+
+                <div className="menu-item">
+                    <img src="/checkout.png" alt="orders" className="icon" />
+                    <span>My Orders</span>
+                </div>
+
+                <div className="divider"></div>
+
+                <div className="menu-item logout">
+                    <img src="/logout.png" alt="logout" className="icon" />
+                    <span>Logout</span>
+                </div>
             </div>
-        </Menu>
+        </div>
     );
 
     return (
-        <div className="navbar-container ">
+        <div className="navbar">
 
-            <div className="inside-container">
+            <img className="logo" src="/BCL-Green-1.svg" alt="Logo" />
 
-
-                <img className="brand" src="/BCL-Green-1.svg" alt="Logo" />
-
-                <div className="delivery-text">
-
-                    <span>Delivery in 8 minutes</span><br></br>
-                    <div className="drop-nav">
-                        <span>Select Location </span>
-                        <img src="./Border.svg" alt="drop" />
-
-                    </div>
-
-
+            <div className="delivery">
+                <span className="delivery-time">Delivery in 8 minutes</span>
+                <div className="location">
+                    <span>Select Location</span>
+                    <img src="./Border.svg" alt="dropdown" />
                 </div>
-
-                <div className="navbar-input">
-
-
-
-
-                    <Input
-
-                        className="tomato-search-input"
-                        placeholder="Search by Tomato....."
-                        prefix={<SearchOutlined />}
-                        style={{ width: 600, height: 45, gap: 7, fontSize: 16, fontWeight: 400 }}
-                    />
-
-
-                </div>
-
-                <div className="login-cart-button">
-
-                    <Dropdown overlay={menu} trigger={['click']} placement="bottomRight">
-                        <Badge dot color="green" className="avatar-badge">
-                            <Avatar shape="circle" icon={<UserOutlined />} />
-                        </Badge>
-                    </Dropdown>
-                    <button className="cart-button" >
-                        <img src="./Vectora.svg" alt="" />
-                        <span>Cart</span>
-                    </button>
-
-
-                </div>
-
-
             </div>
 
+            <div className="search">
+                <Input
+                    className="search-input"
+                    placeholder="Search by Tomato....."
+                    prefix={<SearchOutlined />}
+                    style={{ fontSize: 16, fontWeight: 400 }}
+                />
+            </div>
+
+            <div className="actions">
+                <Dropdown overlay={dropdownContent} trigger={['click']} placement="bottomRight">
+                    <Badge dot color="green" className="avatar-badge">
+                        <Avatar shape="circle" icon={<UserOutlined />} />
+                    </Badge>
+                </Dropdown>
+                <button className="cart-button">
+                    <img src="./Vectora.svg" alt="cart" />
+                    <span>Cart</span>
+                </button>
+            </div>
         </div>
     )
 }

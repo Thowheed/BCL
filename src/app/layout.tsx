@@ -6,6 +6,7 @@ import StyledComponentsRegistry from "@/lib/AntdRegistry";
 import "../styles/ProductDetailComp.scss";
 // import "../styles/CartTable.scss";
 import "../styles/CartTotal.scss";
+import Providers from "@/Globals/provider";
 
 
 export const metadata: Metadata = {
@@ -24,9 +25,11 @@ export default function RootLayout({
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className="bg-white"
       >
-        <StyledComponentsRegistry>
-          {children}
-        </StyledComponentsRegistry>
+        <Providers>
+          <StyledComponentsRegistry>
+            {children}
+          </StyledComponentsRegistry>
+        </Providers>
       </body>
     </html>
   );
