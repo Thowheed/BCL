@@ -2,7 +2,7 @@ import ApiConstants from "@/Globals/ApiConstants";
 import { message } from "antd";
 import { SagaIterator } from "redux-saga";
 import { call, put } from "redux-saga/effects";
-import { getUserAddressListSuccess } from "../reducer/indexSlice";
+import { getUserAddressListSuccess, getUserListSuccess } from "../reducer/indexSlice";
 import { bclAxiosAPi } from "../http/Axios";
 
 function* failSaga(result: any) {
@@ -41,6 +41,25 @@ export function* getUserAddressListSaga(action: any): SagaIterator {
                 result: response.result.data.data,
             };
             yield put(getUserAddressListSuccess(result));
+        } else {
+            yield call(failSaga, response);
+        }
+    } catch (error) {
+        yield call(errorSaga, error);
+    }
+}
+
+export function* getUserListSaga(action: any): SagaIterator {
+    try {
+        console.log("inside getUserListSaga", action?.payload);
+        const response = yield call(bclAxiosAPi.getUserListAxios, action?.payload);
+
+        if (response.status == 1) {
+            let result: any = {
+                status: response.status,
+                result: response.result.data.data,
+            };
+            yield put(getUserListSuccess(result));
         } else {
             yield call(failSaga, response);
         }

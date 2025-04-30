@@ -5,10 +5,12 @@ import { takeEvery } from "redux-saga/effects";
 // } from "./mukizhSaga";
 
 import {
-    getUserAddressListLoad
+    getUserAddressListLoad,
+    getUserListLoad
 } from "../reducer/indexSlice";
-import { getUserAddressListSaga } from "./mukizhSaga";
+import { getUserAddressListSaga, getUserListSaga } from "./mukizhSaga";
 
 export function* baclSaga() {
     yield takeEvery(getUserAddressListLoad, getUserAddressListSaga);
+    yield takeEvery(getUserListLoad, getUserListSaga);
 }

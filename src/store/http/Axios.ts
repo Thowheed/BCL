@@ -2,12 +2,17 @@ import ApiConstants from "@/Globals/ApiConstants";
 import { http } from "./Http";
 import { message } from "antd";
 
-let loginUrl: any = "http://localhost:8092/api/e-commercelogin";
+let loginUrl: any = "http://localhost:4400/api/e-commercelogin";
+let url: any = "http://localhost:4400/user/get-all-user";
 
 const bclAxiosAPi = {
     getUserAddressListAxios: (payload: any) => {
         return Method.dataQuery(payload, loginUrl)
     },
+    getUserListAxios:(payload: any) => {
+        return Method.dataQuery(payload, url)
+
+    }
 
     
 }
@@ -20,7 +25,7 @@ const Method = {
             }, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'access-control-allow-origin': '*',
+                    // 'access-control-allow-origin': '*',
                     // 'Authorization': token ? token : ``
                 }
             }).then((result: any) => {
