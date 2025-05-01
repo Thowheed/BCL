@@ -1,21 +1,3 @@
-.login-component {
-    width: 100%;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 0px;
-
-    .login-image {
-        background-size: contain;
-        background-position: center;
-        background-color: #F7F7F9;
-        background-repeat: no-repeat;
-        height: 100vh;
-
-    }
-
-}
-
 .login-form-container {
     background-color: #ffffff;
     display: flex;
@@ -36,6 +18,14 @@
         margin-bottom: 15px;
     }
 
+    .brand-login {
+
+        width: 300px;
+        height: 70px;
+        margin: 0 5% 30px;
+
+
+    }
 
     .sign-in-button {
         color: #fff !important;
@@ -43,6 +33,7 @@
         padding: 20px 20px !important;
         font-weight: 600;
         width: 100%;
+        margin: 28px 0 0 0;
     }
 
     .sign-in-button.clicked {
@@ -67,16 +58,6 @@
 
 }
 
-.brand-login {
-
-    width: 300px;
-    height: 70px;
-    margin: 0 5% 30px;
-
-
-}
-
-
 //// additional
 .login-wrapper {
     display: flex;
@@ -84,38 +65,44 @@
     align-items: center;
     padding: 30px 0;
     background-color: #fff;
+
+    .login-card {
+        width: 90%;
+        max-width: 450px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 24px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+
+
+    }
 }
 
-.login-card {
-    width: 90%;
-    max-width: 450px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 24px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
 
 .login-form-container {
     width: 100%;
+
+    .welcome-message {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 22px;
+    }
+
+
+    .small-text {
+        font-size: 13px;
+        color: #575757;
+        font-weight: 400;
+        line-height: 150%;
+        margin-top: 10px;
+    }
 }
 
-.small-text {
-    font-size: 12px;
-    color: #575757;
-    font-weight: 300;
-    line-height: 150%;
-    margin-top: 10px;
-}
 
 .login-logo {
     width: 120px;
     margin-bottom: 20px;
-}
-
-.welcome-message {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 22px;
 }
 
 .ant-input {
@@ -130,11 +117,11 @@
 }
 
 
-.input-p-texts {
+.input-label {
 
     margin: 9px;
     margin-left: 0%;
-    font-size: 12px;
+    font-size: 13px;
     color: #424040;
     font-weight: 400;
 
@@ -146,41 +133,59 @@
     border: none;
     color: white !important; // 👈 Force override Ant Design default
     background-color: #2EAF4B !important;
+
+    .arrow-logo {
+
+        margin-left: 5px;
+        margin-top: 3px;
+    }
+}
+
+.ant-btn {
+    margin-top: 20px;
 }
 
 .divider {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 20px 0;
-}
+    margin: 25px 0;
 
-.line {
-    width: 45%;
-    border: 1px solid #d9d9d9;
-}
+    .line {
+        width: 45%;
+        border: 1px solid #d9d9d9;
+    }
 
-.or-text {
-    font-weight: 500;
-    color: #3b4056;
+    .line {
+        width: 45%;
+        border: 1px solid #d9d9d9;
+    }
+
+    .or-text {
+        font-weight: 500;
+        color: #3b4056;
+    }
 }
 
 .toggle-login {
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    gap: 10px;
+
+    .toggle-text {
+        font-weight: 500;
+        color: #000000;
+    }
+
+
+    .toggle-link {
+        color: #2EAF4B;
+        font-weight: 500;
+        text-decoration: none;
+        margin-left: 10px;
+    }
 }
 
-.toggle-text {
-    // color: #3b4056;
-    font-weight: 500;
-    color: #000000;
-}
-
-.toggle-link {
-    color: #2EAF4B;
-    font-weight: 500;
-    text-decoration: none;
-}
 
 .terms-text {
     font-size: 12px;
@@ -206,25 +211,39 @@
 
 }
 
-.gps-logo {
-    margin-top: 8px;
+.gps-text {
+
+    .gps-logo {
+        margin-top: 8px;
+    }
+
+    .current-gps {
+        font-size: 18px;
+        font-weight: 600;
+        color: #2EAF4B;
+    }
+
+    .using-gps {
+        font-size: 14px;
+        color: #2EAF4B;
+
+
+    }
+
 }
 
-.current-gps {
-    font-size: 18px;
-    font-weight: 600;
-    color: #2EAF4B;
+.gps-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-.using-gps {
-    font-size: 14px;
-    color: #2EAF4B;
-
+.custom-input-address {
+    height: 90px;
 
 }
 
-.arrow-logo {
-
-    margin-left: 5px;
-    margin-top: 3px;
+.custom-input {
+    height: 50px;
 }
