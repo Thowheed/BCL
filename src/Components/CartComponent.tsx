@@ -1,14 +1,46 @@
 'use client';
+import { addtocartListload } from '@/store/reducer/indexSlice';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import dynamic from 'next/dynamic';
 import { useRouter } from "next/navigation";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const CartTable = dynamic(() => import('./CartTable'));
 const CartTotal = dynamic(() => import('./CartTotal'));
 const NavbarComp = dynamic(() => import('./NabarComp'));
 const FooterComp = dynamic(() => import('./FooterCompo'));
+
 const CartComponent = () => {
+
+    const { addtocartLoad, addtocartData } = useSelector((state: any) => state.bcl);
+    console.log(addtocartLoad);
+    console.log(addtocartData);
+
+    
+    const dispatch = useDispatch();
+
+    const Cartapi = () => {
+
+        let payload = {
+
+            userId: 1,
+            productId: 1,
+            quantity: 1
+        }
+
+        dispatch(addtocartListload(payload))
+
+    }
+
+    useEffect(()=>{
+
+        Cartapi()
+
+    },[])
+
+
     const router = useRouter();
     return (
         <div>
@@ -39,3 +71,4 @@ const CartComponent = () => {
 };
 
 export default CartComponent;
+

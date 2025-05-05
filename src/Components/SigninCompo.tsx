@@ -4,7 +4,9 @@ import "../styles/Signin.scss";
 import { useRouter } from "next/navigation";
 import { Button, Form, Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { siginListLoad } from "@/store/reducer/indexSlice";
 
 export default function LoginCompo() {
     const router = useRouter();
@@ -14,6 +16,50 @@ export default function LoginCompo() {
     const handleSubmit = () => {
         router.push("/dashboard/reports");
     };
+
+
+    
+    const { siginLoad, siginData } = useSelector((state: any) => state.bcl);
+    console.log(siginLoad);
+    console.log(siginData);
+
+    const dispatch = useDispatch();
+
+
+    // api intergration 
+
+            const Siginapi = () =>{
+
+
+                let payload = {
+                 
+                    name : "1",
+                    email : "2",
+                    password :"3",
+                    address : "4",
+                    country : "6",
+                    zip_code :"7",
+                    location :"8"
+
+                }
+
+
+                dispatch(siginListLoad(payload))
+
+            }
+            useEffect(()=>{
+            
+                Siginapi()
+            
+                },[])
+
+
+
+
+
+
+
+
 
     return (
         <div className="login-wrapper">
