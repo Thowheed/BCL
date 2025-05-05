@@ -42,21 +42,24 @@ export default function LoginCompo() {
 
     const Siginapi = () => {
         console.log("formData==>", formData)
+        if(login == false){
+            let payload = {
 
-        let payload = {
+                name: formData?.name,
+                email: formData?.email,
+                password: formData?.password,
+                address: formData?.address,
+                country: formData?.country,
+                zip_code: formData?.zip_code,
+                location: formData?.location,
 
-            name: formData?.name,
-            email: formData?.email,
-            password: formData?.password,
-            address: formData?.address,
-            country: formData?.country,
-            zip_code: formData?.zip_code,
-            location: formData?.location,
+            }
+            console.log("payload==>", payload)
 
+            dispatch(siginListLoad(payload))
+        }else{
+            setLogin(!login);
         }
-        console.log("payload==>", payload)
-
-        dispatch(siginListLoad(payload))
 
     }
     // useEffect(() => {
@@ -167,7 +170,7 @@ export default function LoginCompo() {
 
 
 
-                        <Button className="sign-in-button" onClick={() => login == true ? setLogin(!login) : ""} type="primary" htmlType="submit">
+                        <Button className="sign-in-button" type="primary" htmlType="submit">
                             {login ? "Continue" : "Register"}
                             {!login && <img className="arrow-logo" src="/arrow.svg" alt="arrow" />}
                         </Button>
