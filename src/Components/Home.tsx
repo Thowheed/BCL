@@ -5,7 +5,7 @@ import homeBanner from "../../public/Images/home-banner.png"
 import homeCargoBanner from "../../public/Images/home-cargo-banner.png"
 import Image from "next/image"
 import { useDispatch, useSelector } from "react-redux";
-import { getUserListLoad } from "@/store/reducer/indexSlice";
+import { getallproductListLoad, getUserListLoad } from "@/store/reducer/indexSlice";
 // import CardComponent from "./CardComponent";
 // import NavbarComp from "./NabarComp";
 // import ProductCarousel from "./ProductSlide";
@@ -15,18 +15,44 @@ const ProductCarousel = dynamic(() => import('./ProductSlide'));
 const FooterComp = dynamic(() => import('./FooterCompo'));
 
 export default function HomePage() {
-    const { userListLoad, userListData } = useSelector((state: any) => state.bcl);
+
+    // const { userListLoad, userListData } = useSelector((state: any) => state.bcl);
+    // console.log("userListLoad", userListLoad, "userListData", userListData);
+
     const dispatch = useDispatch();
 
-    console.log("userListLoad", userListLoad, "userListData", userListData);
+    const {getallProductLoad ,getallProductData} =  useSelector((state: any) => state.bcl);
+    console.log(getallProductLoad);
+    console.log(getallProductData);
+    
+    
+
+    const getAllproductapi = () => {
 
 
-    useEffect(() => {
-        // let payload = {
-        //     userId: 1
-        // }
-        dispatch(getUserListLoad(''));
-    }, []);
+        let payload = {
+            name: "1",
+            category: "1",
+            status: "1"
+        }
+
+        dispatch(getallproductListLoad(payload))
+    }
+
+    useEffect(()=>{
+        getAllproductapi()
+    },[])
+
+
+//product api end 
+    
+
+        const getUserById =()=> {
+            
+
+        }
+
+
     return (
         <div >
             <NavbarComp />

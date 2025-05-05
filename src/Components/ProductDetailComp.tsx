@@ -3,12 +3,31 @@ import appImages from "@/Globals/AppImages";
 import { Button } from "antd";
 import dynamic from "next/dynamic";
 import Image from "next/image"
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 
 const NavbarComp = dynamic(() => import('./NabarComp'));
 const FooterComp = dynamic(() => import('./FooterCompo'));
 const ProductSlide = dynamic(() => import('./ProductSlide'));
 
 const ProductDetail = () => {
+
+  
+    /// getproduct using id 
+
+    // const getproductid = ()=> {
+
+    //     let payload = {
+
+    //         id:"1"
+    //     }
+
+    // }
+
+
+
+
     let list = new Array(5).fill(0);
     return (
         <div style={{ margin: "16vh auto 0" }}>
@@ -23,7 +42,7 @@ const ProductDetail = () => {
                         </div>
                         <div className="product-title">Vallarai Keerai</div>
                         <div className="product-weight">100 - 150g</div>
- 
+
                         <div className="border-line"></div>
                         <div className="card-price-container">
                             <div className="card-price">
@@ -72,10 +91,10 @@ const ProductDetailComp = () => {
             <NavbarComp />
 
             <ProductDetail />
-                <div className=' text-bold py-10 flex justify-between !text-lg mx-18 mt-10' >
-                    <span>More Items</span> 
-                    <span className="text-[#2EAF4B]">View All</span> 
-                </div>
+            <div className=' text-bold py-10 flex justify-between !text-lg mx-18 mt-10' >
+                <span>More Items</span>
+                <span className="text-[#2EAF4B]">View All</span>
+            </div>
             <div className="mx-12 pb-[8vh] ">
                 <ProductSlide />
             </div>
