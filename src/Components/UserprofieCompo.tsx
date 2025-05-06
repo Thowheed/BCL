@@ -2,81 +2,42 @@
 
 import { Input } from "antd";
 import "../styles/userprofile.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { updateuserListLoad } from "@/store/reducer/indexSlice";
+import { useEffect } from "react";
 
 const Usercompo = () => {
 
-    // const menu = (
-    //     <Menu>
+    const { updateuserLoad, updateuserData } = useSelector((state: any) => state.bcl);
+    console.log(updateuserLoad);
+    console.log(updateuserData);
 
+    const dispatch = useDispatch()
 
-    //         <div className="drop-down ">
+    const updateUserapi = () => {
 
-    //             <div className="drop-down-inside ">
+        let payload = {
+            
+            id:1,
+            name: "1",
+            email: "1",
+            password: "1",
+            address: "1",
+            country: "1",
+            zip_code: "1",
+            location: "1"
+        }
 
-
-    //                 <div className="logo-username ">
-
-    //                     <img src="" alt="username" />
-    //                     <div className="span-useername-div">
-    //                         <span >Mohamed Uvaish</span><br></br>
-    //                         <span>Uvaishmoahamedn@gmail.com</span>
-
-    //                     </div>
-
-
-    //                 </div>
-
-    //                 <div className="line"></div>
-
-
-    //                 <div className="button-user">
-
-    //                     <div className="small-logo">
-
-    //                         <img src="" alt="logo" />
-    //                         <span>Profile</span>
-    //                     </div>
-
-    //                     <div className="small-logo">
-
-    //                         <img src="" alt="logo" />
-    //                         <span>My Orders</span>
-    //                     </div>
-
-
-    //                     <div className="small-logo">
-
-    //                         <img src="" alt="logo" />
-    //                         <span>Billing</span>
-    //                     </div>
+        dispatch(updateuserListLoad(payload))
+    }
+    useEffect(() => {
+        updateUserapi()
+    }, [])
 
 
 
 
 
-    //                     <div className="small-logo">
-
-    //                         <img src="" alt="logo" />
-    //                         <span>Address</span>
-    //                     </div>
-
-
-    //                 </div>
-
-    //                 <div className="line"></div>
-
-
-    //                 <div className="small-logoout">
-
-    //                     <img src="" alt="logo" />
-    //                     <span>Log Out</span>
-    //                 </div>
-
-    //             </div>
-
-    //         </div>
-    //     </Menu>
-    // );
     return (
         <div className="user-wrapper">
             <div className="account-header">
