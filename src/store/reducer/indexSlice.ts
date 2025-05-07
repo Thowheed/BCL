@@ -121,7 +121,7 @@ const bcl = createSlice({
 
         getallprodctSuccess: (state, action: PayloadAction<any>) => {
             state.getallProductLoad = false
-            state.updateuserData = action?.payload.result
+            state.getallProductData = action?.payload?.result
 
         },
 
