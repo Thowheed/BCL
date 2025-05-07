@@ -13,19 +13,6 @@ const cardData = Array.from({ length: 12 }, (_, i) => ({
 const ProductCarousel = () => {
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
     const containerRef = useRef<HTMLDivElement>(null);
     const scrollAmount = 720; // adjust based on card width * number of cards to scroll
 
@@ -38,6 +25,7 @@ const ProductCarousel = () => {
     };
 
     return (
+        
         <div style={{ position: 'relative', padding: '10px 0px ' }}>
             {/* Scroll Buttons */}
             <Button
