@@ -27,6 +27,7 @@ const ProductCarousel = (props: any) => {
     };
 
     return (
+        
         <div style={{ position: 'relative', padding: '10px 0px ' }}>
             {/* Scroll Buttons */}
             <Button

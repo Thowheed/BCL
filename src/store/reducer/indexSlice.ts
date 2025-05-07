@@ -34,7 +34,13 @@ const initialState = {
     //getall prodct api 
 
     getallProductLoad: false,
-    getallProductData: null
+    getallProductData: null,
+
+
+    //get product using by id 
+    getproductusingidLoad: false,
+    getproductusingidData: null
+
 
 };
 
@@ -125,6 +131,19 @@ const bcl = createSlice({
 
         },
 
+        //  getusingproduct id  product product api 
+
+
+        getproductusingidListLoad: (state, action: PayloadAction<any>) => {
+            state.getproductusingidLoad = true
+        },
+
+        getproductusingidSuccess: (state, action: PayloadAction<any>) => {
+            state.getproductusingidLoad = false
+            state.getproductusingidData = action?.payload.result
+        },
+
+
 
         resetTemporaryState: () => {
             return initialState;
@@ -139,7 +158,7 @@ export const { getUserAddressListLoad, getUserAddressListSuccess,
     loginListLoad, loginSuccess,
     siginListLoad, siginSuccess,
     updateuserListLoad, updateuserSuccess,
-    getallproductListLoad, getallprodctSuccess } = bcl.actions;
+    getallproductListLoad, getallprodctSuccess , getproductusingidListLoad ,getproductusingidSuccess } = bcl.actions;
 
 
 

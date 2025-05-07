@@ -1,5 +1,6 @@
 'use client'
 import appImages from "@/Globals/AppImages";
+import { getproductusingidListLoad } from "@/store/reducer/indexSlice";
 import { Button } from "antd";
 import dynamic from "next/dynamic";
 import Image from "next/image"
@@ -14,16 +15,28 @@ const ProductSlide = dynamic(() => import('./ProductSlide'));
 const ProductDetail = () => {
 
   
-    /// getproduct using id 
+    // / getproduct using id 
+    const { getproductusingidLoad, getproductusingidData } = useSelector((state: any) => state.bcl);
+    console.log(getproductusingidLoad);
+    console.log(getproductusingidData);
 
-    // const getproductid = ()=> {
+    const dispatch = useDispatch();
 
-    //     let payload = {
 
-    //         id:"1"
-    //     }
+    const getproductusingidapi = ()=> {
 
-    // }
+        let payload = {
+
+            id:"1"
+        }
+
+        dispatch(getproductusingidListLoad(payload))
+
+    }
+
+    useEffect(()=>{
+        getproductusingidapi()
+    } ,[])
 
 
 
