@@ -6,6 +6,8 @@ import homeCargoBanner from "../../public/Images/home-cargo-banner.png"
 import Image from "next/image"
 import { useDispatch, useSelector } from "react-redux";
 import { getallproductListLoad, getUserListLoad } from "@/store/reducer/indexSlice";
+import { get } from "http";
+import { getUser } from "@/Globals/Localstorage";
 // import CardComponent from "./CardComponent";
 // import NavbarComp from "./NabarComp";
 // import ProductCarousel from "./ProductSlide";
@@ -22,25 +24,17 @@ export default function HomePage() {
     const dispatch = useDispatch();
 
     const {getallProductLoad ,getallProductData} =  useSelector((state: any) => state.bcl);
-    console.log(getallProductLoad);
-    console.log(getallProductData);
-    
-    
+    console.log("getallProductData==>",getallProductData);
+
 
     const getAllproductapi = () => {
 
-
-        let payload = {
-            name: "1",
-            category: "1",
-            status: "1"
-        }
-
-        dispatch(getallproductListLoad(payload))
+        dispatch(getallproductListLoad(""))
     }
 
     useEffect(()=>{
         getAllproductapi()
+    
     },[])
 
 
@@ -65,21 +59,21 @@ export default function HomePage() {
                     <span>Vegetables</span>
                     <span className="text-[#2EAF4B]">View All</span>
                 </div>
-                <ProductCarousel />
-                <ProductCarousel />
+                <ProductCarousel getallProductData={getallProductData}/>
+                <ProductCarousel getallProductData={getallProductData}/>
 
                 <div className='text-bold py-10 flex justify-between !text-lg'>
                     <span>Fruits</span>
                     <span className="text-[#2EAF4B]">View All</span>
                 </div>
-                <ProductCarousel />
+                <ProductCarousel getallProductData={getallProductData}/>
 
                 <div className='text-bold py-10 flex justify-between !text-lg'>
                     <span>Masala</span>
                     <span className="text-[#2EAF4B]">View All</span>
                 </div>
-                <ProductCarousel />
-                <ProductCarousel />
+                <ProductCarousel getallProductData={getallProductData}/>
+                <ProductCarousel getallProductData={getallProductData}/>
             </div>
             <FooterComp />
         </div>

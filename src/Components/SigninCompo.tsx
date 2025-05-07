@@ -32,8 +32,6 @@ export default function LoginCompo() {
     };
 
     const { siginLoad, siginData } = useSelector((state: any) => state.bcl);
-    console.log(siginLoad);
-    console.log(siginData);
 
     const dispatch = useDispatch();
 

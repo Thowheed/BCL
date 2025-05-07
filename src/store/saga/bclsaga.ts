@@ -2,7 +2,7 @@ import ApiConstants from "@/Globals/ApiConstants";
 import { message } from "antd";
 import { SagaIterator } from "redux-saga";
 import { call, put } from "redux-saga/effects";
-import { addtocartListSuccess, getallprodctSuccess, getUserAddressListSuccess, getUserListSuccess ,
+import { addtocartListSuccess, getallprodctSuccess, getproductusingidSuccess, getUserAddressListSuccess, getUserListSuccess ,
      loginListLoad ,loginSuccess , siginListLoad, siginSuccess , updateuserListLoad , updateuserSuccess } from "../reducer/indexSlice";
 import { bclAxiosAPi } from "../http/Axios";
 
@@ -97,13 +97,12 @@ export function* addtoCartListSaga(action: any): SagaIterator {
 
 export function* loginListsaga(action: any): SagaIterator {
     try {
-        console.log("inside loginListsaga", action?.payload);
         const response = yield call(bclAxiosAPi.loginListAxios , action?.payload);
-
+        console.log("response==>", response);
         if (response.status == 1) {
             let result: any = {
                 status: response.status,
-                result: response.result.data.data,
+                result: response.result.data,
             };
             yield put(loginSuccess(result));
         } else {
@@ -160,15 +159,38 @@ export function* updateuserListsaga(action: any): SagaIterator {
 
 export function* getallproductListSaga(action: any): SagaIterator {
     try {
-        console.log("inside getallprodouctList", action?.payload);
+        // console.log("inside getallprodouctList", action?.payload);
         const response = yield call(bclAxiosAPi.getallproductListAxios , action?.payload);
+
+        console.log("response==>",response)
+        if (response.status == 1) {
+            let result: any = {
+                status: response?.status,
+                result: response?.result?.data?.data,
+            };
+            yield put(getallprodctSuccess(result));
+        } else {
+            yield call(failSaga, response);
+        }
+    } catch (error) {
+        yield call(errorSaga, error);
+    }
+}
+
+
+////get all product using id 
+
+export function* getproductusingidListsaga(action: any): SagaIterator {
+    try {
+        console.log("inside getallprodctusing id", action?.payload);
+        const response = yield call(bclAxiosAPi.getproductusingidListAxios , action?.payload);
 
         if (response.status == 1) {
             let result: any = {
                 status: response.status,
                 result: response.result.data.data,
             };
-            yield put(getallprodctSuccess(result));
+            yield put(getproductusingidSuccess(result));
         } else {
             yield call(failSaga, response);
         }
