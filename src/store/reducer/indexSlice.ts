@@ -90,8 +90,9 @@ const bcl = createSlice({
         },
 
         loginSuccess: (state, action: PayloadAction<any>) => {
+            console.log("action?.payload", action?.payload)
             state.loginLoad = false
-            state.loginData = action?.payload.result
+            state.loginData = action?.payload?.result
 
         },
 

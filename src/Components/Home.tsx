@@ -6,6 +6,8 @@ import homeCargoBanner from "../../public/Images/home-cargo-banner.png"
 import Image from "next/image"
 import { useDispatch, useSelector } from "react-redux";
 import { getallproductListLoad, getUserListLoad } from "@/store/reducer/indexSlice";
+import { get } from "http";
+import { getUser } from "@/Globals/Localstorage";
 // import CardComponent from "./CardComponent";
 // import NavbarComp from "./NabarComp";
 // import ProductCarousel from "./ProductSlide";
@@ -22,10 +24,8 @@ export default function HomePage() {
     const dispatch = useDispatch();
 
     const {getallProductLoad ,getallProductData} =  useSelector((state: any) => state.bcl);
-    console.log(getallProductLoad);
     console.log("getallProductData==>",getallProductData);
-    
-    
+
 
     const getAllproductapi = () => {
 
@@ -34,6 +34,7 @@ export default function HomePage() {
 
     useEffect(()=>{
         getAllproductapi()
+    
     },[])
 
 

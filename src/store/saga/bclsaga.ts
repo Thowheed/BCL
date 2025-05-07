@@ -97,13 +97,12 @@ export function* addtoCartListSaga(action: any): SagaIterator {
 
 export function* loginListsaga(action: any): SagaIterator {
     try {
-        console.log("inside loginListsaga", action?.payload);
         const response = yield call(bclAxiosAPi.loginListAxios , action?.payload);
-
+        console.log("response==>", response);
         if (response.status == 1) {
             let result: any = {
                 status: response.status,
-                result: response.result.data.data,
+                result: response.result.data,
             };
             yield put(loginSuccess(result));
         } else {

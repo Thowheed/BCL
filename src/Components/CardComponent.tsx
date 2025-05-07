@@ -11,9 +11,6 @@ const CardComponent = (props: any) => {
     const { data } = props;
     const router = useRouter();
     const { addtocartLoad, addtocartData } = useSelector((state: any) => state.bcl);
-    console.log(addtocartLoad);
-    console.log(addtocartData);
-
 
     const dispatch = useDispatch();
 
