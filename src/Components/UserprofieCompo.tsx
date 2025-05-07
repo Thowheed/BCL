@@ -5,11 +5,13 @@ import "../styles/userprofile.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { updateuserListLoad } from "@/store/reducer/indexSlice";
 import { useEffect, useState } from "react";
+import { json } from "stream/consumers";
+
 
 
 
 const Tempfrm = {
-    id:"",
+    id: "",
     name: "",
     email: "",
     mobileNo: "",
@@ -24,8 +26,9 @@ const Tempfrm = {
 
 const Usercompo = () => {
 
-    const [TempData, setFormData] = useState(Tempfrm);
+    const [TempData, setuserFormData] = useState(Tempfrm);
 
+    console.log(TempData);
 
 
     const { updateuserLoad, updateuserData } = useSelector((state: any) => state.bcl);
@@ -38,55 +41,84 @@ const Usercompo = () => {
 
         let payload = {
 
-            id: Tempfrm?.id,
-            name: Tempfrm?.name,
-            email: Tempfrm?.email,
-            password:Tempfrm?.password ,
-            address:Tempfrm?.address,
-            country: Tempfrm?.country,
-            zip_code: Tempfrm?.zip_code,
-            location: Tempfrm?.location
+            // id: TempData?.id,
+            name: TempData?.name,
+            email: TempData?.email,
+            mobileNo: TempData?.mobileNo,
+            password: TempData?.password,
+            address: TempData?.address,
+            country: TempData?.country,
+            zip_code: TempData?.zip_code,
+            location: TempData?.location
         }
 
         dispatch(updateuserListLoad(payload))
     }
     useEffect(() => {
+        localStorage.setItem("userFormData", JSON.stringify(TempData))
         updateUserapi()
-    }, [])
+    }, [TempData])
 
 
 
 
 
     return (
-        <div className="user-wrapper">
+        <div className="user-wrapper" >
             <div className="account-header">
                 <span className="account-title">My Account</span>
                 <p className="account-description">Manage your account settings and preferences.</p>
             </div>
 
             <div className="profile-card">
+
                 <span className="profile-title">Profile</span>
 
-                <div className="profile-inputs">
+
+                <div className="profile-inputs" >
                     <p className="input-label">Name *</p>
-                    <Input placeholder="Name" className="ant-input" />
+                    <Input placeholder="Name" className="ant-input" onChange={(e: any) => setuserFormData({
+                        ...TempData,
+                        name: e.target.value
+                    })} />
 
                     <p className="input-label">Email *</p>
-                    <Input placeholder="Email" className="ant-input" />
+                    <Input placeholder="Email" className="ant-input" onChange={(e: any) => setuserFormData({
+                        ...TempData,
+                        email: e.target.value
+                    })} />
+                    <p className="input-label">password *</p>
+                    <Input placeholder="Email" className="ant-input" onChange={(e: any) => setuserFormData({
+                        ...TempData,
+                        password: e.target.value
+                    })} />
 
                     <p className="input-label">Phone Number *</p>
-                    <Input placeholder="Phone Number" className="ant-input" />
+                    <Input placeholder="Phone Number" className="ant-input" onChange={(e: any) => setuserFormData({
+                        ...TempData,
+                        mobileNo: e.target.value
+                    })} />
 
                     <p className="input-label">Address *</p>
-                    <Input placeholder="address" className="ant-input" />
+                    <Input placeholder="address" className="ant-input" onChange={(e: any) => setuserFormData({
+                        ...TempData,
+                        address: e.target.value
+                    })} />
 
-                    <p className="input-label">Temp-Address *</p>
-                    <Input placeholder="temp-address" className="ant-input" />
-
+                    {/* <p className="input-label">Temp-Address *</p>
+                    <Input placeholder="temp-address" className="ant-input" /> */}
 
                     <p className="input-label">Zip-code *</p>
-                    <Input placeholder="zip-Code" className="ant-input" />
+                    <Input placeholder="zip-Code" className="ant-input" onChange={(e: any) => setuserFormData({
+                        ...TempData,
+                        zip_code: e.target.value
+                    })} />
+
+                    <p className="input-label">country *</p>
+                    <Input placeholder="country" className="ant-input" onChange={(e: any) => setuserFormData({
+                        ...TempData,
+                        country: e.target.value
+                    })} />
 
 
 
@@ -97,3 +129,4 @@ const Usercompo = () => {
 }
 
 export default Usercompo;
+

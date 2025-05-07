@@ -8,17 +8,29 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { siginListLoad } from "@/store/reducer/indexSlice";
 
+
+const formTemp = {
+    name: "",
+    email: "",
+    mobileNo: "",
+    password: "",
+    confirmPassword: "",
+    address: "",
+    country: "",
+    zip_code: "",
+    location: ""
+}
 export default function LoginCompo() {
     const router = useRouter();
     const [form] = Form.useForm();
     const [login, setLogin] = useState(true);
 
+    const [formData, setFormData] = useState(formTemp);
+
     const handleSubmit = () => {
         router.push("/dashboard/reports");
     };
 
-
-    
     const { siginLoad, siginData } = useSelector((state: any) => state.bcl);
     console.log(siginLoad);
     console.log(siginData);
@@ -28,38 +40,33 @@ export default function LoginCompo() {
 
     // api intergration 
 
-            const Siginapi = () =>{
+    const Siginapi = () => {
+        console.log("formData==>", formData)
+        if(login == false){
+            let payload = {
 
-
-                let payload = {
-                 
-                    name : "1",
-                    email : "2",
-                    password :"3",
-                    address : "4",
-                    country : "6",
-                    zip_code :"7",
-                    location :"8"
-
-                }
-
-
-                dispatch(siginListLoad(payload))
+                name: formData?.name,
+                email: formData?.email,
+                password: formData?.password,
+                address: formData?.address,
+                country: formData?.country,
+                zip_code: formData?.zip_code,
+                location: formData?.location,
 
             }
-            useEffect(()=>{
-            
-                Siginapi()
-            
-                },[])
+            console.log("payload==>", payload)
 
+            dispatch(siginListLoad(payload))
+        }else{
+            setLogin(!login);
+        }
 
+    }
+    // useEffect(() => {
 
+    //     Siginapi()
 
-
-
-
-
+    // }, []);
 
     return (
         <div className="login-wrapper">
@@ -83,15 +90,26 @@ export default function LoginCompo() {
                         </div>
                     </div>
 
-                    <Form form={form} className="login-form">
+                    <Form form={form} className="login-form" onFinish={Siginapi}>
                         {login ? (
                             <>
                                 <p className="input-label">Name *</p>
-                                <Input type="text" placeholder="Name" className="custom-input" />
+                                <Form.Item name="name" rules={[{ required: true, message: "Please input your name!" }]}>
+                                    <Input type="text" placeholder="Name" className="custom-input" onChange={(e: any) => setFormData({
+                                        ...formData,
+                                        name: e.target.value
+                                    })} />
+                                </Form.Item>
                                 <p className="input-label">Email *</p>
-                                <Input placeholder="Email" className="custom-input" />
+                                <Input placeholder="Email" className="custom-input" onChange={(e: any) => setFormData({
+                                    ...formData,
+                                    email: e.target.value
+                                })} />
                                 <p className="input-label">Phone Number *</p>
-                                <Input type="text" placeholder="Phone Number" className="custom-input" />
+                                <Input type="text" placeholder="Phone Number" className="custom-input" onChange={(e: any) => setFormData({
+                                    ...formData,
+                                    mobileNo: e.target.value
+                                })} />
                                 <p className="input-label">Password *</p>
                                 <Input.Password
                                     className="custom-input"
@@ -99,6 +117,11 @@ export default function LoginCompo() {
                                     iconRender={(visible) =>
                                         visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
                                     }
+
+                                    onChange={(e: any) => setFormData({
+                                        ...formData,
+                                        password: e.target.value
+                                    })}
                                 />
                                 <p className="input-label">Confirm Password *</p>
                                 <Input.Password
@@ -107,16 +130,32 @@ export default function LoginCompo() {
                                     iconRender={(visible) =>
                                         visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
                                     }
+
+                                    onChange={(e: any) => setFormData({
+                                        ...formData,
+                                        confirmPassword: e.target.value
+                                    })}
                                 />
                             </>
                         ) : (
                             <>
                                 <p className="input-label">Select Country *</p>
-                                <Input placeholder="France" className="custom-input" />
+                                <Input placeholder="France" className="custom-input" onChange={(e: any) => setFormData({
+                                    ...formData,
+                                    country: e.target.value
+                                })} />
                                 <p className="input-label">Select Address *</p>
-                                <Input type="text" placeholder="Enter your address..." className="custom-input-address" />
+                                <Input type="text" placeholder="Enter your address..." className="custom-input-address"
+                                    onChange={(e: any) => setFormData({
+                                        ...formData,
+                                        address: e.target.value
+                                    })} />
                                 <p className="input-label">Zip Code *</p>
-                                <Input type="text" placeholder="Enter your zip code" className="custom-input" />
+                                <Input type="text" placeholder="Enter your zip code" className="custom-input"
+                                    onChange={(e: any) => setFormData({
+                                        ...formData,
+                                        zip_code: e.target.value
+                                    })} />
 
                                 <div className="gps-container ">
                                     <img src="/Vector.svg" alt="logo" />
@@ -131,7 +170,7 @@ export default function LoginCompo() {
 
 
 
-                        <Button className="sign-in-button" onClick={() => setLogin(!login)}>
+                        <Button className="sign-in-button" type="primary" htmlType="submit">
                             {login ? "Continue" : "Register"}
                             {!login && <img className="arrow-logo" src="/arrow.svg" alt="arrow" />}
                         </Button>

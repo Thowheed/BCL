@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginListLoad } from "@/store/reducer/indexSlice";
 
-
 const tempLogin = {
 
     email: "",
@@ -53,9 +52,12 @@ export default function LoginCompo() {
         }
 
 
-        dispatch(loginListLoad(payload))
+        dispatch(loginListLoad(payload));
 
+
+    
     }
+
 
 
     return (
