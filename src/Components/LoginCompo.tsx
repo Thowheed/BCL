@@ -81,11 +81,19 @@ export default function LoginCompo() {
                     <Form form={form} onFinish={Loginapi}>
 
                         <p className="input-labels">Email </p>
+                        
+                        <Form.Item name="email" rules={[{ required: true, message: " Enter your email !" }]}>
+
                         <Input placeholder="Email" className="ant-input" onChange={(e: any) => setnewloginData({
                             ...TempLoginData,
                             email: e.target.value
                         })} />
+
+                        </Form.Item>
+
                         <p className="input-labels">Password  </p>
+                        <Form.Item name="password" rules={[{ required: true, message: " Enter your password !" }]}>
+
                         <Input.Password
                             className="ant-input"
                             placeholder="Password"
@@ -97,6 +105,8 @@ export default function LoginCompo() {
                                 password: e.target.value
                             })}
                         />
+
+                        </Form.Item>
 
                         <div className="options-row">
                             {login && (
