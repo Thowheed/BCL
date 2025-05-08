@@ -16,6 +16,7 @@ const ProductDetail = () => {
 
   
     // / getproduct using id 
+    
     const { getproductusingidLoad, getproductusingidData } = useSelector((state: any) => state.bcl);
     console.log(getproductusingidLoad);
     console.log(getproductusingidData);

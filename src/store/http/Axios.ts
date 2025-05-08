@@ -12,7 +12,7 @@ let Loginurl: any = `${baseURL}/user/login`;
 let siginurl : any = `${baseURL}/user/create-user`;
 let updateuserurl : any = `${baseURL}/user/update-user`;
 let getallproducturl : any =`${baseURL}/product/get-all-product`;
-let getproductusingidurl : any = `${baseURL}/`
+let getproductusingidurl : any = `${baseURL}/product/get-product/id`
 
 const bclAxiosAPi = {
     getUserAddressListAxios: (payload: any) => {
