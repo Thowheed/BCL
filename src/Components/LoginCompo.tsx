@@ -8,6 +8,7 @@ import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginListLoad } from "@/store/reducer/indexSlice";
+import { setUser } from "@/Globals/Localstorage";
 
 const tempLogin = {
 
@@ -23,12 +24,10 @@ export default function LoginCompo() {
 
     const [TempLoginData, setnewloginData] = useState(tempLogin)
 
-    console.log(TempLoginData);
-
-
     const router = useRouter();
     const [form] = Form.useForm();
     const [login, setLogin] = useState(true);
+    const [loginDataSuccess, setLoginDataSuccess] = useState(false);
 
     // const handleSubmit = () => {
     //     router.push("/dashboard/reports");
@@ -37,27 +36,32 @@ export default function LoginCompo() {
 
     const { loginLoad, loginData } = useSelector((state: any) => state.bcl);
     console.log(loginLoad);
-    console.log(loginData);
+    console.log("loginData==>", loginData);
 
     const dispatch = useDispatch();
 
 
     const Loginapi = () => {
 
-
         let payload = {
-
             email: TempLoginData?.email,
             password: TempLoginData?.password,
         }
 
-
         dispatch(loginListLoad(payload));
-
+        setLoginDataSuccess(true)
 
     
     }
 
+    useEffect(() => {
+        if(loginDataSuccess && !loginLoad) {
+            console.log("inside success");
+            setUser(loginData?.user?.user)
+            setLoginDataSuccess(false)
+            router.push("/home")
+        }
+    }, [loginDataSuccess,loginLoad]);
 
 
     return (

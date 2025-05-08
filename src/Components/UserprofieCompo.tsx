@@ -1,128 +1,118 @@
 'use client';
 
-import { Input } from "antd";
+import { Form, Input, Button } from "antd";
 import "../styles/userprofile.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { updateuserListLoad } from "@/store/reducer/indexSlice";
-import { useEffect, useState } from "react";
-import { json } from "stream/consumers";
-
-
-
-
-const Tempfrm = {
-    id: "",
-    name: "",
-    email: "",
-    mobileNo: "",
-    password: "",
-    address: "",
-    temp_address: "",
-    country: "",
-    zip_code: "",
-    location: ""
-
-}
+import { useEffect } from "react";
+import { getUser } from "@/Globals/Localstorage";
 
 const Usercompo = () => {
-
-    const [TempData, setuserFormData] = useState(Tempfrm);
-
-    console.log(TempData);
-
+    const [form] = Form.useForm();
+    const dispatch = useDispatch();
+    const userList = getUser();
 
     const { updateuserLoad, updateuserData } = useSelector((state: any) => state.bcl);
-    console.log(updateuserLoad);
-    console.log(updateuserData);
 
-    const dispatch = useDispatch()
+    // Update API call
+    const updateUserapi = (values: any) => {
+        console.log("values", values)
+        const payload = {
+            id: userList?.id,
+            name: values?.name,
+            email: values?.email,
+            mobileNo: values?.mobileNo,
+            password: values?.password,
+            address: values?.address,
+            country: values?.country,
+            zip_code: values?.zip_code,
+            location: values?.location
+        };
+        dispatch(updateuserListLoad(payload));
+    };
 
-    const updateUserapi = () => {
-
-        let payload = {
-
-            // id: TempData?.id,
-            name: TempData?.name,
-            email: TempData?.email,
-            mobileNo: TempData?.mobileNo,
-            password: TempData?.password,
-            address: TempData?.address,
-            country: TempData?.country,
-            zip_code: TempData?.zip_code,
-            location: TempData?.location
-        }
-
-        dispatch(updateuserListLoad(payload))
-    }
+    // Pre-populate form when userList data is available
     useEffect(() => {
-        localStorage.setItem("userFormData", JSON.stringify(TempData))
-        updateUserapi()
-    }, [TempData])
-
-
-
-
+        if (userList) {
+            form.setFieldsValue({
+                id: userList?.id,
+                name: userList?.name,
+                email: userList?.email,
+                mobileNo: userList?.mobileNo,
+                address: userList?.address,
+                country: userList?.country,
+                zip_code: userList?.zip_code,
+                location: userList?.location,
+            });
+        }
+    }, [userList, form]);
 
     return (
-        <div className="user-wrapper" >
+        <div className="user-wrapper">
             <div className="account-header">
                 <span className="account-title">My Account</span>
                 <p className="account-description">Manage your account settings and preferences.</p>
             </div>
 
             <div className="profile-card">
-
                 <span className="profile-title">Profile</span>
 
+                <Form form={form} onFinish={updateUserapi}>
+                    <div className="profile-inputs">
+                        <p className="input-label">Name *</p>
+                        <Form.Item
+                            name="name"
+                            rules={[{ required: true, message: 'Please input your name!' }]}
+                        >
+                            <Input placeholder="Name" className="ant-input" />
+                        </Form.Item>
 
-                <div className="profile-inputs" >
-                    <p className="input-label">Name *</p>
-                    <Input placeholder="Name" className="ant-input" onChange={(e: any) => setuserFormData({
-                        ...TempData,
-                        name: e.target.value
-                    })} />
+                        <p className="input-label">Email *</p>
+                        <Form.Item
+                            name="email"
+                            rules={[{ required: true, message: 'Please input your email!' }]}
+                        >
+                            <Input placeholder="Email" className="ant-input" />
+                        </Form.Item>
 
-                    <p className="input-label">Email *</p>
-                    <Input placeholder="Email" className="ant-input" onChange={(e: any) => setuserFormData({
-                        ...TempData,
-                        email: e.target.value
-                    })} />
-                    <p className="input-label">password *</p>
-                    <Input placeholder="Email" className="ant-input" onChange={(e: any) => setuserFormData({
-                        ...TempData,
-                        password: e.target.value
-                    })} />
+                        <p className="input-label">Phone Number *</p>
+                        <Form.Item
+                            name="mobileNo"
+                            rules={[{ required: true, message: 'Please input your mobile number!' }]}
+                        >
+                            <Input placeholder="Phone Number" className="ant-input" />
+                        </Form.Item>
 
-                    <p className="input-label">Phone Number *</p>
-                    <Input placeholder="Phone Number" className="ant-input" onChange={(e: any) => setuserFormData({
-                        ...TempData,
-                        mobileNo: e.target.value
-                    })} />
+                        <p className="input-label">Address *</p>
+                        <Form.Item
+                            name="address"
+                            rules={[{ required: true, message: 'Please input your address!' }]}
+                        >
+                            <Input placeholder="Address" className="ant-input" />
+                        </Form.Item>
 
-                    <p className="input-label">Address *</p>
-                    <Input placeholder="address" className="ant-input" onChange={(e: any) => setuserFormData({
-                        ...TempData,
-                        address: e.target.value
-                    })} />
+                        <p className="input-label">Zip-code *</p>
+                        <Form.Item
+                            name="zip_code"
+                            rules={[{ required: true, message: 'Please input your zip code!' }]}
+                        >
+                            <Input placeholder="Zip Code" className="ant-input" />
+                        </Form.Item>
 
-                    {/* <p className="input-label">Temp-Address *</p>
-                    <Input placeholder="temp-address" className="ant-input" /> */}
+                        <p className="input-label">Country *</p>
+                        <Form.Item
+                            name="country"
+                            rules={[{ required: true, message: 'Please input your country!' }]}
+                        >
+                            <Input placeholder="Country" className="ant-input" />
+                        </Form.Item>
 
-                    <p className="input-label">Zip-code *</p>
-                    <Input placeholder="zip-Code" className="ant-input" onChange={(e: any) => setuserFormData({
-                        ...TempData,
-                        zip_code: e.target.value
-                    })} />
-
-                    <p className="input-label">country *</p>
-                    <Input placeholder="country" className="ant-input" onChange={(e: any) => setuserFormData({
-                        ...TempData,
-                        country: e.target.value
-                    })} />
-
-
-
-                </div>
+                        {/* Submit Button */}
+                        <Form.Item>
+                            <Button type="primary" htmlType="submit">Update Profile</Button>
+                        </Form.Item>
+                    </div>
+                </Form>
             </div>
         </div>
     );
