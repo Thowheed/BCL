@@ -40,7 +40,7 @@ export default function LoginCompo() {
 
     const Siginapi = () => {
         console.log("formData==>", formData)
-        if(login == false){
+        if (login == false) {
             let payload = {
 
                 name: formData?.name,
@@ -55,7 +55,7 @@ export default function LoginCompo() {
             console.log("payload==>", payload)
 
             dispatch(siginListLoad(payload))
-        }else{
+        } else {
             setLogin(!login);
         }
 
@@ -98,62 +98,105 @@ export default function LoginCompo() {
                                         name: e.target.value
                                     })} />
                                 </Form.Item>
+
+
                                 <p className="input-label">Email *</p>
-                                <Input placeholder="Email" className="custom-input" onChange={(e: any) => setFormData({
-                                    ...formData,
-                                    email: e.target.value
-                                })} />
+                                <Form.Item name="email" rules={[{ required: true, message: "Please input your Email!" }]}>
+                                    <Input placeholder="Email" className="custom-input" onChange={(e: any) => setFormData({
+                                        ...formData,
+                                        email: e.target.value
+                                    })} />
+                                </Form.Item>
+
+
                                 <p className="input-label">Phone Number *</p>
-                                <Input type="text" placeholder="Phone Number" className="custom-input" onChange={(e: any) => setFormData({
-                                    ...formData,
-                                    mobileNo: e.target.value
-                                })} />
+
+                                <Form.Item name="mobileNo" rules={[{ required: true, message: "Enter your 10 digit phone number " }]}>
+
+                                    <Input type="text" placeholder="Phone Number" className="custom-input" onChange={(e: any) => setFormData({
+                                        ...formData,
+                                        mobileNo: e.target.value
+                                    })} />
+
+                                </Form.Item>
+
+
                                 <p className="input-label">Password *</p>
-                                <Input.Password
-                                    className="custom-input"
-                                    placeholder="Password"
-                                    iconRender={(visible) =>
-                                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                                    }
 
-                                    onChange={(e: any) => setFormData({
-                                        ...formData,
-                                        password: e.target.value
-                                    })}
-                                />
+                                <Form.Item name="password" rules={[{ required: true, message: "Password must contain at least one number and one special character." }]}>
+
+                                    <Input.Password
+                                        className="custom-input"
+                                        placeholder="Password"
+                                        iconRender={(visible) =>
+                                            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                                        }
+
+                                        onChange={(e: any) => setFormData({
+                                            ...formData,
+                                            password: e.target.value
+                                        })}
+                                    />
+
+                                </Form.Item>
+
+
+
                                 <p className="input-label">Confirm Password *</p>
-                                <Input.Password
-                                    className="custom-input"
-                                    placeholder="Confirm Password"
-                                    iconRender={(visible) =>
-                                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                                    }
+                                <Form.Item name="confirmPassword" rules={[{ required: true, message: "Passwords do not match." }]}>
 
-                                    onChange={(e: any) => setFormData({
-                                        ...formData,
-                                        confirmPassword: e.target.value
-                                    })}
-                                />
+                                    <Input.Password
+                                        className="custom-input"
+                                        placeholder="Confirm Password"
+                                        iconRender={(visible) =>
+                                            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                                        }
+
+                                        onChange={(e: any) => setFormData({
+                                            ...formData,
+                                            confirmPassword: e.target.value
+                                        })}
+                                    />
+                                </Form.Item>
+
+
                             </>
                         ) : (
                             <>
                                 <p className="input-label">Select Country *</p>
-                                <Input placeholder="France" className="custom-input" onChange={(e: any) => setFormData({
+
+                                <Form.Item name="country" rules={[{ required: true, message: "Select your country" }]}>
+
+                                <Input placeholder="country" className="custom-input" onChange={(e: any) => setFormData({
                                     ...formData,
                                     country: e.target.value
                                 })} />
+
+                                </Form.Item>
+
+
                                 <p className="input-label">Select Address *</p>
+
+                                <Form.Item name="" rules={[{ required: true, message: "Enter your address" }]}>
+
                                 <Input type="text" placeholder="Enter your address..." className="custom-input-address"
                                     onChange={(e: any) => setFormData({
                                         ...formData,
                                         address: e.target.value
                                     })} />
+                                </Form.Item>
+
+
                                 <p className="input-label">Zip Code *</p>
+
+                                <Form.Item name="password" rules={[{ required: true, message: "Enter your Zipcode" }]}>
+
                                 <Input type="text" placeholder="Enter your zip code" className="custom-input"
                                     onChange={(e: any) => setFormData({
                                         ...formData,
                                         zip_code: e.target.value
                                     })} />
+                                    </Form.Item>
 
                                 <div className="gps-container ">
                                     <img src="/Vector.svg" alt="logo" />

@@ -38,14 +38,6 @@ export default function HomePage() {
     },[])
 
 
-//product api end 
-    
-
-        const getUserById =()=> {
-            
-
-        }
-
 
     return (
         <div >
