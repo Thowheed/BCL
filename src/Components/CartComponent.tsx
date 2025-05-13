@@ -1,11 +1,12 @@
 'use client';
-import { addtocartListload } from '@/store/reducer/indexSlice';
+import { addtocartListload, getCartLoad } from '@/store/reducer/indexSlice';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import dynamic from 'next/dynamic';
 import { useRouter } from "next/navigation";
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from "@/Globals/Localstorage";
 
 const CartTable = dynamic(() => import('./CartTable'));
 const CartTotal = dynamic(() => import('./CartTotal'));
@@ -25,12 +26,10 @@ const CartComponent = () => {
 
         let payload = {
 
-            userId: 1,
-            productId: 1,
-            quantity: 1
+            userId: getUser()?.id,
         }
 
-        dispatch(addtocartListload(payload))
+        dispatch(getCartLoad(payload))
 
     }
 
