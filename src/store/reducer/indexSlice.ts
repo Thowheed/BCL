@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice, current } from "@reduxjs/toolkit";
 import { stat } from "fs";
+import { get } from "http";
 import { act } from "react";
 
 const initialState = {
@@ -39,7 +40,12 @@ const initialState = {
 
     //get product using by id 
     getproductusingidLoad: false,
-    getproductusingidData: null
+    getproductusingidData: null,
+
+    getProductIdData: null,
+
+    getCartListLoad: false,
+    getCartData: null,
 
 
 };
@@ -144,6 +150,18 @@ const bcl = createSlice({
             state.getproductusingidData = action?.payload.result
         },
 
+        getProductWiseIdLoad: (state, action: PayloadAction<any>) => {
+            state.getProductIdData = action?.payload
+        },
+
+        getCartLoad: (state, action: PayloadAction<any>) => {
+            state.getCartListLoad = true
+        },
+        getCartSuccess: (state, action: PayloadAction<any>) => {
+            state.getCartListLoad = false
+            state.getCartData = action?.payload.result
+        },
+
 
 
         resetTemporaryState: () => {
@@ -159,7 +177,9 @@ export const { getUserAddressListLoad, getUserAddressListSuccess,
     loginListLoad, loginSuccess,
     siginListLoad, siginSuccess,
     updateuserListLoad, updateuserSuccess,
-    getallproductListLoad, getallprodctSuccess , getproductusingidListLoad ,getproductusingidSuccess } = bcl.actions;
+    getallproductListLoad, getallprodctSuccess, getproductusingidListLoad, getproductusingidSuccess, getProductWiseIdLoad,
+    getCartLoad, getCartSuccess
+} = bcl.actions;
 
 
 

@@ -17,9 +17,11 @@ const ProductDetail = () => {
   
     // / getproduct using id 
     
-    const { getproductusingidLoad, getproductusingidData } = useSelector((state: any) => state.bcl);
-    console.log(getproductusingidLoad);
-    console.log(getproductusingidData);
+    const { getproductusingidLoad, getproductusingidData,getProductIdData } = useSelector((state: any) => state.bcl);
+    // console.log(getproductusingidLoad);
+    // console.log(getproductusingidData);
+
+    console.log("getProductIdData",getProductIdData);
 
     const dispatch = useDispatch();
 
@@ -52,15 +54,15 @@ const ProductDetail = () => {
                 <div className="product-detail-content">
                     <div className="product-title-conatainer">
                         <div className="product-breadcrumbs">
-                            Home/Fresh Vegetables/Vallarai Keerai
+                            {getProductIdData?.name}
                         </div>
-                        <div className="product-title">Vallarai Keerai</div>
-                        <div className="product-weight">100 - 150g</div>
+                        <div className="product-title">{getProductIdData?.name}</div>
+                        <div className="product-weight">{getProductIdData?.quantity_available+"gm"}</div>
 
                         <div className="border-line"></div>
                         <div className="card-price-container">
                             <div className="card-price">
-                                $ 2.00
+                                $ {getProductIdData?.price}
                             </div>
                             <Button className="card-button" >Add</Button>
                         </div>
@@ -71,7 +73,7 @@ const ProductDetail = () => {
                             <div className="product-detail-title">Product Details</div>
                         </div>
                         <div className="product-description">
-                            Packed with nutritions - rich in iron, vitamin A and C, and antioxidants for a
+                            {/* Packed with nutritions - rich in iron, vitamin A and C, and antioxidants for a
                             healthy diet.<br />
                             Farm fresh quality - Harvest at peak freshness to retain taste and nutritions.
                             <br />
@@ -79,7 +81,8 @@ const ProductDetail = () => {
                             <br />
                             Naturally grown - Sourced and from trusted farms with no harmful additives.
                             <br />
-                            Boosts Health - Supports immunity, heart health, and overall wellness.
+                            Boosts Health - Supports immunity, heart health, and overall wellness. */}
+                            {getProductIdData?.description}
                         </div>
                     </div>
                 </div>

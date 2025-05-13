@@ -12,7 +12,9 @@ let Loginurl: any = `${baseURL}/user/login`;
 let siginurl : any = `${baseURL}/user/create-user`;
 let updateuserurl : any = `${baseURL}/user/update-user`;
 let getallproducturl : any =`${baseURL}/product/get-all-product`;
-let getproductusingidurl : any = `${baseURL}/product/get-product/id`
+let getproductusingidurl : any = `${baseURL}/product/get-product`;
+let getCartListurl : any = `${baseURL}/cart/getcart`;
+
 
 const bclAxiosAPi = {
     getUserAddressListAxios: (payload: any) => {
@@ -52,8 +54,12 @@ const bclAxiosAPi = {
     getproductusingidListAxios : (payload:any) =>{
         return Method.dataQuery(payload,getproductusingidurl )
 
-    }
+    },
 
+    getCartListtAxios : (payload:any) =>{
+        return Method.dataQuery(payload,getCartListurl )
+
+    }
     
 }
 
