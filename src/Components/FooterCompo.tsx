@@ -53,6 +53,38 @@ const FotterComp = () => {
 
                 </div>
 
+
+                {/* //mobile design // */}
+
+                <div className="mobile-design-two-and-third n">
+
+
+                    <div className="mobile-footer-second-con">
+
+                        <span>Home</span>
+                        <span>Shop</span>
+                        <span>Contact</span>
+                        <span>FAQs</span>
+
+
+                    </div>
+
+                    <div className="mobile-footer-third-con">
+
+                        <span>My Account</span>
+                        <span>Track Order</span>
+                        <span>Shipping Policy</span>
+                        <span>Returns & Refunds</span>
+                        <span>Privacy Policy</span>
+                        <span>Terms & Conditions</span>
+
+                    </div>
+
+                </div>
+
+
+
+
                 <div className="footer-fourth-con">
                     <div className="logo-text">
                         <img className="icon-margin-top" src="/location.svg" />

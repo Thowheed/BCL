@@ -96,3 +96,80 @@
     margin-top: 50px;
     /* same as mt-10 */
 }
+.mobile-design-two-and-third{
+    display: none;
+}
+
+//tab design 
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .mobile-design-two-and-third{
+        justify-content: center;
+    }
+
+}
+
+//mobile design 
+
+@media screen and (max-width: 768px) {
+    .footer-main-con {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .footer-inside-con {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .first-con,
+    .footer-fourth-con {
+        width: 100%;
+        padding: 15px 0 0 15px;
+    }
+   
+
+
+    .footer-second-con,
+    .footer-third-con{
+        display: none;
+    }
+
+    .footer-first-logo-session {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    .logo-text {
+        gap: 8px;
+    }
+
+    .footer-fourth-con {
+        justify-content: flex-start;
+    }
+
+    .margin-top-40 {
+        margin-top: 30px;
+    }
+    .margin-top-40 {
+        margin-top: 50px;
+        /* same as mt-10 */
+    }
+    .mobile-design-two-and-third{
+        display: flex;
+        width: 100%;
+        gap: 15px;
+        justify-content: space-between;
+
+    }
+    .mobile-footer-second-con,.mobile-footer-third-con{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+}

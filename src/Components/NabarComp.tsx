@@ -6,6 +6,7 @@ import "../styles/userprofile.scss";
 
 const NavbarComp = () => {
     const dropdownContent = (
+        
         <div className="drop-down">
             <div className="drop-down-inside">
 

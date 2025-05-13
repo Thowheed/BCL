@@ -114,9 +114,9 @@ export default function LoginCompo() {
 
                         <div className="options-row">
                             {login && (
-                                <a href="#" className="forgot-password">
-                                    Forgot Password?
-                                </a>
+                             <div className="forget-password-div">   <a href="#" className="forgot-password">
+                             Forgot Password?
+                         </a></div>
                             )}
                         </div>
                         <Button className="sign-in-button" htmlType="submit" type="primary">

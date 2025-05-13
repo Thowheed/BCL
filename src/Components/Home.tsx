@@ -1,4 +1,5 @@
 'use client';
+
 import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
 import homeBanner from "../../public/Images/home-banner.png"
