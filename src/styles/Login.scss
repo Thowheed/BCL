@@ -42,8 +42,9 @@
 
     .forgot-password {
         color: #58BF6F;
-        margin-top: 20px;
-        margin-left: 65%;
+        // margin-top: 20px;
+        // margin-left: 65%;
+        // text-align: end;
         // text-decoration: none;
     }
 
@@ -104,6 +105,11 @@
 
     text-align: center;
     margin: 0 16px 16px 0;
+
+    .forget-password-div{
+        width: 100%;
+        text-align: end;
+    }
 }
 
 
@@ -147,6 +153,7 @@
 .toggle-login {
     text-align: center;
     margin-bottom: 20px;
+    
 
 
     .toggle-text {
