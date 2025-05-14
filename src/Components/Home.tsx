@@ -34,8 +34,8 @@ export default function HomePage() {
     }
 
     useEffect(()=>{
-        // getAllproductapi()
-    
+            // getAllproductapi()
+
     },[])
 
 

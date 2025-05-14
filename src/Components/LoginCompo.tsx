@@ -33,6 +33,11 @@ export default function LoginCompo() {
     //     router.push("/dashboard/reports");
     // };
 
+    const handleSubmit =()=>{
+        router.push("/signin")
+
+    }
+
 
     const { loginLoad, loginData } = useSelector((state: any) => state.bcl);
     console.log(loginLoad);
@@ -119,7 +124,7 @@ export default function LoginCompo() {
                          </a></div>
                             )}
                         </div>
-                        <Button className="sign-in-button" htmlType="submit" type="primary">
+                        <Button className="sign-in-button" htmlType="submit" type="primary" >
                             Login
                         </Button>
 
@@ -140,7 +145,7 @@ export default function LoginCompo() {
                         {/* <span className="toggle-link"> Register</span> */}
 
                         <a href="#" className="toggle-link"
-                            onClick={() => setLogin(!login)} > Register
+                           onClick={handleSubmit} > Register
                         </a>
                     </div>
 

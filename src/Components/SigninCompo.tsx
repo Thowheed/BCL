@@ -28,7 +28,7 @@ export default function LoginCompo() {
     const [formData, setFormData] = useState(formTemp);
 
     const handleSubmit = () => {
-        router.push("/dashboard/reports");
+        router.push("/login");
     };
 
     const { siginLoad, siginData } = useSelector((state: any) => state.bcl);
@@ -225,7 +225,7 @@ export default function LoginCompo() {
 
                     <div className="toggle-login">
                         <span className="toggle-text">Already have an account ?</span>
-                        <a href="#" className="toggle-link">Login</a>
+                        <a href="#" className="toggle-link" onClick={handleSubmit}>Login</a>
                     </div>
                 </div>
             </div>

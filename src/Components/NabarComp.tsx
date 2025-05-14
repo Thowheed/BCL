@@ -3,14 +3,22 @@
 import { Dropdown, Badge, Avatar, Input } from 'antd';
 import { DownOutlined, UserOutlined, SearchOutlined } from '@ant-design/icons';
 import "../styles/userprofile.scss";
-import { useEffect, useState } from 'react';
+import { useEffect, useState  } from 'react';
 import { useDispatch } from 'react-redux';
 import { getallproductListLoad } from '@/store/reducer/indexSlice';
+import { useRouter } from "next/navigation";
 
 
 
 
 const NavbarComp = () => {
+
+
+    const router= useRouter()
+
+    const gocart = ()=> {
+        router.push("/cart")
+    }
 
 
     const [searchterm, setsearchtrem] = useState<any>(null);
@@ -122,7 +130,7 @@ const NavbarComp = () => {
                         <Avatar shape="circle" icon={<UserOutlined />} />
                     </Badge>
                 </Dropdown>
-                <button className="cart-button">
+                <button className="cart-button" onClick={gocart}>
                     <img src="./Vectora.svg" alt="cart" />
                     <span>Cart</span>
                 </button>
