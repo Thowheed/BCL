@@ -3,10 +3,63 @@
 import { Dropdown, Badge, Avatar, Input } from 'antd';
 import { DownOutlined, UserOutlined, SearchOutlined } from '@ant-design/icons';
 import "../styles/userprofile.scss";
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getallproductListLoad } from '@/store/reducer/indexSlice';
+
+
+
 
 const NavbarComp = () => {
+
+
+    const [searchterm, setsearchtrem] = useState<any>(null);
+    const [debouncedTerm, setDebouncedTerm] = useState(searchterm);
+
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+
+
+        if (searchterm) {
+            console.log("inside this useeffct");
+
+
+            const timer = setTimeout(() => {
+
+                getAllproductapi(searchterm)
+
+
+            }, 500);
+
+
+
+            return () => {
+                clearTimeout(timer); // Cancel the timeout if value changes
+            };
+
+        }
+
+
+
+    }, [searchterm])
+
+    const getAllproductapi = (value: any) => {
+
+
+        let paylaod = {
+
+            name: value
+
+        }
+
+        dispatch(getallproductListLoad(paylaod))
+    }
+
+
+
     const dropdownContent = (
-        
         <div className="drop-down">
             <div className="drop-down-inside">
 
@@ -59,6 +112,7 @@ const NavbarComp = () => {
                     placeholder="Search by Tomato....."
                     prefix={<SearchOutlined />}
                     style={{ fontSize: 16, fontWeight: 400 }}
+                    onChange={(e) => { setsearchtrem(e.target.value) }}
                 />
             </div>
 
