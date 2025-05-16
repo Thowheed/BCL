@@ -7,6 +7,7 @@ import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { siginListLoad } from "@/store/reducer/indexSlice";
+import { setUser } from "@/Globals/Localstorage";
 
 
 const formTemp = {
@@ -26,6 +27,9 @@ export default function LoginCompo() {
     const [login, setLogin] = useState(true);
 
     const [formData, setFormData] = useState(formTemp);
+
+    const [siginDataSuccess, setsigninDataSuccess] = useState(false);
+
 
     const handleSubmit = () => {
         router.push("/login");
@@ -55,16 +59,26 @@ export default function LoginCompo() {
             console.log("payload==>", payload)
 
             dispatch(siginListLoad(payload))
+            setsigninDataSuccess(true)
+
         } else {
             setLogin(!login);
         }
 
     }
-    // useEffect(() => {
+    useEffect(() => {
+        if (siginDataSuccess && !siginLoad) {
+        
+                console.log("inside success");
+                // setUser(siginData?.user?.user);                
+                setsigninDataSuccess(false);
+                router.push("/login");
+           
+        }
+    }, [siginData, siginLoad]);
 
-    //     Siginapi()
 
-    // }, []);
+
 
     return (
         <div className="login-wrapper">
@@ -167,10 +181,10 @@ export default function LoginCompo() {
 
                                 <Form.Item name="country" rules={[{ required: true, message: "Select your country" }]}>
 
-                                <Input placeholder="country" className="custom-input" onChange={(e: any) => setFormData({
-                                    ...formData,
-                                    country: e.target.value
-                                })} />
+                                    <Input placeholder="country" className="custom-input" onChange={(e: any) => setFormData({
+                                        ...formData,
+                                        country: e.target.value
+                                    })} />
 
                                 </Form.Item>
 
@@ -179,11 +193,11 @@ export default function LoginCompo() {
 
                                 <Form.Item name="" rules={[{ required: true, message: "Enter your address" }]}>
 
-                                <Input type="text" placeholder="Enter your address..." className="custom-input-address"
-                                    onChange={(e: any) => setFormData({
-                                        ...formData,
-                                        address: e.target.value
-                                    })} />
+                                    <Input type="text" placeholder="Enter your address..." className="custom-input-address"
+                                        onChange={(e: any) => setFormData({
+                                            ...formData,
+                                            address: e.target.value
+                                        })} />
                                 </Form.Item>
 
 
@@ -191,12 +205,12 @@ export default function LoginCompo() {
 
                                 <Form.Item name="password" rules={[{ required: true, message: "Enter your Zipcode" }]}>
 
-                                <Input type="text" placeholder="Enter your zip code" className="custom-input"
-                                    onChange={(e: any) => setFormData({
-                                        ...formData,
-                                        zip_code: e.target.value
-                                    })} />
-                                    </Form.Item>
+                                    <Input type="text" placeholder="Enter your zip code" className="custom-input"
+                                        onChange={(e: any) => setFormData({
+                                            ...formData,
+                                            zip_code: e.target.value
+                                        })} />
+                                </Form.Item>
 
                                 <div className="gps-container ">
                                     <img src="/Vector.svg" alt="logo" />
@@ -211,7 +225,7 @@ export default function LoginCompo() {
 
 
 
-                        <Button className="sign-in-button" type="primary" htmlType="submit">
+                        <Button className="sign-in-button" type="primary" htmlType="submit" >
                             {login ? "Continue" : "Register"}
                             {!login && <img className="arrow-logo" src="/arrow.svg" alt="arrow" />}
                         </Button>

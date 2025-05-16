@@ -2,7 +2,7 @@
 import appImages from "@/Globals/AppImages";
 import { getUser } from "@/Globals/Localstorage";
 import { addtocartListload, getProductWiseIdLoad } from "@/store/reducer/indexSlice";
-import { Button } from "antd"
+import { Button, message } from "antd"
 import { get } from "http";
 import Image from "next/image"
 import { useRouter } from "next/navigation";
@@ -14,11 +14,12 @@ const CardComponent = (props: any) => {
     const router = useRouter();
     const { addtocartLoad, addtocartData } = useSelector((state: any) => state.bcl);
     const [productLoad, setProductLoad] = useState(false);
+    const [isadded, setnewadded] = useState(false)
     const user = getUser();
     const dispatch = useDispatch();
 
-    const Cartapi = () => {
-
+    const Cartapi = (e: any) => {
+        e.stopPropagation();
         let payload = {
 
             userId: user?.id,
@@ -27,6 +28,8 @@ const CardComponent = (props: any) => {
         }
 
         dispatch(addtocartListload(payload))
+        setnewadded (true);
+        message.success("product added successfully");
 
     }
 
@@ -36,11 +39,11 @@ const CardComponent = (props: any) => {
     };
 
     useEffect(() => {
-        if(productLoad){
+        if (productLoad) {
             router.push('/productdetail');
             setProductLoad(false)
-        }   
-    },[productLoad])
+        }
+    }, [productLoad])
 
 
     return (
@@ -58,7 +61,7 @@ const CardComponent = (props: any) => {
                 <div className="card-price">
                     $ {data?.price}
                 </div>
-                <Button className="card-button" onClick={Cartapi}>Add</Button>
+                <Button className="card-button" onClick={Cartapi}  disabled={isadded}> {isadded? "View Cart" :"Add"} </Button>
             </div>
         </div>
     )
