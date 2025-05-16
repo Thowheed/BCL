@@ -16,7 +16,9 @@ import { getUser } from "@/Globals/Localstorage";
 const NavbarComp = dynamic(() => import('./NabarComp'));
 const ProductCarousel = dynamic(() => import('./ProductSlide'));
 const FooterComp = dynamic(() => import('./FooterCompo'));
-const TestimonialComp = dynamic(()=> import('./TestimonialCarosel'))
+const TestimonialComp = dynamic(()=> import('./TestimonialCarosel'));
+const FaqCompo = dynamic(()=>import('./FaqComponent'))
+
 export default function HomePage() {
 
     // const { userListLoad, userListData } = useSelector((state: any) => state.bcl);
@@ -69,6 +71,8 @@ export default function HomePage() {
                 <ProductCarousel getallProductData={getallProductData}/>
             </div>
             <TestimonialComp/>
+            
+            <FaqCompo/>
             <FooterComp />
         </div>
     );

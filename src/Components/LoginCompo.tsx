@@ -72,7 +72,7 @@ export default function LoginCompo() {
             console.log("login success");
 
             messageApi.open({ type: "success", content: "login successfully" })
-            // router.push("/home")
+            router.push("/home")
 
 
 
