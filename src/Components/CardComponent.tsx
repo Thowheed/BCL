@@ -18,7 +18,7 @@ const CardComponent = (props: any) => {
     const user = getUser();
     const dispatch = useDispatch();
 
-    const Cartapi = (e: any) => {
+    const Cartapi = async(e: any) => {
         e.stopPropagation();
         let payload = {
 
@@ -27,8 +27,11 @@ const CardComponent = (props: any) => {
             quantity: 1
         }
 
-        dispatch(addtocartListload(payload))
-        setnewadded (true);
+        const a :any = await dispatch(addtocartListload(payload))
+
+        console.log("aaaaaa",a);
+        
+        a.success && setnewadded (true);
         message.success("product added successfully");
 
     }
