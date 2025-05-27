@@ -1,0 +1,56 @@
+.home-wrapper {
+    width: 100%;
+}
+
+.home-content {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 16vh;
+}
+
+.banner-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.banner-image {
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2.5rem 0;
+}
+
+.section-title {
+    font-weight:600;
+    font-size: 1.25rem;
+}
+
+.view-all {
+    color: #2EAF4B;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+//mobile design for hoem page 
+
+@media screen and (max-width: 768px) {
+    
+
+.banner-section {
+
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 50px;
+}
+.home-content{
+        padding-top: 50px;
+
+}
+
+}

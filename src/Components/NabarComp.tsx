@@ -6,11 +6,19 @@ import "../styles/userprofile.scss";
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getallproductListLoad } from '@/store/reducer/indexSlice';
+import { useRouter } from "next/navigation";
 
 
 
 
 const NavbarComp = () => {
+
+
+    const router = useRouter()
+
+    const gocart = () => {
+        router.push("/cart")
+    }
 
 
     const [searchterm, setsearchtrem] = useState<any>(null);
@@ -94,41 +102,101 @@ const NavbarComp = () => {
     );
 
     return (
-        <div className="navbar">
+        <>
+            <div className="navbar">
 
-            <img className="logo" src="/BCL-Green-1.svg" alt="Logo" />
+                <img className="logo" src="/BCL-Green-1.svg" alt="Logo" />
 
-            <div className="delivery">
-                <span className="delivery-time">Delivery in 8 minutes</span>
-                <div className="location">
-                    <span>Select Location</span>
-                    <img src="./Border.svg" alt="dropdown" />
+                <div className="delivery">
+                    <span className="delivery-time">Delivery in 8 minutes</span>
+                    <div className="location">
+                        <span>Select Location</span>
+                        <img src="./Border.svg" alt="dropdown" />
+                    </div>
                 </div>
+
+                <div className="search">
+                    <Input
+                        className="search-input"
+                        placeholder="Search by Tomato....."
+                        prefix={<SearchOutlined />}
+                        style={{ fontSize: 16, fontWeight: 400 }}
+                        onChange={(e) => { setsearchtrem(e.target.value) }}
+                    />
+                </div>
+
+                <div className="actions">
+                    <Dropdown overlay={dropdownContent} trigger={['click']} placement="bottomRight">
+                        <Badge dot color="green" className="avatar-badge">
+                            <Avatar shape="circle" icon={<UserOutlined />} />
+                        </Badge>
+                    </Dropdown>
+                    <button className="cart-button" onClick={gocart}>
+                        <img src="./Vectora.svg" alt="cart" />
+                        <span>Cart</span>
+                    </button>
+                </div>
+
+
+
             </div>
 
-            <div className="search">
-                <Input
-                    className="search-input"
-                    placeholder="Search by Tomato....."
-                    prefix={<SearchOutlined />}
-                    style={{ fontSize: 16, fontWeight: 400 }}
-                    onChange={(e) => { setsearchtrem(e.target.value) }}
-                />
-            </div>
 
-            <div className="actions">
-                <Dropdown overlay={dropdownContent} trigger={['click']} placement="bottomRight">
-                    <Badge dot color="green" className="avatar-badge">
-                        <Avatar shape="circle" icon={<UserOutlined />} />
-                    </Badge>
-                </Dropdown>
-                <button className="cart-button">
-                    <img src="./Vectora.svg" alt="cart" />
-                    <span>Cart</span>
-                </button>
+
+
+            {/* /// mobile nav bar */}
+
+
+            <div className="navbar-mobile">
+
+                <div className='deleivery-and-carts'>
+
+                    <div className="delivery-mobile">
+                        <span className="delivery-time">Delivery in 8 minutes</span>
+                        <div className="location-mobile">
+                            <span>Select Location</span>
+                            <img src="./Border.svg" alt="dropdown" />
+                        </div>
+
+
+
+
+                    </div>
+                    <div className="actions-mobile">
+                        <button className="cart-button-mobile" onClick={gocart}>
+                            <img src="./Vectora.svg" alt="cart" />
+                        </button>
+                        <Dropdown overlay={dropdownContent} trigger={['click']} placement="bottomRight">
+                            <Badge dot color="green" className="avatar-badge">
+                                <Avatar shape="circle" icon={<UserOutlined />} />
+                            </Badge>
+                        </Dropdown>
+
+                    </div>
+
+
+                 
+                </div>
+
+                       <div className="search-mobile">
+                        <Input
+                            className="search-input-mobile"
+                            placeholder="Search by Tomato....."
+                            prefix={<SearchOutlined />}
+                            style={{ fontSize: 16, fontWeight: 400 }}
+                            onChange={(e) => { setsearchtrem(e.target.value) }}
+                        />
+                    </div>
+
+
             </div>
-        </div>
+        </>
+
+
     )
 }
+
+
+
 
 export default NavbarComp;

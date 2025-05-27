@@ -12,7 +12,6 @@ const CartTable = dynamic(() => import('./CartTable'));
 const CartTotal = dynamic(() => import('./CartTotal'));
 const NavbarComp = dynamic(() => import('./NabarComp'));
 const FooterComp = dynamic(() => import('./FooterCompo'));
-
 const CartComponent = () => {
 
     const { addtocartLoad, addtocartData } = useSelector((state: any) => state.bcl);
