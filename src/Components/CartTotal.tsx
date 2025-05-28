@@ -17,7 +17,7 @@ const CartTotal = () => {
                 </div>
             </div>
             <div className="mt-5">
-                <Alert type="warning" message="Need minimum 5.0 kg to proceed to your order" />
+                <Alert type="warning" message="Need minimum 150.0 kg to proceed to your order" />
             </div>
 
             <div className="bill-details-container mt-5 text-bold">

@@ -12,7 +12,7 @@ const CartTable = () => {
             productImage: appImages?.GRASS_IMAGE,
             productName: 'Vallarai Keerai',
             price: 3.99,
-            quantity: 3,
+            quantity: 1,
             subtotal: 7.98,
             // address: '10 Downing Street',
         },
@@ -21,7 +21,7 @@ const CartTable = () => {
             productImage: appImages?.GRASS_IMAGE,
             productName: 'Vallarai Keerai',
             price: 3.99,
-            quantity: 3,
+            quantity: 1,
             subtotal: 7.98,
         },
         {
@@ -29,15 +29,15 @@ const CartTable = () => {
             productImage: appImages?.GRASS_IMAGE,
             productName: 'Vallarai Keerai',
             price: 3.99,
-            quantity: 3,
+            quantity: 1,
             subtotal: 7.98,
         },
         {
             key: '4',
             productImage: appImages?.GRASS_IMAGE,
             productName: 'Vallarai Keerai',
-            price: 3.99,
-            quantity: 3,
+            price: 3.9,
+            quantity: 1,
             subtotal: 7.98,
         },
         {
@@ -45,7 +45,7 @@ const CartTable = () => {
             productImage: appImages?.GRASS_IMAGE,
             productName: 'Vallarai Keerai',
             price: 3.99,
-            quantity: 3,
+            quantity: 1,
             subtotal: 7.98,
         }
     ];

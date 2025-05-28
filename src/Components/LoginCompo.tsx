@@ -3,12 +3,14 @@ import Image from "next/image";
 import Logo from "../../public/BCL-Green-1.svg"
 import "../styles/Login.scss";
 import { useRouter } from "next/navigation";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
+
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginListLoad } from "@/store/reducer/indexSlice";
 import { setUser } from "@/Globals/Localstorage";
+import 'antd/dist/reset.css'; // for Ant Design v5
 
 const tempLogin = {
 
@@ -29,9 +31,17 @@ export default function LoginCompo() {
     const [login, setLogin] = useState(true);
     const [loginDataSuccess, setLoginDataSuccess] = useState(false);
 
+    const [messageApi, contextHolder] = message.useMessage();
+
+
     // const handleSubmit = () => {
     //     router.push("/dashboard/reports");
     // };
+
+    const handleSubmit = () => {
+        router.push("/signin")
+
+    }
 
 
     const { loginLoad, loginData } = useSelector((state: any) => state.bcl);
@@ -51,17 +61,27 @@ export default function LoginCompo() {
         dispatch(loginListLoad(payload));
         setLoginDataSuccess(true)
 
-    
     }
 
     useEffect(() => {
-        if(loginDataSuccess && !loginLoad) {
+        if (loginDataSuccess && !loginLoad) {
             console.log("inside success");
             setUser(loginData?.user?.user)
             setLoginDataSuccess(false)
+            console.log("login success");
+
+            messageApi.open({ type: "success", content: "login successfully" })
             router.push("/home")
+
+
+
         }
-    }, [loginDataSuccess,loginLoad]);
+        else if (!loginDataSuccess && !loginLoad) {
+            messageApi.open({ type: "error", content: "Login failed" });
+
+
+        }
+    }, [loginDataSuccess, loginLoad]);
 
 
     return (
@@ -85,41 +105,41 @@ export default function LoginCompo() {
                     <Form form={form} onFinish={Loginapi}>
 
                         <p className="input-labels">Email </p>
-                        
+
                         <Form.Item name="email" rules={[{ required: true, message: " Enter your email !" }]}>
 
-                        <Input placeholder="Email" className="ant-input" onChange={(e: any) => setnewloginData({
-                            ...TempLoginData,
-                            email: e.target.value
-                        })} />
+                            <Input placeholder="Email" className="ant-input" onChange={(e: any) => setnewloginData({
+                                ...TempLoginData,
+                                email: e.target.value
+                            })} />
 
                         </Form.Item>
 
                         <p className="input-labels">Password  </p>
                         <Form.Item name="password" rules={[{ required: true, message: " Enter your password !" }]}>
 
-                        <Input.Password
-                            className="ant-input"
-                            placeholder="Password"
-                            iconRender={(visible) =>
-                                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                            }
-                            onChange={(e: any) => setnewloginData({
-                                ...TempLoginData,
-                                password: e.target.value
-                            })}
-                        />
+                            <Input.Password
+                                className="ant-input"
+                                placeholder="Password"
+                                iconRender={(visible) =>
+                                    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                                }
+                                onChange={(e: any) => setnewloginData({
+                                    ...TempLoginData,
+                                    password: e.target.value
+                                })}
+                            />
 
                         </Form.Item>
 
                         <div className="options-row">
                             {login && (
-                             <div className="forget-password-div">   <a href="#" className="forgot-password">
-                             Forgot Password?
-                         </a></div>
+                                <div className="forget-password-div">   <a href="#" className="forgot-password">
+                                    Forgot Password?
+                                </a></div>
                             )}
                         </div>
-                        <Button className="sign-in-button" htmlType="submit" type="primary">
+                        <Button className="sign-in-button" htmlType="submit" type="primary"  >
                             Login
                         </Button>
 
@@ -139,8 +159,8 @@ export default function LoginCompo() {
 
                         {/* <span className="toggle-link"> Register</span> */}
 
-                        <a href="#" className="toggle-link"
-                            onClick={() => setLogin(!login)} > Register
+                        <a href="#" className="toggle-link" onClick={handleSubmit}
+                        > Register
                         </a>
                     </div>
 

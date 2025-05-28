@@ -138,7 +138,6 @@ export default function Testimonial() {
                 <h1 className="testimonial-subtitle">What Our Customers Say</h1>
             </div>
 
-            <div className="carosal">
                 <Carousel
                     className="carosal-inner"
                     autoplay
@@ -172,7 +171,6 @@ export default function Testimonial() {
                         </div>
                     ))}
                 </Carousel>
-            </div>
         </div>
     );
 }
