@@ -12,12 +12,15 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+        gap: 10px;
+
 }
 
 .banner-image {
     width: auto;
     height: auto;
     object-fit: cover;
+
 }
 
 .section-header {
@@ -37,19 +40,40 @@
     cursor: pointer;
 }
 
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+    
+.banner-section {
+
+    flex-direction: row;
+    gap: 20px;
+    // padding-bottom: 50px;
+}
+.home-content{
+        // padding-top: 120px;
+
+}
+}
+
+
 //mobile design for hoem page 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) {
     
 
 .banner-section {
 
     flex-direction: column;
     gap: 20px;
-    padding-bottom: 50px;
+    padding: 10px;
+    // padding-bottom: 50px;
 }
 .home-content{
-        padding-top: 50px;
+        // padding-top: 50px;
 
 }
 
