@@ -122,7 +122,7 @@ export default function Testimonial() {
     useEffect(() => {
         const updateSlides = () => {
             const width = window.innerWidth;
-            setSlidesToShow(width < 768 ? 1 : 3);
+            setSlidesToShow(width < 500 ? 1 : (width > 500 && width < 1200) ? 2.5 : 3);
         };
 
         updateSlides(); // Call once on mount
@@ -146,7 +146,7 @@ export default function Testimonial() {
                     slidesToShow={slidesToShow} // react-slick supports this
                 >
                     {testimonials.map((t, index) => (
-                        <div key={index}>
+                        <div key={index} className="testimonial-warpper-new" style={{maxWidth: "33%", backgroundColor:"red"}}>
                             <div className="testimonial-card">
                                 <img
                                     className="testimonial-image"
