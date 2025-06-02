@@ -58,6 +58,12 @@ export default function HomePage() {
                         <Image src={homeBanner} alt="Banner 1" />
                     </div>
                     {/* <div>
+                        <Image src={homeBanner} alt="Banner 1" />
+                    </div>
+                    <div>
+                        <Image src={homeBanner} alt="Banner 1" />
+                    </div> */}
+                    {/* <div>
                         <Image src={succulentImg} alt="Banner 2" />
                     </div>
                     <div>
