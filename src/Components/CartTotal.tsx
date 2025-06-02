@@ -58,7 +58,7 @@ const CartTotal = () => {
                         <div>Proceed to payment</div>
                         <ArrowRightOutlined />
                         <div>
-                            $300 Total
+                            $3000 Total
                         </div>
                     </div>
                 </div>
