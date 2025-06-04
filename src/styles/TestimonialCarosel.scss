@@ -21,24 +21,20 @@
   color: #2EAF4B;
 }
 
-// .carosal {
-//   .carosal-inner {
-//     // padding: 5rem 0;
-//   }
-// }
 .carosal-inner {
   height: auto;
   padding: 40px 0 50px 0;
 }
 
 .testimonial-card {
-  height: 360px;
-  width: 480px;
+  height: 430px;
+  width: 95%;
   margin: 10px;
   position: relative;
   text-align: center;
   border-radius: 5%;
   margin-top: 80px;
+  padding: 0 10px;
   background-color: #EAF7ED;
 }
 
@@ -71,6 +67,7 @@
   line-height: 1.5;
   letter-spacing: -0.02em;
   margin: 3px;
+  text-align: justify;
 }
 
 .testimonial-name {
@@ -99,191 +96,69 @@
 
 }
 
+//tab sdesign for testimonial 
 
+@media (max-width: 1024px) {
 
-// //mob ot tab design 
+  .testimonial-header {
+    margin-top: 20px;
+    padding: 30px 0 0 0;
+  }
 
-// // .testimonial-wrapper {
+  .testimonial-title {
+    font-size: 16px;
+  }
 
-// // }
+  .testimonial-subtitle {
+    font-size: 36px;
+  }
 
-// .testimonial-header {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: space-around;
-//   padding: 2rem 0;
-// }
+  .carosal-inner {
+    padding: 30px 0 40px 0;
+    margin-top: 20px;
+  }
 
-// .testimonial-title {
-//   font-size: 18px;
-//   font-weight: 700;
-// }
+  .testimonial-card {
+    height: 550px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+  }
 
-// .testimonial-subtitle {
-//   font-size: 48px;
-//   font-weight: 500;
-//   color: #2EAF4B;
-//   text-align: center;
-// }
+  .testimonial-image {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5%;
+    width: 70px;
+  }
 
-// // .carosal {
-// //   .carosal-inner {
-// //     padding: 5rem 0;
-// //   }
-// // }
-//   // .carosal-inner {
-//   //   padding: 5rem 0;
-//   // }
+  .testimonial-feedback {
+    font-size: 16px;
+    width: 95%;
+    padding: 10px;
+    text-align: justify;
 
-// .testimonial-card {
-//   height: 340px;
-//   width: 490px;
-//   margin: 10px;
-//   position: relative;
-//   text-align: center;
-//   border-radius: 5%;
-//   background-color: #EAF7ED;
-// }
+  }
 
-// .testimonial-image {
-//   position: relative;
-//   left: 45%;
-//   bottom: 12%;
-//   z-index: 1000;
-//   border-radius: 50%;
-//   width: 80px;
-// }
+  .testimonial-name {
+    font-size: 18px;
 
-// .testimonial-content {
-//   display: flex;
-//   flex-direction: column;
-//   width: 100%;
-// }
+  }
 
-// .testimonial-main-feedback {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-// }
+  .testimonial-location {
+    font-size: 14px;
 
-// .testimonial-feedback {
-//   font-size: 17px;
-//   font-weight: 500;
-//   color: #134A20;
-//   line-height: 1.5;
-//   letter-spacing: -0.02em;
-//   margin: 3px;
-// }
+  }
 
-// .testimonial-name {
-//   padding: 6px;
-//   font-size: 20px;
-//   font-weight: 700;
-//   color: black;
-// }
+  .location-icon {
+    height: 16px;
+    width: 16px;
+  }
+}
 
-// .testimonial-location {
-//   padding: 4px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   gap: 5px;
-//   font-size: 15px;
-//   font-weight: 500;
-//   color: black;
-// }
-
-// .location-icon {
-//   height: 18px;
-//   width: 17px;
-//   color: black;
-// }
-
-/* ------------------ Responsive Styles ------------------ */
-
-/* Tablets (768px and down) */
-// @media (max-width: 768px) {
-//   .testimonial-subtitle {
-//     font-size: 36px;
-//   }
-
-//   .testimonial-card {
-//     // height: auto;
-//     width: 50%;
-//     // padding: 1rem;
-//     margin: 0 auto 1.5rem;
-//   }
-
-//   .testimonial-image {
-//     left: 40%;
-//     width: 70px;
-//     bottom: 10%;
-//   }
-
-//   .testimonial-feedback {
-//     font-size: 15px;
-//   }
-
-//   .testimonial-name {
-//     font-size: 18px;
-//   }
-
-//   .testimonial-location {
-//     font-size: 14px;
-//   }
-// }
-
-
-
-
-
-// /* Mobile (480px and down) */
-// @media (max-width: 480px) {
-//   .testimonial-subtitle {
-
-//     height: auto;
-
-//   }
-
-//   .testimonial-subtitle {
-//     font-size: 28px;
-//   }
-
-//   .testimonial-card {
-//     height: auto;
-//     width: 90%;
-//     margin: 0 auto 1.5rem;
-
-//   }
-
-//   .testimonial-image {
-//     left: 40%;
-//     width: 60px;
-//     bottom: 20px;
-//     position: relative;
-//   }
-
-//   .testimonial-feedback {
-//     font-size: 15px;
-//     padding-bottom: 10px;
-//   }
-
-//   .testimonial-name {
-//     font-size: 16px;
-//   }
-
-//   .testimonial-location {
-//     font-size: 13px;
-//     padding-bottom: 15px;
-//   }
-
-//   .location-icon {
-//     height: 16px;
-//     width: 16px;
-//   }
-// }
+// mobile design for testimonial 
 
 @media screen and (max-width: 480px) {
   .testimonial-header {
@@ -305,7 +180,7 @@
   }
 
   .testimonial-card {
-    height: auto;
+    height: 450px;
     width: 90%;
     margin: 20px auto;
     border-radius: 10px;
@@ -323,25 +198,27 @@
     width: 95%;
     text-align: center;
     padding: 5px;
+    text-align: justify;
+
   }
 
   .testimonial-name {
     font-size: 18px;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
 
   }
 
   .testimonial-location {
     font-size: 14px;
     gap: 3px;
-    padding: 5px;
+    padding: 8px;
 
   }
 
   .location-icon {
     height: 16px;
     width: 16px;
-    
+
   }
 }

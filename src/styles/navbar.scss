@@ -63,9 +63,8 @@
 
 .cart-button, .login-button-mobile, .login-button{
     display: flex;
-    align-items: center;
     gap: 10px;
-    padding: 10px 16px;
+    padding: 10px 20px;
     background-color: #22c55e;
     color: white;
     border: none;
@@ -135,27 +134,56 @@
     height: 20px;
     width: 20px;
 }
+
 .navbar-mobile {
     display: none;
 }
 
+@media (min-width: 481px) and (max-width: 1024px) {
 
-/* Responsive Design */
-@media (max-width: 768px) {
+    /* Tablet-specific styles */
+    // .navbar {
+    //     gap: 30px;
+    //     background-color: red;
+    // }
+
+    // .cart-button {
+    //     width: 100%;
+    //     align-items: start;
+    //     justify-content: start;
+
+    //     padding: 10px 30px 10px 10px;
+
+    // }
+
+    // .actions {
+    //     gap: 10px;
+    //     width: 20%;
+    // }
+
+    // .search {
+    //     width: 100%;
+    // }
+
+    
+}
+
+/*mobile Responsive Design */
+@media (max-width: 480px) {
 
     .navbar {
         display: none;
 
     }
 
-  
+
     .navbar-mobile {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         flex-direction: column;
-        background-color: #777;
-    
+        background-color: #78a27e;
+
     }
 
     .deleivery-and-carts {
@@ -179,11 +207,26 @@
         justify-content: space-between;
 
     }
-    .search-mobile{
+
+    .search-mobile {
         width: 90%;
         padding: 15px 0 15px 0;
     }
-    .search-input-mobile{
-        padding:10px ;
+
+    .search-input-mobile {
+        padding: 10px;
     }
+
+    ///  mobile drop down 
+    .drop-down {
+        margin-top: 100px;
+        position: relative;
+        left: 12px;
+
+    }
+
+    .delivery-time {
+        font-weight: 700;
+    }
+
 }

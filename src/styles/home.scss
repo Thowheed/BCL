@@ -9,6 +9,12 @@
 }
 .banner-section {
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+        gap: 10px;
+
+}
+
     flex-direction: column;
     gap: 0.5rem;
   
@@ -54,6 +60,7 @@
     width: auto;
     height: auto;
     object-fit: cover;
+
 }
 
 .section-header {
@@ -73,13 +80,41 @@
     cursor: pointer;
 }
 
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+    
+.banner-section {
+
+    flex-direction: row;
+    gap: 20px;
+    // padding-bottom: 50px;
+}
+.home-content{
+        // padding-top: 120px;
+
+}
+}
+
+
 //mobile design for hoem page 
 
+@media screen and (max-width: 480px) {
 // @media screen and (max-width: 768px) {
     
 
-// .banner-section {
+ .banner-section {
 
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    // padding-bottom: 50px;
+}
+// .home-content{
+        // padding-top: 50px;
 //     flex-direction: column;
 //     gap: 20px;
 //     padding-bottom: 50px;
