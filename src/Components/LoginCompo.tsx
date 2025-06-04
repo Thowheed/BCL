@@ -61,7 +61,6 @@ export default function LoginCompo() {
         dispatch(loginListLoad(payload));
         setLoginDataSuccess(true)
 
-
     }
 
     useEffect(() => {

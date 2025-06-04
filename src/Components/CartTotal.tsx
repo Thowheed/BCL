@@ -12,6 +12,7 @@ const CartTotal = () => {
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
