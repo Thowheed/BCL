@@ -15,14 +15,14 @@
 
 }
 
-    flex-direction: column;
-    gap: 0.5rem;
+    // flex-direction: column;
+    // gap: 0.5rem;
   
     // Responsive layout: stack on small screens, side-by-side on larger
     @media (min-width: 768px) {
-      flex-direction: row;
-      gap: 0.5rem; 
-    }
+    //   flex-direction: row;
+    //   gap: 0.5rem; 
+    // }
   
     .forBanner {
       flex: 1;
@@ -93,10 +93,10 @@
     gap: 20px;
     // padding-bottom: 50px;
 }
-.home-content{
-        // padding-top: 120px;
+// .home-content{
+//         // padding-top: 120px;
 
-}
+// }
 }
 
 
@@ -125,3 +125,4 @@
 // }
 
 // }
+}
