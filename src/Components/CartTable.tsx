@@ -1,12 +1,17 @@
 'use client';
-import { InputNumber, Table } from "antd";
+import React, { useState } from "react";
+import { InputNumber, Table, Popconfirm} from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import appImages from "@/Globals/AppImages";
 import Image from "next/image";
-
+import { useDispatch } from "react-redux";
+import { updatecartListLoad } from "@/store/reducer/indexSlice";
+import { getUser } from "@/Globals/Localstorage";
 
 const CartTable = () => {
-    const dataSource = [
+    
+    // const dataSource = [
+        const [data, setData] = useState([
         {
             key: '1',
             productImage: appImages?.GRASS_IMAGE,
@@ -48,7 +53,11 @@ const CartTable = () => {
             quantity: 1,
             subtotal: 7.98,
         }
-    ];
+    ]);
+    const handleDelete = (key: string) => {
+        const filteredData = data.filter(item => item.key !== key);
+        setData(filteredData);
+    };
 
 const columns = [
     {
@@ -86,16 +95,24 @@ const columns = [
     {
         // title: 'Action',
         key: 'action',
-        render: (_: any, record: any) => (
-                    <DeleteOutlined />
-            )         
+            render: (_: any, record: any) => (
+                <Popconfirm
+                    title="Are you sure you want to delete this item?"
+                    onConfirm={() => handleDelete(record.key)}
+                    okText="Yes"
+                    cancelText="No"
+                >
+                    <DeleteOutlined style={{ color: 'red', cursor: 'pointer' }} />
+                </Popconfirm>
+            ) 
 
     }
-];
+];  
+
 
 return (
     <div>
-        <Table dataSource={dataSource} columns={columns} />
+        <Table dataSource={data} columns={columns} />
     </div>
 )
 }

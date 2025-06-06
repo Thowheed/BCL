@@ -218,3 +218,23 @@ export function* getCartSaga(action: any): SagaIterator {
         yield call(errorSaga, error);
     }
 }
+
+/// update cart
+export function* updatecartListsaga(action: any): SagaIterator {
+    try {
+        console.log("inside updateCartlistsaga", action?.payload);
+        const response = yield call(bclAxiosAPi.updatecartListAxios, action?.payload);
+
+        if (response.status == 1) {
+            let result: any = {
+                status: response.status,
+                result: response.result.data.data,
+            };
+            yield put(updateuserSuccess(result));
+        } else {
+            yield call(failSaga, response);
+        }
+    } catch (error) {
+        yield call(errorSaga, error);
+    }
+}

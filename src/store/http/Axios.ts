@@ -14,7 +14,7 @@ let updateuserurl : any = `${baseURL}/user/update-user`;
 let getallproducturl : any =`${baseURL}/product/get-all-product`;
 let getproductusingidurl : any = `${baseURL}/product/get-product`;
 let getCartListurl : any = `${baseURL}/cart/getcart`;
-
+let updateCarturl : any = `${baseURL}/cart/updatecart`;
 
 const bclAxiosAPi = {
     getUserAddressListAxios: (payload: any) => {
@@ -59,7 +59,11 @@ const bclAxiosAPi = {
     getCartListtAxios : (payload:any) =>{
         return Method.dataQuery(payload,getCartListurl )
 
-    }
+    },
+    updatecartListAxios :(payload:any) => {
+        return Method.dataPut(payload, updateCarturl)
+
+    },
     
 }
 

@@ -29,6 +29,9 @@ const initialState = {
     updateuserLoad: false,
     updateuserData: null,
 
+    //update cart
+    updatecartLoad: false,
+    updatecartData: null,
 
     //product api 
 
@@ -162,6 +165,18 @@ const bcl = createSlice({
             state.getCartData = action?.payload.result
         },
 
+        //update cart code
+
+        updatecartListLoad: (state, action: PayloadAction<any>) => {
+            state.updatecartLoad = true
+        },
+
+        updatecartSuccess: (state, action: PayloadAction<any>) => {
+            state.updatecartLoad = false,
+                state.updatecartData = action?.payload.result
+        },
+
+
 
 
         resetTemporaryState: () => {
@@ -178,7 +193,8 @@ export const { getUserAddressListLoad, getUserAddressListSuccess,
     siginListLoad, siginSuccess,
     updateuserListLoad, updateuserSuccess,
     getallproductListLoad, getallprodctSuccess, getproductusingidListLoad, getproductusingidSuccess, getProductWiseIdLoad,
-    getCartLoad, getCartSuccess
+    getCartLoad, getCartSuccess,
+    updatecartListLoad, updatecartSuccess
 } = bcl.actions;
 
 
