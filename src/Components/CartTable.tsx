@@ -3,9 +3,15 @@ import { InputNumber, Table } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import appImages from "@/Globals/AppImages";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
 const CartTable = () => {
+
+    const { getCartData } = useSelector((state: any) => state.bcl);
+    console.log("getCartData==>", getCartData);
+
     const dataSource = [
         {
             key: '1',
@@ -50,54 +56,54 @@ const CartTable = () => {
         }
     ];
 
-const columns = [
-    {
-        title: 'Product',
-        dataIndex: 'productName',
-        key: 'productName',
-        width: 300,
-        render: (text: any, record: any) => (
-            <div className="flex flex-row items-center">
-                 <Image src={record?.productImage} alt="Product" width={50} height={50} />
-                 <div className="mx-3">{record?.productName}</div>
-            </div>
-        )
-    },
-    {
-        title: 'Price',
-        dataIndex: 'price',
-        key: 'price',
-    },
-    {
-        title: 'Quantity',
-        dataIndex: 'quantity',
-        key: 'quantity',
-        render: (text: any, record: any) => (
-            <div className="flex flex-row items-center justify-center w-26">
-                 <InputNumber addonBefore="-" addonAfter="+" defaultValue={record?.quantity} />
-            </div>
-        )
-    },
-    {
-        title: 'Subtotal',
-        dataIndex: 'subtotal',
-        key: 'subtotal',
-    },
-    {
-        // title: 'Action',
-        key: 'action',
-        render: (_: any, record: any) => (
-                    <DeleteOutlined />
-            )         
+    const columns = [
+        {
+            title: 'Product',
+            dataIndex: 'productName',
+            key: 'productName',
+            width: 300,
+            render: (text: any, record: any) => (
+                <div className="flex flex-row items-center">
+                    <Image src={record?.productImage} alt="Product" width={50} height={50} />
+                    <div className="mx-3">{record?.productName}</div>
+                </div>
+            )
+        },
+        {
+            title: 'Price',
+            dataIndex: 'price',
+            key: 'price',
+        },
+        {
+            title: 'Quantity',
+            dataIndex: 'quantity',
+            key: 'quantity',
+            render: (text: any, record: any) => (
+                <div className="flex flex-row items-center justify-center w-26">
+                    <InputNumber addonBefore="-" addonAfter="+" defaultValue={record?.quantity} />
+                </div>
+            )
+        },
+        {
+            title: 'Subtotal',
+            dataIndex: 'subtotal',
+            key: 'subtotal',
+        },
+        {
+            // title: 'Action',
+            key: 'action',
+            render: (_: any, record: any) => (
+                <DeleteOutlined />
+            )
 
-    }
-];
+        }
+    ];
 
-return (
-    <div>
-        <Table dataSource={dataSource} columns={columns} />
-    </div>
-)
+    return (
+        <div>
+            <Table dataSource={getCartData} columns={columns} />
+        </div>
+    )
 }
 
 export default CartTable;

@@ -21,7 +21,7 @@ const CartComponent = () => {
 
     const stripePromise = loadStripe("pk_test_51RU1gz4PZ1SAYE9m9zH48m4U8MlksNFmsLpfY3D48fOFaR5sWWZsDAWCbeITBPceq0e6BbZZFyZNJh4wxa0ZNZ4m00SXMNPIlq");
 
-    const options = {
+    const options: any = {
         mode: 'payment',
         amount: 30000, // in cents ($300)
         currency: 'usd',
