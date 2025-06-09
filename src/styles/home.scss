@@ -19,8 +19,11 @@
     // gap: 0.5rem;
   
     // Responsive layout: stack on small screens, side-by-side on larger
+
     @media (min-width: 768px) {
     //   flex-direction: row;
+    //     flex-direction: row;
+
     //   gap: 0.5rem; 
     // }
   
@@ -54,7 +57,7 @@
         object-fit: contain;
       }
     }
-  }
+  // }
   
 .banner-image {
     width: auto;
@@ -125,4 +128,10 @@
 // }
 
 // }
+
 }
+
+
+}
+} 
+

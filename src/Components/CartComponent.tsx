@@ -1,5 +1,5 @@
 'use client';
-import { addtocartListload, getCartLoad } from '@/store/reducer/indexSlice';
+import { addtocartListload, getCartLoad, updatecartListLoad } from '@/store/reducer/indexSlice';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import dynamic from 'next/dynamic';
@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from "@/Globals/Localstorage";
-
+import {updateCartItems} from "@/Globals/Localstorage";
 
 // import { Elements } from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
@@ -21,7 +21,7 @@ const CartComponent = () => {
 
     // const stripePromise = loadStripe("pk_test_51RU1gz4PZ1SAYE9m9zH48m4U8MlksNFmsLpfY3D48fOFaR5sWWZsDAWCbeITBPceq0e6BbZZFyZNJh4wxa0ZNZ4m00SXMNPIlq");
 
-    const options = {
+    const options: any = {
         mode: 'payment',
         amount: 30000, // in cents ($300)
         currency: 'usd',
@@ -54,7 +54,26 @@ const CartComponent = () => {
 
     }, [])
 
+    //update cart
+    const updateCart = () => {
 
+        let payload = {
+
+            userId: updateCartItems()?.id,
+            productId: "",
+            isDeleted: "",
+        }
+
+        dispatch(updatecartListLoad(payload))
+        
+    }
+
+    useEffect(() => {
+
+        updateCart()
+
+    }, [])
+    
     const router = useRouter();
     return (
         <div>
