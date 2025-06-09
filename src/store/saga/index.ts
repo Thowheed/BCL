@@ -18,13 +18,14 @@ import {
     getproductusingidListLoad,
     getproductusingidSuccess,
     getCartLoad,
+    updatecartListLoad,
     
 
 } from "../reducer/indexSlice";
 
 
 import { addtoCartListSaga, getUserAddressListSaga, getUserListSaga, loginListsaga , siginListsaga  , updateuserListsaga ,
-     getallproductListSaga , getproductusingidListsaga,getCartSaga } from "./bclsaga";
+     getallproductListSaga , getproductusingidListsaga,getCartSaga, updatecartListsaga } from "./bclsaga";
 
 export function* baclSaga() {
     yield takeEvery(getUserAddressListLoad, getUserAddressListSaga);
@@ -36,5 +37,6 @@ export function* baclSaga() {
     yield takeEvery (getallproductListLoad ,getallproductListSaga )
     yield takeEvery (getproductusingidListLoad ,getproductusingidListsaga )
     yield takeEvery (getCartLoad , getCartSaga)
+    yield takeEvery (updatecartListLoad , updatecartListsaga)
 
 }

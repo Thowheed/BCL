@@ -17,5 +17,13 @@ function getUser() {
     return null
 }
 
-export { setUser, getUser }
+function updateCartItems() {
+    if (typeof window !== "undefined") {
+      const user = localStorage.getItem("user");
+      return user ? JSON.parse(user) : null;
+    }
+    return null;
+  }
+  
+export { setUser, getUser, updateCartItems }
 
