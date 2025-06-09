@@ -8,56 +8,23 @@ import { useDispatch } from "react-redux";
 import { updatecartListLoad } from "@/store/reducer/indexSlice";
 import { getUser } from "@/Globals/Localstorage";
 
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+
+
 const CartTable = () => {
+
+    const { getCartData } = useSelector((state: any) => state.bcl);
+    console.log("getCartData==>", getCartData);
+
     
     // const dataSource = [
-        const [data, setData] = useState([
-        {
-            key: '1',
-            productImage: appImages?.GRASS_IMAGE,
-            productName: 'Vallarai Keerai',
-            price: 3.99,
-            quantity: 1,
-            subtotal: 7.98,
-            // address: '10 Downing Street',
-        },
-        {
-            key: '2',
-            productImage: appImages?.GRASS_IMAGE,
-            productName: 'Vallarai Keerai',
-            price: 3.99,
-            quantity: 1,
-            subtotal: 7.98,
-        },
-        {
-            key: '3',
-            productImage: appImages?.GRASS_IMAGE,
-            productName: 'Vallarai Keerai',
-            price: 3.99,
-            quantity: 1,
-            subtotal: 7.98,
-        },
-        {
-            key: '4',
-            productImage: appImages?.GRASS_IMAGE,
-            productName: 'Vallarai Keerai',
-            price: 3.9,
-            quantity: 1,
-            subtotal: 7.98,
-        },
-        {
-            key: '5',
-            productImage: appImages?.GRASS_IMAGE,
-            productName: 'Vallarai Keerai',
-            price: 3.99,
-            quantity: 1,
-            subtotal: 7.98,
-        }
-    ]);
+        const [data, setData] = useState([]);
     const handleDelete = (key: string) => {
         const filteredData = data.filter(item => item.key !== key);
         setData(filteredData);
     };
+
 
 const columns = [
     {
@@ -115,6 +82,7 @@ return (
         <Table dataSource={data} columns={columns} />
     </div>
 )
+
 }
 
 export default CartTable;
