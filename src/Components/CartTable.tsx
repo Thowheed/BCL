@@ -12,50 +12,51 @@ const CartTable = () => {
     const { getCartData } = useSelector((state: any) => state.bcl);
     console.log("getCartData==>", getCartData);
 
-    const dataSource = [
-        {
-            key: '1',
-            productImage: appImages?.GRASS_IMAGE,
-            productName: 'Vallarai Keerai',
-            price: 3.99,
-            quantity: 1,
-            subtotal: 7.98,
-            // address: '10 Downing Street',
-        },
-        {
-            key: '2',
-            productImage: appImages?.GRASS_IMAGE,
-            productName: 'Vallarai Keerai',
-            price: 3.99,
-            quantity: 1,
-            subtotal: 7.98,
-        },
-        {
-            key: '3',
-            productImage: appImages?.GRASS_IMAGE,
-            productName: 'Vallarai Keerai',
-            price: 3.99,
-            quantity: 1,
-            subtotal: 7.98,
-        },
-        {
-            key: '4',
-            productImage: appImages?.GRASS_IMAGE,
-            productName: 'Vallarai Keerai',
-            price: 3.9,
-            quantity: 1,
-            subtotal: 7.98,
-        },
-        {
-            key: '5',
-            productImage: appImages?.GRASS_IMAGE,
-            productName: 'Vallarai Keerai',
-            price: 3.99,
-            quantity: 1,
-            subtotal: 7.98,
-        }
-    ];
+    // const dataSource = [
+    //     {
+    //         key: '1',
+    //         productImage: appImages?.GRASS_IMAGE,
+    //         productName: 'Vallarai Keerai',
+    //         price: 3.99,
+    //         quantity: 1,
+    //         subtotal: 7.98,
+    //         // address: '10 Downing Street',
+    //     },
+    //     {
+    //         key: '2',
+    //         productImage: appImages?.GRASS_IMAGE,
+    //         productName: 'Vallarai Keerai',
+    //         price: 3.99,
+    //         quantity: 1,
+    //         subtotal: 7.98,
+    //     },
+    //     {
+    //         key: '3',
+    //         productImage: appImages?.GRASS_IMAGE,
+    //         productName: 'Vallarai Keerai',
+    //         price: 3.99,
+    //         quantity: 1,
+    //         subtotal: 7.98,
+    //     },
+    //     {
+    //         key: '4',
+    //         productImage: appImages?.GRASS_IMAGE,
+    //         productName: 'Vallarai Keerai',
+    //         price: 3.9,
+    //         quantity: 1,
+    //         subtotal: 7.98,
+    //     },
+    //     {
+    //         key: '5',
+    //         productImage: appImages?.GRASS_IMAGE,
+    //         productName: 'Vallarai Keerai',
+    //         price: 3.99,
+    //         quantity: 1,
+    //         subtotal: 7.98,
+    //     }
+    // ];
 
+    
     const columns = [
         {
             title: 'Product',

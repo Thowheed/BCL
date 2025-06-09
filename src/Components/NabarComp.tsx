@@ -67,7 +67,7 @@ const NavbarComp = () => {
 
         }
 
-        dispatch(getallproductListLoad(paylaod))
+        // dispatch(getallproductListLoad(paylaod))
     }
 
 
