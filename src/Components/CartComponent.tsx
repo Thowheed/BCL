@@ -9,8 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from "@/Globals/Localstorage";
 
 
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
+// import { Elements } from '@stripe/react-stripe-js';
+// import { loadStripe } from '@stripe/stripe-js';
 
 const CartTable = dynamic(() => import('./CartTable'));
 const CartTotal = dynamic(() => import('./CartTotal'));
@@ -19,7 +19,7 @@ const FooterComp = dynamic(() => import('./FooterCompo'));
 
 const CartComponent = () => {
 
-    const stripePromise = loadStripe("pk_test_51RU1gz4PZ1SAYE9m9zH48m4U8MlksNFmsLpfY3D48fOFaR5sWWZsDAWCbeITBPceq0e6BbZZFyZNJh4wxa0ZNZ4m00SXMNPIlq");
+    // const stripePromise = loadStripe("pk_test_51RU1gz4PZ1SAYE9m9zH48m4U8MlksNFmsLpfY3D48fOFaR5sWWZsDAWCbeITBPceq0e6BbZZFyZNJh4wxa0ZNZ4m00SXMNPIlq");
 
     const options = {
         mode: 'payment',
@@ -60,28 +60,30 @@ const CartComponent = () => {
         <div>
             <NavbarComp />
             <div className='flex flex-col'>
-                <div className='pt-[16vh] mx-30'>
+                <div className=' pt-[5vh] mx-10  sm:pt-[16vh] sm:mx-30'>
                     <div className='flex flex-row items-center justify-between w-[80px] cursor-pointer' onClick={() => router.push('/home')}>
                         <ArrowLeftOutlined />
                         <span>My Cart</span>
                     </div>
                 </div>
-                <div className='flex flex-row justify-center mt-10'>
+                <div className='flex sm:flex-row justify-center mt-10 flex-col'>
                     <CartTable />
-                    <Elements stripe={stripePromise} options={options}>
+                    <CartTotal />
+
+                    {/* <Elements stripe={stripePromise} options={options}>
                         <CartTotal />
-                    </Elements>
+                    </Elements> */}
 
                 </div>
 
-                <div className=' mx-30'>
-                    <Button className='flex flex-row items-center justify-between ' onClick={() => router.push('/home')}>
+                <div className=' mx-5 my-5 sm:my-2  sm:mx-40 '>
+                    <Button className='flex flex-row items-center justify-between' onClick={() => router.push('/home')}>
                         <ArrowLeftOutlined />
                         <div>Continue Shopping</div>
                     </Button>
                 </div>
             </div>
-            {/* <FooterComp /> */}
+            <FooterComp />
         </div>
     )
 };
