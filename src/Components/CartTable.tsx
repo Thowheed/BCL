@@ -208,11 +208,7 @@
 
 'use client';
 import React, { useState } from "react";
-<<<<<<< HEAD
 import { InputNumber, Table, Popconfirm} from "antd";
-=======
-import { InputNumber, Table, Popconfirm } from "antd";
->>>>>>> 74772ba (all design correction completd jun12)
 import { DeleteOutlined } from "@ant-design/icons";
 import appImages from "@/Globals/AppImages";
 import Image from "next/image";
@@ -271,71 +267,6 @@ const CartTable = () => {
 
     const columns = [
         {
-<<<<<<< HEAD
-            title: 'Product',
-            dataIndex: 'productName',
-            key: 'productName',
-            width: 300,
-            render: (_: any, record: any) => (
-                <div className="flex items-center sm:flex-row">
-                    <Image src={record?.productImage} alt="Product" width={50} height={50} />
-                    <div className="ml-3 text-sm sm:text-base">{record?.productName}</div>
-                </div>
-            )
-=======
-            key: '1',
-            productImage: appImages?.GRASS_IMAGE,
-            productName: 'Vallarai Keerai',
-            price: 3.99,
-            quantity: 1,
-            subtotal: 7.98,
-            address: '10 Downing Street',
->>>>>>> 74772ba (all design correction completd jun12)
-        },
-        {
-            title: 'Price',
-            dataIndex: 'price',
-            key: 'price',
-            render: (price: number) => (
-                <span className="text-sm sm:text-base">${price.toFixed(2)}</span>
-            )
-        },
-        {
-            title: 'Quantity',
-            dataIndex: 'quantity',
-            key: 'quantity',
-            render: (_: any, record: any) => (
-                <div className="flex justify-center">
-                    <InputNumber
-                        addonBefore="-"
-                        addonAfter="+"
-                        defaultValue={record?.quantity}
-                        className="w-24"
-                    />
-                </div>
-            )
-        },
-        {
-            title: 'Subtotal',
-            dataIndex: 'subtotal',
-            key: 'subtotal',
-            render: (subtotal: number) => (
-                <span className="text-sm sm:text-base">${subtotal.toFixed(2)}</span>
-            )
-        },
-        {
-            key: 'action',
-            render: () => (
-                <DeleteOutlined className="text-red-500 cursor-pointer" />
-            )
-        }
-        // ...repeat items
-    ];
-
-<<<<<<< HEAD
-=======
-    const columns = [
-        {
             title: 'Product',
             dataIndex: 'productName',
             key: 'productName',
@@ -386,7 +317,6 @@ const CartTable = () => {
         }
     ];
 
->>>>>>> 74772ba (all design correction completd jun12)
     return (
         <div className="overflow-x-auto">
             <Table
@@ -397,7 +327,6 @@ const CartTable = () => {
             />
         </div>
     );
-<<<<<<< HEAD
 
     const { getCartData } = useSelector((state: any) => state.bcl);
     console.log("getCartData==>", getCartData);
@@ -406,7 +335,7 @@ const CartTable = () => {
     // const dataSource = [
         const [data, setData] = useState([]);
     const handleDelete = (key: string) => {
-        const filteredData = data.filter(item => item.key !== key);
+        const filteredData :any = data.filter(item => item.key !== key);
         setData(filteredData);
     };
 
@@ -517,21 +446,6 @@ const CartTable = () => {
 //         <Table dataSource={data} columns={columns} />
 //     </div>
 // )
-=======
-
-    const { getCartData } = useSelector((state: any) => state.bcl);
-    console.log("getCartData==>", getCartData);
-
-
-    // const dataSource = [
-    const [data, setData] = useState([]);
-    const handleDelete = (key: string) => {
-        const filteredData = data.filter((item: any) => item.key !== key);
-        setData(filteredData);
-    };
-
-
->>>>>>> 74772ba (all design correction completd jun12)
 
 }
 

@@ -94,14 +94,11 @@ const CartComponent = () => {
                 <div className='flex sm:flex-row justify-center mt-10 flex-col'>
                     <CartTable />
                     <CartTotal />
-<<<<<<< HEAD
 
                     {/* {/* <Elements stripe={stripePromise} options={options}> */}
-                        <CartTotal />
-                    {/* </Elements> */} */}
+                        {/* <CartTotal /> */}
+                    {/* </Elements> */} 
 
-=======
->>>>>>> 74772ba (all design correction completd jun12)
                 </div>
 
                 <div className=' mx-5 my-5 sm:my-2  sm:mx-40 '>

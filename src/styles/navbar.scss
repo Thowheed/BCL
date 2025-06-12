@@ -15,17 +15,13 @@
     gap: 20px;
     width: 100%;
     z-index: 1000;
-<<<<<<< HEAD
-=======
     
->>>>>>> 74772ba (all design correction completd jun12)
 }
 
 .logo {
     width: 160px;
 }
 
-<<<<<<< HEAD
 .delivery {
     display: flex;
     flex-direction: column;
@@ -34,8 +30,6 @@
     min-width: 180px;
     gap: 4px;
 }
-=======
->>>>>>> 74772ba (all design correction completd jun12)
 
 .location {
     display: flex;
@@ -63,13 +57,10 @@
     gap: 20px;
 }
 
-<<<<<<< HEAD
-=======
 .actions-tab-surface {
     display: none;
 }
 
->>>>>>> 74772ba (all design correction completd jun12)
 .avatar-badge {
     cursor: pointer;
 }
@@ -154,7 +145,6 @@
 
 
 
-<<<<<<< HEAD
 .user-details {
     display: flex;
     flex-direction: column;
@@ -192,20 +182,16 @@
     width: 20px;
 }
 
-=======
->>>>>>> 74772ba (all design correction completd jun12)
 .navbar-mobile {
     display: none;
 }
 
 //tab design starting 
 
-<<<<<<< HEAD
 @media (min-width: 481px) and (max-width: 1024px) {
     .navbar {
         padding: 12px 4%;
-=======
-
+    }}
 @media screen and (min-width: 481px) and (max-width: 767px) {
     .navbar {
         padding: 12px 4%;
@@ -280,7 +266,6 @@
 @media (min-width: 481px) and (max-width: 1024px) {
     .navbar {
         padding: 12px 4%;
->>>>>>> 74772ba (all design correction completd jun12)
         gap: 18px;
     }
 
@@ -337,12 +322,8 @@
 
 ///tab design end 
 
-<<<<<<< HEAD
 
-/* ✅ Mobile Responsive Design */ 
-=======
 /* ✅ Mobile Responsive Design */
->>>>>>> 74772ba (all design correction completd jun12)
 @media (max-width: 481px) {
     .navbar {
         display: none;
@@ -386,10 +367,7 @@
         padding: 10px;
     }
 
-<<<<<<< HEAD
-=======
     // 
->>>>>>> 74772ba (all design correction completd jun12)
     .drop-down {
         margin-top: 100px;
         position: relative;
