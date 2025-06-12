@@ -15,6 +15,7 @@
     gap: 20px;
     width: 100%;
     z-index: 1000;
+    
 }
 
 .logo {
@@ -56,6 +57,10 @@
     gap: 20px;
 }
 
+.actions-tab-surface {
+    display: none;
+}
+
 .avatar-badge {
     cursor: pointer;
 }
@@ -79,25 +84,66 @@
     border-radius: 8px;
     margin-top: 5vh;
     background-color: white;
+
+    .drop-down-inside {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .avatar {
+        height: 40px;
+        width: 40px;
+    }
+
+    .user-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .name {
+        font-weight: bold;
+    }
+
+    .email {
+        font-size: 14px;
+        color: #777;
+    }
+
+    .divider {
+        height: 1px;
+        background-color: #ddd;
+        margin: 8px 0;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 0;
+        cursor: pointer;
+    }
+
+    .menu-item.logout {
+        color: #EF4444;
+    }
+
+    .icon {
+        height: 20px;
+        width: 20px;
+    }
+
 }
 
-.drop-down-inside {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
 
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
 
-.avatar {
-    height: 40px;
-    width: 40px;
-}
 
 .user-details {
     display: flex;
@@ -141,6 +187,81 @@
 }
 
 //tab design starting 
+
+@media (min-width: 481px) and (max-width: 1024px) {
+    .navbar {
+        padding: 12px 4%;
+    }}
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    .navbar {
+        padding: 12px 4%;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .logo {
+        width: 130px;
+    }
+
+    .actions-tab-surface {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .delivery {
+        font-size: 13px;
+        min-width: 140px;
+        gap: 2px;
+    }
+
+    .location {
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .search {
+        margin-top: 6px;
+    }
+
+    .search-input {
+        height: 42px;
+        font-size: 13px;
+    }
+
+    .actions {
+        display: none;
+    }
+
+    .cart-button,
+    .login-button {
+        font-size: 13px;
+        // width: auto;
+    }
+
+    .avatar {
+        height: 32px;
+        width: 32px;
+    }
+
+    .icon {
+        height: 16px;
+        width: 16px;
+    }
+
+    .drop-down {
+        margin-top: 80px;
+    }
+
+    .banner-section {
+        padding-top: 15%;
+    }
+
+}
+
+
 
 @media (min-width: 481px) and (max-width: 1024px) {
     .navbar {
@@ -202,7 +323,7 @@
 ///tab design end 
 
 
-/* ✅ Mobile Responsive Design */ 
+/* ✅ Mobile Responsive Design */
 @media (max-width: 481px) {
     .navbar {
         display: none;
@@ -246,6 +367,7 @@
         padding: 10px;
     }
 
+    // 
     .drop-down {
         margin-top: 100px;
         position: relative;

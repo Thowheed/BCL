@@ -96,8 +96,8 @@ const CartComponent = () => {
                     <CartTotal />
 
                     {/* {/* <Elements stripe={stripePromise} options={options}> */}
-                        <CartTotal />
-                    {/* </Elements> */} */}
+                        {/* <CartTotal /> */}
+                    {/* </Elements> */} 
 
                 </div>
 

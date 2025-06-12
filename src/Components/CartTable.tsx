@@ -335,7 +335,7 @@ const CartTable = () => {
     // const dataSource = [
         const [data, setData] = useState([]);
     const handleDelete = (key: string) => {
-        const filteredData = data.filter(item => item.key !== key);
+        const filteredData :any = data.filter(item => item.key !== key);
         setData(filteredData);
     };
 
