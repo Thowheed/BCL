@@ -5,13 +5,19 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 import { Alert } from "antd";
 import Image from "next/image";
 // import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
+// import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const CartTotal = () => {
   // const stripe = useStripe();
   // const elements = useElements();
   // const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const stripePublishableKey: any = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+  const stripePromise = loadStripe(stripePublishableKey);
 
   // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
   //   event.preventDefault();
@@ -39,11 +45,40 @@ const CartTotal = () => {
   //       return_url: 'https://your-domain.com/order-complete',
   //     },
   //   });
+    const res = await fetch('http://localhost:4400/payment/create-checkout-session', {
+      method: 'POST',
+      body: JSON.stringify({ items, payment_methods: ['card'] }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
   //   if (error) {
   //     setErrorMessage(error.message || "Payment confirmation error");
   //   }
   // };
+    // const { id } = await res.json();
+    // const { url } = await res.json();
+
+    // console.log("Checkout URL:", url);
+    // alert("Checkout URL: " + url);
+    // window.location.href = "https://checkout.stripe.com/c/pay/cs_test_b1xuNcYRzzU9uCkXTvaue2UFtUKhiiFdiUMiUaFe9OdQl67HzTRfA0FGFg#fidkdWxOYHwnPyd1blpxYHZxWjA0V1JOZlZNQ1xsblc1bFxAfHFGXGh0VGRhUkA9VX1ScDc8Z0RPaHRfQXI3ZEhJdjFOQ3BAZkh%2FR3dpfEZBY392Tkd9QmNufG1ucHRKQT1odGZ9NmdMbjRjNTVHMHVJMX93aScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl";
+    // if (url) {
+    //  router.push(url);
+    // } else {
+    //   alert('Something went wrong');
+    // }
+    // const stripe: any = await stripePromise;
+    // window.open("https://checkout.stripe.com/c/pay/cs_test_b1xuNcYRzzU9uCkXTvaue2UFtUKhiiFdiUMiUaFe9OdQl67HzTRfA0FGFg#fidkdWxOYHwnPyd1blpxYHZxWjA0V1JOZlZNQ1xsblc1bFxAfHFGXGh0VGRhUkA9VX1ScDc8Z0RPaHRfQXI3ZEhJdjFOQ3BAZkh%2FR3dpfEZBY392Tkd9QmNufG1ucHRKQT1odGZ9NmdMbjRjNTVHMHVJMX93aScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl", '_blank');
+
+    // const { error } = await stripe.redirectToCheckout({
+    //   sessionId: "https://checkout.stripe.com/c/pay/cs_test_b1xuNcYRzzU9uCkXTvaue2UFtUKhiiFdiUMiUaFe9OdQl67HzTRfA0FGFg#fidkdWxOYHwnPyd1blpxYHZxWjA0V1JOZlZNQ1xsblc1bFxAfHFGXGh0VGRhUkA9VX1ScDc8Z0RPaHRfQXI3ZEhJdjFOQ3BAZkh%2FR3dpfEZBY392Tkd9QmNufG1ucHRKQT1odGZ9NmdMbjRjNTVHMHVJMX93aScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl",
+    // });
+
+    // if (error) console.error(error.message);
+
+    // setLoading(false);
+  };
 
   return (
     <div className="cart-total-container">
@@ -91,16 +126,20 @@ const CartTotal = () => {
           {/* Stripe Payment Form */}
           {/* <form onSubmit={handleSubmit} className="w-full mt-5">
             <PaymentElement />
+          <form className="w-full mt-5" onSubmit={handleClick}>
+            {/* <PaymentElement /> */}
             <button
               type="submit"
-              disabled={!stripe || !elements}
+
+              // disabled={!stripe || !elements}
               className="payment-button flex flex-row items-center justify-between mt-5"
+            // onClick={handlePaymentClick}
             >
               <div>Proceed to payment</div>
               <ArrowRightOutlined />
               <div>$300 Total</div>
             </button>
-            {errorMessage && (
+            {/* {errorMessage && (
               <div className="text-red-500 mt-2">{errorMessage}</div>
             )}
           </form> */}
@@ -113,11 +152,14 @@ const CartTotal = () => {
             <div>$300 Total</div>
           </button>
 
+            )} */}
+          </form>
         </div>
       </div>
     </div>
   );
 };
+
 
 
 export default CartTotal;

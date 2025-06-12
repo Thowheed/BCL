@@ -4,7 +4,7 @@ import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import dynamic from 'next/dynamic';
 import { useRouter } from "next/navigation";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from "@/Globals/Localstorage";
 import {updateCartItems} from "@/Globals/Localstorage";
@@ -17,18 +17,20 @@ const CartTotal = dynamic(() => import('./CartTotal'));
 const NavbarComp = dynamic(() => import('./NabarComp'));
 const FooterComp = dynamic(() => import('./FooterCompo'));
 
-const CartComponent = () => {
-
     // const stripePromise = loadStripe("pk_test_51RU1gz4PZ1SAYE9m9zH48m4U8MlksNFmsLpfY3D48fOFaR5sWWZsDAWCbeITBPceq0e6BbZZFyZNJh4wxa0ZNZ4m00SXMNPIlq");
 
-    const options: any = {
-        mode: 'payment',
-        amount: 30000, // in cents ($300)
-        currency: 'usd',
-        appearance: {
-            theme: 'stripe',
-        },
-    };
+const options: any = {
+    mode: 'payment',
+    amount: 30000, // in cents ($300)
+    currency: 'usd',
+    appearance: {
+        theme: 'stripe',
+    },
+};
+
+const CartComponent = () => {
+
+    const [loading, setLoading] = useState(false);
 
     const { addtocartLoad, addtocartData } = useSelector((state: any) => state.bcl);
     console.log(addtocartLoad);
@@ -36,6 +38,10 @@ const CartComponent = () => {
 
 
     const dispatch = useDispatch();
+
+    const handlePaymentClick = () => {
+        // CheckoutPage({ loading, setLoading });
+    }
 
     const Cartapi = () => {
 
@@ -68,11 +74,11 @@ const CartComponent = () => {
         
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        updateCart()
+    //     updateCart()
 
-    }, [])
+    // }, [])
     
     const router = useRouter();
     return (
@@ -89,9 +95,9 @@ const CartComponent = () => {
                     <CartTable />
                     <CartTotal />
 
-                    {/* <Elements stripe={stripePromise} options={options}>
+                    {/* {/* <Elements stripe={stripePromise} options={options}> */}
                         <CartTotal />
-                    </Elements> */}
+                    {/* </Elements> */} */}
 
                 </div>
 
