@@ -11,16 +11,13 @@ import {updateCartItems} from "@/Globals/Localstorage";
 
 // import { Elements } from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-// import { CheckoutPage } from '@/lib/StipeInt';
 
 const CartTable = dynamic(() => import('./CartTable'));
 const CartTotal = dynamic(() => import('./CartTotal'));
 const NavbarComp = dynamic(() => import('./NabarComp'));
 const FooterComp = dynamic(() => import('./FooterCompo'));
 
-const stripePromise = loadStripe("pk_test_51RU1gz4PZ1SAYE9m9zH48m4U8MlksNFmsLpfY3D48fOFaR5sWWZsDAWCbeITBPceq0e6BbZZFyZNJh4wxa0ZNZ4m00SXMNPIlq");
+    // const stripePromise = loadStripe("pk_test_51RU1gz4PZ1SAYE9m9zH48m4U8MlksNFmsLpfY3D48fOFaR5sWWZsDAWCbeITBPceq0e6BbZZFyZNJh4wxa0ZNZ4m00SXMNPIlq");
 
 const options: any = {
     mode: 'payment',
@@ -96,9 +93,11 @@ const CartComponent = () => {
                 </div>
                 <div className='flex sm:flex-row justify-center mt-10 flex-col'>
                     <CartTable />
-                    {/* <Elements stripe={stripePromise} options={options}> */}
+                    <CartTotal />
+
+                    {/* {/* <Elements stripe={stripePromise} options={options}> */}
                         <CartTotal />
-                    {/* </Elements> */}
+                    {/* </Elements> */} */}
 
                 </div>
 

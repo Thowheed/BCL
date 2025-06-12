@@ -5,36 +5,46 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 import { Alert } from "antd";
 import Image from "next/image";
 // import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
+// import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
 const CartTotal = () => {
-  const router = useRouter();
+  // const stripe = useStripe();
+  // const elements = useElements();
+  // const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const stripePublishableKey: any = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
   const stripePromise = loadStripe(stripePublishableKey);
 
-  const [loading, setLoading] = useState(false);
+  // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
 
-  const handleClick = async () => {
-    setLoading(true);
-    const items = [
-      {
-        name: 'Wireless Mouse',
-        amount: 1499,
-        quantity: 2,
-        currency: 'inr',
-      },
-      {
-        name: 'Mechanical Keyboard',
-        amount: 4999,
-        quantity: 1,
-        currency: 'inr',
-      }
-    ];
+  // if (!elements || !stripe) {
+  //   return;
+  // }
 
+  // const { error: submitError } = await elements.submit();
+  // if (submitError) {
+  //   setErrorMessage(submitError.message || "Submission error");
+  //   return;
+  // }
+
+  // const res = await fetch('/api/create-intent', {
+  //   method: 'POST',
+  // });
+
+  //   const { client_secret: clientSecret } = await res.json();
+
+  //   const { error } = await stripe.confirmPayment({
+  //     // elements,
+  //     clientSecret,
+  //     confirmParams: {
+  //       return_url: 'https://your-domain.com/order-complete',
+  //     },
+  //   });
     const res = await fetch('http://localhost:4400/payment/create-checkout-session', {
       method: 'POST',
       body: JSON.stringify({ items, payment_methods: ['card'] }),
@@ -43,6 +53,10 @@ const CartTotal = () => {
       },
     });
 
+  //   if (error) {
+  //     setErrorMessage(error.message || "Payment confirmation error");
+  //   }
+  // };
     // const { id } = await res.json();
     // const { url } = await res.json();
 
@@ -110,6 +124,8 @@ const CartTotal = () => {
           </div>
 
           {/* Stripe Payment Form */}
+          {/* <form onSubmit={handleSubmit} className="w-full mt-5">
+            <PaymentElement />
           <form className="w-full mt-5" onSubmit={handleClick}>
             {/* <PaymentElement /> */}
             <button
@@ -125,6 +141,17 @@ const CartTotal = () => {
             </button>
             {/* {errorMessage && (
               <div className="text-red-500 mt-2">{errorMessage}</div>
+            )}
+          </form> */}
+          <button
+            type="button"
+            className="payment-button flex flex-row items-center justify-between mt-5"
+          >
+            <div>Proceed to payment</div>
+            <ArrowRightOutlined />
+            <div>$300 Total</div>
+          </button>
+
             )} */}
           </form>
         </div>
@@ -132,6 +159,7 @@ const CartTotal = () => {
     </div>
   );
 };
+
 
 
 export default CartTotal;
