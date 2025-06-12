@@ -9,6 +9,7 @@
 }
 
 .banner-section {
+<<<<<<< HEAD
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
@@ -77,12 +78,34 @@
   height: 100%;
   width: 35%;
 
+=======
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 10px;
+}
+
+.forCargoBanner {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+>>>>>>> 74772ba (all design correction completd jun12)
 }
 
 .forCargoBanner img {
   width: 100%;
 }
 
+<<<<<<< HEAD
+=======
+.forBanner {
+  width: 55%;
+  height: auto;
+}
+
+>>>>>>> 74772ba (all design correction completd jun12)
 .banner-image {
   width: auto;
   height: auto;
@@ -107,6 +130,7 @@
 }
 
 /// tab starting 
+<<<<<<< HEAD
 
 @media screen and (max-width: 1024px) and (min-width: 768px) {
   .banner-section {
@@ -130,6 +154,30 @@
     height: auto;
   }
 
+=======
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .banner-section {
+    flex-direction: row;
+    height: auto;
+    justify-content: space-between;
+  }
+
+  .forBanner {
+    height: 100%;
+    width: 55%;
+
+  }
+
+  .home-content {
+    padding-top: 15%;
+  }
+
+  .forCargoBanner {
+    width: 40%;
+    height: auto;
+  }
+
+>>>>>>> 74772ba (all design correction completd jun12)
   .forCargoBanner img {
     width: 100%;
   }
@@ -150,6 +198,18 @@
   .home-content {
     padding-top: 20%;
   }
+<<<<<<< HEAD
+=======
+
+  .forBanner {
+    width: 55%;
+    object-fit: cover;
+  }
+
+  .forCargoBanner {
+    width: 40%;
+  }
+>>>>>>> 74772ba (all design correction completd jun12)
 }
 
 //mobile
