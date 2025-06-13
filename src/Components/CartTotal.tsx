@@ -7,9 +7,7 @@ import Image from "next/image";
 // import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 // import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { useState } from "react";
-import { loadStripe } from '@stripe/stripe-js';
-
-const stripePromise = loadStripe("pk_test_51RWKcSHFYikR0iYEytCYmqQadWE8PxWu29bAJmqZDw2aMLs4KFuEcMzBrlyCDfzsKBxGfkyhkuqOD8mqcx3bIk1f00B5pL4zrl");
+import { loadStripe } from "@stripe/stripe-js";
 
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -59,47 +57,6 @@ const CartTotal = () => {
     //     'Content-Type': 'application/json',
     //   },
     // });
-
-    const [loading, setLoading] = useState(false);
-
-  const handleClick = async () => {
-    setLoading(true);
-
-    const items =  [
-    {
-      name: 'Wireless Mouse',
-      amount: 200,
-      quantity: 2,
-      currency: 'usd',
-    },
-    {
-      name: 'Mechanical Keyboard',
-      amount: 300,
-      quantity: 1,
-      currency: 'usd',
-  }
- ];
-    const res = await fetch('https://api.purfull.com/payment/create-checkout-session', {
-      method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-      body: JSON.stringify({ items, payment_methods: ['card'] }),
-    });
-
-    const { id } = await res.json();
-    console.log(id, "iiiiiiiiiiiii");
-    
-    const stripe = await stripePromise;
-
-    const { error } = await stripe.redirectToCheckout({
-      sessionId: id,
-    });
-
-    if (error) console.error(error.message);
-
-    setLoading(false);
-  };
 return (
   <div className="cart-total-container">
     <div className="total-grams-container flex flex-row items-center justify-between">
@@ -157,7 +114,7 @@ return (
         <button
           type="button"
           className="payment-button flex flex-row items-center justify-between mt-5"
-          onClick={handleClick}
+          // onClick={handleClick} // or your handler
         >
           <div>Proceed to payment</div>
           <ArrowRightOutlined />
