@@ -148,12 +148,14 @@
 }
 
 .forCargoBanner img {
-  width: 100%;
+  width: 90%;
+  
 }
 
 .forBanner {
   width: 55%;
   height: auto;
+  
 }
 
 .banner-image {
@@ -324,3 +326,16 @@
     object-fit: cover;
   }
 }
+// @media screen and (min-width: 1025px) {
+//   .banner-section {
+//     gap: 5px; 
+//   }
+
+//   .forBanner {
+//     width: 58%; 
+//   }
+
+//   .forCargoBanner {
+//     width: 40%;
+//   }
+// }
