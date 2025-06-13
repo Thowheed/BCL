@@ -61,7 +61,7 @@ export default function HomePage() {
                      <div>
                         <Image src={homeBanner} alt="Banner 1" />
                     </div>
-                    <div>
+                    <div> 
                         <Image src={homeBanner} alt="Banner 1" />
                     </div> 
                     </Carousel>
