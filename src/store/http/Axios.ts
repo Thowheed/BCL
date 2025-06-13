@@ -3,8 +3,8 @@ import { http } from "./Http";
 import { message } from "antd";
 import { retry } from "redux-saga/effects";
 
-const baseURL = 'http://localhost:4400';
-// const baseURL = 'https://api.purfull.com'
+// const baseURL = 'http://localhost:4400';
+const baseURL = 'https://api.purfull.com'
 
 let loginUrl: any = `${baseURL}/api/e-commercelogin`;
 let url: any = `${baseURL}/user/get-all-user`;
