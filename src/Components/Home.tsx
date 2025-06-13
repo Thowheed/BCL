@@ -13,6 +13,7 @@ import { get } from "http";
 import { getUser } from "@/Globals/Localstorage";
 import "../styles/home.scss";
 import { Carousel } from 'antd';
+import { freeze } from "@reduxjs/toolkit";
 
 // import CardComponent from "./CardComponent";
 // import NavbarComp from "./NabarComp";
@@ -55,20 +56,14 @@ export default function HomePage() {
                    <div className="forBanner">
                     <Carousel autoplay dots>
                     <div>
+                        <Image src={homeBanner} alt="Banner 1" className="img-1"/>
+                    </div>
+                     <div>
                         <Image src={homeBanner} alt="Banner 1" />
                     </div>
-                    {/* <div>
+                    <div> 
                         <Image src={homeBanner} alt="Banner 1" />
-                    </div>
-                    <div>
-                        <Image src={homeBanner} alt="Banner 1" />
-                    </div> */}
-                    {/* <div>
-                        <Image src={succulentImg} alt="Banner 2" />
-                    </div>
-                    <div>
-                        <Image src={greenboardImg} alt="Banner 3" />
-                    </div>  */}
+                    </div> 
                     </Carousel>
                    </div>
                 

@@ -6,36 +6,36 @@
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 12px 5%;
     background-color: white;
     border-bottom: 1px solid #e5e5e5;
     position: fixed;
     top: 0;
-    gap: 45px;
+    gap: 20px;
     width: 100%;
     z-index: 1000;
+    
+}
 
+.logo {
+    width: 160px;
+}
 
-    .logo {
-        width: 160px;
-    }
+.delivery {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    color: #000;
+    min-width: 180px;
+    gap: 4px;
+}
 
-    .delivery {
-        display: flex;
-        flex-direction: column;
-        font-weight: 600;
-        color: #000;
-        min-width: 180px;
-        gap: 4px;
-    }
-
-    .location {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        font-size: 14px;
-    }
+.location {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
 }
 
 .search {
@@ -53,18 +53,24 @@
 .actions {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     gap: 20px;
-
-    .avatar-badge {
-        cursor: pointer;
-    }
-
 }
 
-.cart-button, .login-button-mobile, .login-button{
+.actions-tab-surface {
+    display: none;
+}
+
+.avatar-badge {
+    cursor: pointer;
+}
+
+.cart-button,
+.login-button-mobile,
+.login-button {
     display: flex;
     gap: 10px;
-    padding: 10px 20px;
+    padding: 10px 16px 10px 16px;
     background-color: #22c55e;
     color: white;
     border: none;
@@ -78,25 +84,66 @@
     border-radius: 8px;
     margin-top: 5vh;
     background-color: white;
+
+    .drop-down-inside {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .avatar {
+        height: 40px;
+        width: 40px;
+    }
+
+    .user-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .name {
+        font-weight: bold;
+    }
+
+    .email {
+        font-size: 14px;
+        color: #777;
+    }
+
+    .divider {
+        height: 1px;
+        background-color: #ddd;
+        margin: 8px 0;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 0;
+        cursor: pointer;
+    }
+
+    .menu-item.logout {
+        color: #EF4444;
+    }
+
+    .icon {
+        height: 20px;
+        width: 20px;
+    }
+
 }
 
-.drop-down-inside {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
 
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
 
-.avatar {
-    height: 40px;
-    width: 40px;
-}
 
 .user-details {
     display: flex;
@@ -139,43 +186,148 @@
     display: none;
 }
 
+//tab design starting 
+
 @media (min-width: 481px) and (max-width: 1024px) {
-
-    /* Tablet-specific styles */
-    // .navbar {
-    //     gap: 30px;
-    //     background-color: red;
-    // }
-
-    // .cart-button {
-    //     width: 100%;
-    //     align-items: start;
-    //     justify-content: start;
-
-    //     padding: 10px 30px 10px 10px;
-
-    // }
-
-    // .actions {
-    //     gap: 10px;
-    //     width: 20%;
-    // }
-
-    // .search {
-    //     width: 100%;
-    // }
-
-    
-}
-
-/*mobile Responsive Design */
-@media (max-width: 480px) {
-
     .navbar {
-        display: none;
-
+        padding: 12px 4%;
+    }}
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    .navbar {
+        padding: 12px 4%;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
+    .logo {
+        width: 130px;
+    }
+
+    .actions-tab-surface {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .delivery {
+        font-size: 13px;
+        min-width: 140px;
+        gap: 2px;
+    }
+
+    .location {
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .search {
+        margin-top: 6px;
+    }
+
+    .search-input {
+        height: 42px;
+        font-size: 13px;
+    }
+
+    .actions {
+        display: none;
+    }
+
+    .cart-button,
+    .login-button {
+        font-size: 13px;
+        // width: auto;
+    }
+
+    .avatar {
+        height: 32px;
+        width: 32px;
+    }
+
+    .icon {
+        height: 16px;
+        width: 16px;
+    }
+
+    .drop-down {
+        margin-top: 80px;
+    }
+
+    .banner-section {
+        padding-top: 15%;
+    }
+
+}
+
+
+
+@media (min-width: 481px) and (max-width: 1024px) {
+    .navbar {
+        padding: 12px 4%;
+        gap: 18px;
+    }
+
+    .logo {
+        width: 140px;
+    }
+
+    .delivery {
+        font-size: 14px;
+        min-width: 160px;
+    }
+
+    .location {
+        font-size: 13px;
+        gap: 10px;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .search-input {
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .actions {
+        width: 40%;
+    }
+
+    .cart-button,
+    .login-button {
+        padding: 10px 20px 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    .drop-down {
+        margin-top: 70px;
+    }
+
+    .avatar {
+        height: 36px;
+        width: 36px;
+    }
+
+    .icon {
+        height: 18px;
+        width: 18px;
+    }
+}
+
+///tab design end 
+
+
+/* ✅ Mobile Responsive Design */
+@media (max-width: 481px) {
+    .navbar {
+        display: none;
+    }
 
     .navbar-mobile {
         display: flex;
@@ -183,7 +335,6 @@
         justify-content: space-evenly;
         flex-direction: column;
         background-color: #78a27e;
-
     }
 
     .deleivery-and-carts {
@@ -191,7 +342,7 @@
         align-items: center;
         justify-content: space-between;
         width: 90%;
-        padding: 15px 0 15px 0;
+        padding: 15px 0;
     }
 
     .location-mobile {
@@ -205,28 +356,25 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-
     }
 
     .search-mobile {
         width: 90%;
-        padding: 15px 0 15px 0;
+        padding: 15px 0;
     }
 
     .search-input-mobile {
         padding: 10px;
     }
 
-    ///  mobile drop down 
+    // 
     .drop-down {
         margin-top: 100px;
         position: relative;
         left: 12px;
-
     }
 
     .delivery-time {
         font-weight: 700;
     }
-
 }
