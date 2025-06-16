@@ -56,7 +56,11 @@ const bclAxiosAPi = {
         return Method.dataQuery(payload,getproductusingidurl )
 
     },
-
+    getallproductListbyQueryAxios: (name: string) => {
+        const urlWithQuery = `${getallproducturl}?name=${encodeURIComponent(name)}`;
+        return Method.get(urlWithQuery);
+    },
+    
     getCartListtAxios : (payload:any) =>{
         return Method.dataQuery(payload,getCartListurl )
 
@@ -194,6 +198,34 @@ const Method = {
             });
         });
     },
+    //for suggestion
+    async get(url: string) {
+        return await new Promise((resolve, reject) => {
+            http.get(url, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then((result: any) => {
+                if (result.status === 200) {
+                    resolve({
+                        status: 1,
+                        result: result,
+                    });
+                } else {
+                    reject({
+                        status: 3,
+                        error: ApiConstants.SOMETHING_WENT_WRONG,
+                    });
+                }
+            }).catch((err: any) => {
+                reject({
+                    status: 5,
+                    error: err,
+                });
+            });
+        });
+    }
+    
 
     
 }
