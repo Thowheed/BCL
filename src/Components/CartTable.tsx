@@ -13,12 +13,13 @@ import { getUser } from "@/Globals/Localstorage";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+// import Skeleton from 'react-loading-skeleton';
+// import 'react-loading-skeleton/dist/skeleton.css';
 
 
 const CartTable = () => {
     const { getCartData, getCartListLoad } = useSelector((state: any) => state.bcl);
+    const [data, setData] = useState([]);
     console.log("getCartData==>", getCartData);
 
 
@@ -119,6 +120,14 @@ const CartTable = () => {
         }
     ];
 
+
+    // const dataSource = [
+    const handleDelete = (key: string) => {
+        const filteredData = data.filter((item: any) => item.key !== key);
+
+        setData(filteredData);
+    };
+
     return (
         <div className="overflow-x-auto">
             {<Table
@@ -130,29 +139,10 @@ const CartTable = () => {
         </div>
     );
 
-    const { getCartData } = useSelector((state: any) => state.bcl);
-    console.log("getCartData==>", getCartData);
+  
 
 
-    // const dataSource = [
-    const [data, setData] = useState([]);
-    const handleDelete = (key: string) => {
-        const filteredData = data.filter((item: any) => item.key !== key);
-
-        setData(filteredData);
-    };
-
-
-  { !getCartListLoad ? (<div className="overflow-x-auto">
-            <Table
-                dataSource={getCartData}
-                columns={columns}
-                pagination={false}
-                scroll={{ x: 600 }} // Ensures horizontal scroll on small devices
-            />
-        </div>) : <Skeleton />
-    );
-  }
+  
     //     const { getCartData } = useSelector((state: any) => state.bcl);
     //     console.log("getCartData==>", getCartData);
 
