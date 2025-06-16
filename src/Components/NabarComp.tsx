@@ -1,6 +1,6 @@
 'use client';
 
-import { Dropdown, Badge, Avatar, Input } from 'antd';
+import { Dropdown, Badge, Avatar, Input , AutoComplete} from 'antd';
 import { DownOutlined, UserOutlined, SearchOutlined } from '@ant-design/icons';
 import "../styles/userprofile.scss";
 import { useEffect, useState } from 'react';
@@ -10,7 +10,10 @@ import { useRouter } from "next/navigation";
 
 
 const NavbarComp = () => {
-
+    //language
+    const [language, setLanguage] = useState("en");
+    
+    
     const router = useRouter()
 
     const user = useSelector((state: any) => state.bcl.loginData?.user?.user);
@@ -23,7 +26,7 @@ const NavbarComp = () => {
 
     const goToLogin = () => router.push("/login");
 
-    const [searchterm, setsearchtrem] = useState<any>(null);
+    const [searchterm, setsearchterm] = useState<any>(null);
     const [debouncedTerm, setDebouncedTerm] = useState(searchterm);
 
     const dispatch = useDispatch();
@@ -65,7 +68,26 @@ const NavbarComp = () => {
         dispatch(getallproductListLoad(paylaod))
     }
 
-
+    const [suggestions, setSuggestions] = useState([]);
+    
+    //   const getAllproductapi = (value:any) => {
+    //     const payload = { name: value};
+      
+    //     dispatch(getallproductListLoad(payload)).then((res:any) => {
+    //       if (res?.payload?.data) {
+    //         const names = res.payload.data.map((product: any) => ({
+    //           value: product.name, // what appears in dropdown
+    //           label: product.name, // what is shown
+    //         })); 
+    //         setSuggestions(names);
+    //       }else {
+    //         setSuggestions([]); // clear suggestions if nothing matches
+    //     }
+    //     });
+    //   };
+      
+    
+    
 
     const dropdownContent = (
         <div className="drop-down">
@@ -110,13 +132,33 @@ const NavbarComp = () => {
 
                 <img className="logo" src="/BCL-Green-1.svg" alt="Logo" />
 
-                <div className="delivery">
-                    <span className="delivery-time">Delivery in 8 minutes</span>
+                {/* <div className="delivery">
+                    <span className="delivery-time">Language</span>
                     <div className="location">
-                        <span>Select Location</span>
+                        <span>Select Language</span>
                         <img src="./Border.svg" alt="dropdown" />
                     </div>
+                </div> */}
+
+                <div className="delivery">
+                {/* <span className="delivery-time">Language</span> */}
+                <div className="lang">
+                    <select
+                    value={language}
+                    onChange={(e) => {
+                        const lang = e.target.value;
+                        setLanguage(lang);
+                        getAllproductapi(searchterm); // update product list in selected language
+                    }}
+                    className="bg-transparent outline-none"
+                    >
+                    <option value="en">English</option>
+                    <option value="ta">Tamil</option>
+                    </select>
+                    {/* <img src="./Border.svg" alt="dropdown" /> */}
                 </div>
+                </div>
+
 
 
                 <div className="actions-tab-surface">
@@ -137,17 +179,33 @@ const NavbarComp = () => {
                     </button>
                 </div>
 
+                    <AutoComplete
+                    options={suggestions}
+                    style={{ width: 300 }}
+                    onSearch={(text) => setsearchterm(text)}
+                    onSelect={(value) => {
+                        setsearchterm(value);
+                        getAllproductapi(value);
+                    }}
+                    >
+                    <Input
+                        placeholder="Search by Tomato..."
+                        prefix={<SearchOutlined />}
+                        className="search-input"
+                        style={{ fontSize: 16, fontWeight: 400 }}
+                    />
+                    </AutoComplete>
 
 
-                <div className="search">
+                {/* <div className="search">
                     <Input
                         className="search-input"
                         placeholder="Search by Tomato....."
                         prefix={<SearchOutlined />}
                         style={{ fontSize: 16, fontWeight: 400 }}
-                        onChange={(e) => { setsearchtrem(e.target.value) }}
+                        onChange={(e) => { setsearchterm(e.target.value) }}
                     />
-                </div>
+                </div> */}
 
                 <div className="actions">
                     {loggedInUser ? (
@@ -224,7 +282,7 @@ const NavbarComp = () => {
                         placeholder="Search by Tomato....."
                         prefix={<SearchOutlined />}
                         style={{ fontSize: 16, fontWeight: 400 }}
-                        onChange={(e) => { setsearchtrem(e.target.value) }}
+                        onChange={(e) => { setsearchterm(e.target.value) }}
                     />
                 </div>
 

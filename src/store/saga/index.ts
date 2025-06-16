@@ -1,6 +1,6 @@
 import { takeEvery } from "redux-saga/effects";
 
-
+import { takeLatest } from "redux-saga/effects";
 
 import {
     addtocartListload,
@@ -25,7 +25,7 @@ import {
 
 
 import { addtoCartListSaga, getUserAddressListSaga, getUserListSaga, loginListsaga , siginListsaga  , updateuserListsaga ,
-     getallproductListSaga , getproductusingidListsaga,getCartSaga, updatecartListsaga } from "./bclsaga";
+     getallproductListSaga , getproductusingidListsaga,getCartSaga, updatecartListsaga, getProductsByQuerySaga } from "./bclsaga";
 
 export function* baclSaga() {
     yield takeEvery(getUserAddressListLoad, getUserAddressListSaga);
@@ -38,5 +38,5 @@ export function* baclSaga() {
     yield takeEvery (getproductusingidListLoad ,getproductusingidListsaga )
     yield takeEvery (getCartLoad , getCartSaga)
     yield takeEvery (updatecartListLoad , updatecartListsaga)
-
+    yield takeLatest("GET_ALL_PRODUCT_LIST_BY_QUERY", getProductsByQuerySaga);
 }
