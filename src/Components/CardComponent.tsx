@@ -25,7 +25,7 @@ const CardComponent = (props: any) => {
     const Cartapi = async (e: any) => {
         e.stopPropagation();
         let payload = {
-
+ 
             userId: user?.id,
             productId: data?.id,
             quantity: 1

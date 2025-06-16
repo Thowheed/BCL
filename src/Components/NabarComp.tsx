@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getallproductListLoad } from '@/store/reducer/indexSlice';
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 
 const NavbarComp = () => {
@@ -85,7 +86,11 @@ const NavbarComp = () => {
     //     }
     //     });
     //   };
-      
+        const { t, i18n, ready } = useTranslation();
+      useEffect(() => {
+
+            i18n.changeLanguage(language);
+      }, [language])
     
     
 
@@ -175,7 +180,7 @@ const NavbarComp = () => {
                     )}
                     <button className="cart-button" onClick={gocart}>
                         <img src="./Vectora.svg" alt="cart" />
-                        <span>Cart</span>
+                        <span>{t("cart")}</span>
                     </button>
                 </div>
 
@@ -226,7 +231,7 @@ const NavbarComp = () => {
                     </Dropdown> */}
                     <button className="cart-button" onClick={gocart}>
                         <img src="./Vectora.svg" alt="cart" />
-                        <span>Cart</span>
+                        <span>{t("cart")}</span>
                     </button>
                 </div>
 
