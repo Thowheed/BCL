@@ -3,9 +3,13 @@
 import { Form, Input, Button } from "antd";
 import "../styles/userprofile.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { updateuserListLoad } from "@/store/reducer/indexSlice";
+import { getUserListLoad, updateuserListLoad } from "@/store/reducer/indexSlice";
 import { useEffect } from "react";
 import { getUser } from "@/Globals/Localstorage";
+
+
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const Usercompo = () => {
     const [form] = Form.useForm();
@@ -48,7 +52,8 @@ const Usercompo = () => {
     }, [userList, form]);
 
     return (
-        <div className="user-wrapper">
+
+        !updateuserLoad ? (<div className="user-wrapper">
             <div className="account-header">
                 <span className="account-title">My Account</span>
                 <p className="account-description">Manage your account settings and preferences.</p>
@@ -64,7 +69,7 @@ const Usercompo = () => {
                             name="name"
                             rules={[{ required: true, message: 'Please input your name!' }]}
                         >
-                            <Input placeholder="Name" className="ant-input" />
+                            <Input defaultValue="sanjay" placeholder="Name" className="ant-input" />
                         </Form.Item>
 
                         <p className="input-label">Email *</p>
@@ -114,7 +119,7 @@ const Usercompo = () => {
                     </div>
                 </Form>
             </div>
-        </div>
+        </div>) : (<Skeleton />)
     );
 }
 
