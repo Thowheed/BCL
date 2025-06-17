@@ -182,8 +182,8 @@ const NavbarComp = () => {
                     <AutoComplete
                     options={suggestions}
                     style={{ width: 300 }}
-                    onSearch={(text) => setsearchterm(text)}
-                    onSelect={(value) => {
+                    onSearch={(text : any) => setsearchterm(text)}
+                    onSelect={(value: any) => {
                         setsearchterm(value);
                         getAllproductapi(value);
                     }}
@@ -282,7 +282,7 @@ const NavbarComp = () => {
                         placeholder="Search by Tomato....."
                         prefix={<SearchOutlined />}
                         style={{ fontSize: 16, fontWeight: 400 }}
-                        onChange={(e) => { setsearchterm(e.target.value) }}
+                        onChange={(e:any) => { setsearchterm(e.target.value) }}
                     />
                 </div>
 
