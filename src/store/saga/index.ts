@@ -40,3 +40,5 @@ export function* baclSaga() {
     yield takeEvery (updatecartListLoad , updatecartListsaga)
     yield takeLatest("GET_ALL_PRODUCT_LIST_BY_QUERY", getProductsByQuerySaga);
 }
+
+

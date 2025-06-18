@@ -159,10 +159,10 @@ export function* updateuserListsaga(action: any): SagaIterator {
 
 //get all product 
 
-export function* getallproductListSaga(action: any): SagaIterator {
+export function* getallproductListSaga(): SagaIterator {
     try {
         // console.log("inside getallprodouctList", action?.payload);
-        const response = yield call(bclAxiosAPi.getallproductListAxios, action?.payload);
+        const response = yield call(bclAxiosAPi.getallproductListAxios);
 
         console.log("response==>", response)
         if (response.status == 1) {

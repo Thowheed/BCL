@@ -1,19 +1,21 @@
 'use client';
 
-import { Dropdown, Badge, Avatar, Input , AutoComplete} from 'antd';
+import { Dropdown, Badge, Avatar, Input, AutoComplete } from 'antd';
 import { DownOutlined, UserOutlined, SearchOutlined } from '@ant-design/icons';
 import "../styles/userprofile.scss";
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getallproductListLoad } from '@/store/reducer/indexSlice';
 import { useRouter } from "next/navigation";
+import { ShoppingBagIcon, UserIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline'; // or /solid
+
 
 
 const NavbarComp = () => {
     //language
     const [language, setLanguage] = useState("en");
-    
-    
+
+
     const router = useRouter()
 
     const user = useSelector((state: any) => state.bcl.loginData?.user?.user);
@@ -69,10 +71,10 @@ const NavbarComp = () => {
     }
 
     const [suggestions, setSuggestions] = useState([]);
-    
+
     //   const getAllproductapi = (value:any) => {
     //     const payload = { name: value};
-      
+
     //     dispatch(getallproductListLoad(payload)).then((res:any) => {
     //       if (res?.payload?.data) {
     //         const names = res.payload.data.map((product: any) => ({
@@ -85,9 +87,9 @@ const NavbarComp = () => {
     //     }
     //     });
     //   };
-      
-    
-    
+
+
+
 
     const dropdownContent = (
         <div className="drop-down">
@@ -104,12 +106,12 @@ const NavbarComp = () => {
                 <div className="divider"></div>
 
                 <div className="menu-item">
-                    <img src="/user.png" alt="profile" className="icon" />
+                    <UserIcon className="profile-logo h-6 w-6 text-green-600" />
                     <span>Profile</span>
                 </div>
 
                 <div className="menu-item">
-                    <img src="/checkout.png" alt="orders" className="icon" />
+                    <ShoppingBagIcon className="myorder-logo h-6 w-6 text-green-600" />
                     <span>My Orders</span>
                 </div>
 
@@ -119,7 +121,8 @@ const NavbarComp = () => {
                     localStorage.removeItem('user');
                     router.push('/login');
                 }}>
-                    <img src="/logout.png" alt="logout" className="icon" />
+                    <ArrowRightOnRectangleIcon className="h-6 w-6 text-red-600 group-hover:text-red-800 transition-colors duration-200" />
+
                     <span>Logout</span>
                 </div>
             </div>
@@ -140,24 +143,25 @@ const NavbarComp = () => {
                     </div>
                 </div> */}
 
-                <div className="delivery">
+                {/* <div className="delivery"> */}
                 {/* <span className="delivery-time">Language</span> */}
                 <div className="lang">
                     <select
-                    value={language}
-                    onChange={(e) => {
-                        const lang = e.target.value;
-                        setLanguage(lang);
-                        getAllproductapi(searchterm); // update product list in selected language
-                    }}
-                    className="bg-transparent outline-none"
+                        value={language}
+                        onChange={(e) => {
+                            const lang = e.target.value;
+                            setLanguage(lang);
+                            getAllproductapi(searchterm); // update product list in selected language
+
+                        }}
+                        className="bg-transparent outline-none  ma"
                     >
-                    <option value="en">English</option>
-                    <option value="ta">Tamil</option>
+                        <option value="en">English</option>
+                        <option value="ta">Tamil</option>
                     </select>
                     {/* <img src="./Border.svg" alt="dropdown" /> */}
                 </div>
-                </div>
+                {/* </div> */}
 
 
 
@@ -179,22 +183,22 @@ const NavbarComp = () => {
                     </button>
                 </div>
 
-                    <AutoComplete
+                <AutoComplete
                     options={suggestions}
-                    style={{ width: 300 }}
+                    className='search'
                     onSearch={(text) => setsearchterm(text)}
                     onSelect={(value) => {
                         setsearchterm(value);
                         getAllproductapi(value);
                     }}
-                    >
+                >
                     <Input
                         placeholder="Search by Tomato..."
                         prefix={<SearchOutlined />}
                         className="search-input"
                         style={{ fontSize: 16, fontWeight: 400 }}
                     />
-                    </AutoComplete>
+                </AutoComplete>
 
 
                 {/* <div className="search">
@@ -244,22 +248,14 @@ const NavbarComp = () => {
 
             <div className="navbar-mobile">
 
+
                 <div className='deleivery-and-carts'>
-
-                    <div className="delivery-mobile">
-                        <span className="delivery-time">Delivery in 8 minutes</span>
-                        <div className="location-mobile">
-                            <span>Select Location</span>
-                            <img src="./Border.svg" alt="dropdown" />
-                        </div>
+                    <img className="logo" src="/BCL-Green-1.svg" alt="Logo" />
 
 
-
-
-                    </div>
                     <div className="actions-mobile">
                         <button className="cart-button-mobile" onClick={gocart}>
-                            <img src="./Vectora.svg" alt="cart" />
+                            <img src="./Vectora.svg" alt="cart" className='bg-black' />
                         </button>
                         {loggedInUser ? (
                             <Dropdown overlay={dropdownContent} trigger={['click']} placement="bottomRight">

@@ -1,3 +1,4 @@
+
 'use client';
 
 import "../styles/Signin.scss";
@@ -7,8 +8,6 @@ import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { siginListLoad } from "@/store/reducer/indexSlice";
-import { setUser } from "@/Globals/Localstorage";
-
 
 const formTemp = {
     name: "",
@@ -21,32 +20,25 @@ const formTemp = {
     zip_code: "",
     location: ""
 }
+
 export default function LoginCompo() {
     const router = useRouter();
     const [form] = Form.useForm();
     const [login, setLogin] = useState(true);
-
     const [formData, setFormData] = useState(formTemp);
-
     const [siginDataSuccess, setsigninDataSuccess] = useState(false);
-
+    const [signinButtonLoading, setsigninButtonLoading] = useState(false);
 
     const handleSubmit = () => {
         router.push("/login");
     };
 
     const { siginLoad, siginData } = useSelector((state: any) => state.bcl);
-
     const dispatch = useDispatch();
 
-
-    // api intergration 
-
     const Siginapi = () => {
-        console.log("formData==>", formData)
-        if (login == false) {
+        if (!login) {
             let payload = {
-
                 name: formData?.name,
                 email: formData?.email,
                 password: formData?.password,
@@ -54,31 +46,24 @@ export default function LoginCompo() {
                 country: formData?.country,
                 zip_code: formData?.zip_code,
                 location: formData?.location,
-
             }
-            console.log("payload==>", payload)
-
-            dispatch(siginListLoad(payload))
-            setsigninDataSuccess(true)
-
+            dispatch(siginListLoad(payload));
+            setsigninDataSuccess(true);
+            setsigninButtonLoading(true);
         } else {
-            setLogin(!login);
+            setLogin(false);
         }
-
     }
+
     useEffect(() => {
         if (siginDataSuccess && !siginLoad) {
-        
-                console.log("inside success");
-                // setUser(siginData?.user?.user);                
-                setsigninDataSuccess(false);
-                router.push("/login");
-           
+            setsigninButtonLoading(false);
+            setsigninDataSuccess(false);
+            router.push("/login");
+        } else {
+            setsigninButtonLoading(false);
         }
     }, [siginData, siginLoad]);
-
-
-
 
     return (
         <div className="login-wrapper">
@@ -92,7 +77,6 @@ export default function LoginCompo() {
                                 ? "Create Your Account & Start Shopping!"
                                 : "Almost There! Let’s Set Up Your Delivery Details"}
                         </span>
-
                         <div className="small-text">
                             <span>
                                 {login
@@ -106,126 +90,149 @@ export default function LoginCompo() {
                         {login ? (
                             <>
                                 <p className="input-label">Name *</p>
-                                <Form.Item name="name" rules={[{ required: true, message: "Please input your name!" }]}>
-                                    <Input type="text" placeholder="Name" className="custom-input" onChange={(e: any) => setFormData({
-                                        ...formData,
-                                        name: e.target.value
-                                    })} />
+                                <Form.Item
+                                    name="name"
+                                    rules={[{ required: true, message: "Please input your name!" }]}
+                                >
+                                    <Input
+                                        type="text"
+                                        placeholder="Name"
+                                        className="custom-input"
+                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                    />
                                 </Form.Item>
-
 
                                 <p className="input-label">Email *</p>
-                                <Form.Item name="email" rules={[{ required: true, message: "Please input your Email!" }]}>
-                                    <Input placeholder="Email" className="custom-input" onChange={(e: any) => setFormData({
-                                        ...formData,
-                                        email: e.target.value
-                                    })} />
-                                </Form.Item>
+                                <Form.Item
+                                    name="email"
+                                    rules={[{ required: true, message: "Please input your Email!" },
+                                    {
+                                        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                        message: "Enter a valid email address"
+                                    }
+                                    ]}
+                                >
+                                    <Input
+                                        placeholder="Email"
+                                        className="custom-input"
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
 
+                                    />
+                                </Form.Item>
 
                                 <p className="input-label">Phone Number *</p>
-
-                                <Form.Item name="mobileNo" rules={[{ required: true, message: "Enter your 10 digit phone number " }]}>
-
-                                    <Input type="text" placeholder="Phone Number" className="custom-input" onChange={(e: any) => setFormData({
-                                        ...formData,
-                                        mobileNo: e.target.value
-                                    })} />
-
+                                <Form.Item
+                                    name="mobileNo"
+                                    rules={[
+                                        { required: true, message: "Enter your 10 digit phone number" },
+                                        { pattern: /^\d{10}$/, message: "Phone number must be exactly 10 digits" },
+                                    ]}
+                                >
+                                    <Input
+                                        maxLength={10}
+                                        placeholder="Phone Number"
+                                        className="custom-input"
+                                        onChange={(e) => setFormData({ ...formData, mobileNo: e.target.value })}
+                                    />
                                 </Form.Item>
 
-
                                 <p className="input-label">Password *</p>
-
-                                <Form.Item name="password" rules={[{ required: true, message: "Password must contain at least one number and one special character." }]}>
-
+                                <Form.Item
+                                    name="password"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: "Password must contain at least one number and one special character."
+                                        }
+                                    ]}
+                                >
                                     <Input.Password
                                         className="custom-input"
                                         placeholder="Password"
-                                        iconRender={(visible) =>
-                                            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                                        }
-
-                                        onChange={(e: any) => setFormData({
-                                            ...formData,
-                                            password: e.target.value
-                                        })}
+                                        iconRender={(visible) => visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />}
+                                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                     />
-
                                 </Form.Item>
 
-
-
                                 <p className="input-label">Confirm Password *</p>
-                                <Form.Item name="confirmPassword" rules={[{ required: true, message: "Passwords do not match." }]}>
-
+                                <Form.Item
+                                    name="confirmPassword"
+                                    dependencies={['password']}
+                                    rules={[
+                                        { required: true, message: "Please confirm your password" },
+                                        ({ getFieldValue }) => ({
+                                            validator(_, value) {
+                                                if (!value || getFieldValue('password') === value) {
+                                                    return Promise.resolve();
+                                                }
+                                                return Promise.reject(new Error("Passwords do not match."));
+                                            },
+                                        }),
+                                    ]}
+                                >
                                     <Input.Password
                                         className="custom-input"
                                         placeholder="Confirm Password"
-                                        iconRender={(visible) =>
-                                            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                                        }
-
-                                        onChange={(e: any) => setFormData({
-                                            ...formData,
-                                            confirmPassword: e.target.value
-                                        })}
+                                        iconRender={(visible) => visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />}
+                                        onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                                     />
                                 </Form.Item>
-
-
                             </>
                         ) : (
                             <>
                                 <p className="input-label">Select Country *</p>
-
-                                <Form.Item name="country" rules={[{ required: true, message: "Select your country" }]}>
-
-                                    <Input placeholder="country" className="custom-input" onChange={(e: any) => setFormData({
-                                        ...formData,
-                                        country: e.target.value
-                                    })} />
-
+                                <Form.Item
+                                    name="country"
+                                    rules={[{ required: true, message: "Select your country" }]}
+                                >
+                                    <Input
+                                        placeholder="Country"
+                                        className="custom-input"
+                                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                                    />
                                 </Form.Item>
-
 
                                 <p className="input-label">Select Address *</p>
-
-                                <Form.Item name="" rules={[{ required: true, message: "Enter your address" }]}>
-
-                                    <Input type="text" placeholder="Enter your address..." className="custom-input-address"
-                                        onChange={(e: any) => setFormData({
-                                            ...formData,
-                                            address: e.target.value
-                                        })} />
+                                <Form.Item
+                                    name="address"
+                                    rules={[{ required: true, message: "Enter your address" }]}
+                                >
+                                    <Input
+                                        type="text"
+                                        placeholder="Enter your address..."
+                                        className="custom-input-address"
+                                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                                    />
                                 </Form.Item>
-
 
                                 <p className="input-label">Zip Code *</p>
-
-                                <Form.Item name="password" rules={[{ required: true, message: "Enter your Zipcode" }]}>
-
-                                    <Input type="text" placeholder="Enter your zip code" className="custom-input"
-                                        onChange={(e: any) => setFormData({
-                                            ...formData,
-                                            zip_code: e.target.value
-                                        })} />
+                                <Form.Item
+                                    name="zipcode"
+                                    rules={[
+                                        { required: true, message: "Enter your Zipcode" },
+                                        { pattern: /^\d{6}$/, message: "Zip code must be exactly 6 digits" },
+                                    ]}
+                                >
+                                    <Input
+                                        type="text"
+                                        placeholder="Enter your zip code"
+                                        maxLength={6}
+                                        className="custom-input"
+                                        onChange={(e) => setFormData({ ...formData, zip_code: e.target.value })}
+                                    />
                                 </Form.Item>
 
-                                <div className="gps-container ">
+                                <div className="gps-container">
                                     <img src="/Vector.svg" alt="logo" />
-
-                                    <div className="gps-text ">
-                                        <span className="current-gps">Current Location</span> <br></br>
+                                    <div className="gps-text">
+                                        <span className="current-gps">Current Location</span><br />
                                         <span className="using-gps">Using GPS</span>
                                     </div>
                                 </div>
                             </>
                         )}
 
-
-
-                        <Button className="sign-in-button" type="primary" htmlType="submit" >
+                        <Button className="sign-in-button" type="primary" htmlType="submit" loading={signinButtonLoading}>
                             {login ? "Continue" : "Register"}
                             {!login && <img className="arrow-logo" src="/arrow.svg" alt="arrow" />}
                         </Button>
