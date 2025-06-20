@@ -2,6 +2,7 @@ import ApiConstants from "@/Globals/ApiConstants";
 import { http } from "./Http";
 import { message } from "antd";
 import { retry } from "redux-saga/effects";
+import axios from "axios";
 
 // const baseURL = 'http://localhost:4400';
 const baseURL = 'https://api.purfull.com'
@@ -16,6 +17,11 @@ let getallproducturl : any =`${baseURL}/product/get-all-product`;
 let getproductusingidurl : any = `${baseURL}/product/get-product`;
 let getCartListurl : any = `${baseURL}/cart/getcart`;
 let updateCarturl : any = `${baseURL}/cart/updatecart`;
+
+// const getProductSuggestions = (name: string, lang: string) => {
+//     return axios.get(`${getallproducturl}?name=${encodeURIComponent(name)}&lang=${lang}`);
+//   };
+  
 
 const bclAxiosAPi = {
     getUserAddressListAxios: (payload: any) => {
@@ -55,10 +61,6 @@ const bclAxiosAPi = {
     getproductusingidListAxios : (payload:any) =>{
         return Method.dataQuery(payload,getproductusingidurl )
 
-    },
-    getallproductListbyQueryAxios: (name: string) => {
-        const urlWithQuery = `${getallproducturl}?name=${encodeURIComponent(name)}`;
-        return Method.get(urlWithQuery);
     },
     
     getCartListtAxios : (payload:any) =>{
@@ -199,32 +201,32 @@ const Method = {
         });
     },
     //for suggestion
-    async get(url: string) {
-        return await new Promise((resolve, reject) => {
-            http.get(url, {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            }).then((result: any) => {
-                if (result.status === 200) {
-                    resolve({
-                        status: 1,
-                        result: result,
-                    });
-                } else {
-                    reject({
-                        status: 3,
-                        error: ApiConstants.SOMETHING_WENT_WRONG,
-                    });
-                }
-            }).catch((err: any) => {
-                reject({
-                    status: 5,
-                    error: err,
-                });
-            });
-        });
-    }
+    // async get(url: string) {
+    //     return await new Promise((resolve, reject) => {
+    //         http.get(url, {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             }
+    //         }).then((result: any) => {
+    //             if (result.status === 200) {
+    //                 resolve({
+    //                     status: 1,
+    //                     result: result,
+    //                 });
+    //             } else {
+    //                 reject({
+    //                     status: 3,
+    //                     error: ApiConstants.SOMETHING_WENT_WRONG,
+    //                 });
+    //             }
+    //         }).catch((err: any) => {
+    //             reject({
+    //                 status: 5,
+    //                 error: err,
+    //             });
+    //         });
+    //     });
+    // }
     
 
     
@@ -232,8 +234,4 @@ const Method = {
 
 
 
-
-
-
-
-export { bclAxiosAPi }
+export { bclAxiosAPi};

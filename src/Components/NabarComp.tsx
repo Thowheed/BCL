@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 const NavbarComp = () => {
     //language
     const [language, setLanguage] = useState("en");
-    
+    const [suggestions, setSuggestions] = useState([]);
     
     const router = useRouter()
 
@@ -25,6 +25,7 @@ const NavbarComp = () => {
     }
 
     const goToLogin = () => router.push("/login");
+    //const goToProductdetail = () => router.push("/productdetail");
 
     const [searchterm, setsearchterm] = useState<any>(null);
     const [debouncedTerm, setDebouncedTerm] = useState(searchterm);
@@ -33,58 +34,61 @@ const NavbarComp = () => {
 
 
     useEffect(() => {
-
-
         if (searchterm) {
-            console.log("inside this useeffct");
-
-
-            const timer = setTimeout(() => {
-
-                getAllproductapi(searchterm)
-
-
-            }, 500);
-
-
-
-            return () => {
-                clearTimeout(timer); // Cancel the timeout if value changes
-            };
-
+          const timer = setTimeout(() => {
+            fetchSuggestions(searchterm); //  trigger suggestions
+            getAllproductapi(searchterm); // optional: update store
+          }, 500);
+      
+          return () => clearTimeout(timer); // cancel timeout if term changes
         }
-
-    }, [searchterm])
+        else {
+          setSuggestions([]); // clear suggestions if input is empty
+        }
+      }, [searchterm]);
+      
 
     const getAllproductapi = (value: any) => {
 
 
         let paylaod = {
 
-            name: value
-
+            name: value,
+            
+            
         }
 
         dispatch(getallproductListLoad(paylaod))
     }
 
-    const [suggestions, setSuggestions] = useState([]);
     
-    //   const getAllproductapi = (value:any) => {
-    //     const payload = { name: value};
+    
+    const fetchSuggestions = async (text: string) => {
+        try {
+          const response = await fetch(
+            `https://api.purfull.com/product/get-all-product?name=${encodeURIComponent(text)}&lang=${language}`
+          );
       
-    //     dispatch(getallproductListLoad(payload)).then((res:any) => {
-    //       if (res?.payload?.data) {
-    //         const names = res.payload.data.map((product: any) => ({
-    //           value: product.name, // what appears in dropdown
-    //           label: product.name, // what is shown
-    //         })); 
-    //         setSuggestions(names);
-    //       }else {
-    //         setSuggestions([]); // clear suggestions if nothing matches
-    //     }
-    //     });
-    //   };
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+      
+          const result = await response.json();
+          const products = result?.data || [];
+      
+          const formattedSuggestions = products.map((item: any) => ({
+            value: item.id.toString(),
+            label: item.name,
+            //id: item.id,
+           
+          }));
+      
+          setSuggestions(formattedSuggestions);
+        } catch (error) {
+          console.error("Suggestion error:", error);
+          setSuggestions([]);
+        }
+      };
       
     
     
@@ -179,13 +183,15 @@ const NavbarComp = () => {
                     </button>
                 </div>
 
-                    <AutoComplete
+                    <AutoComplete 
                     options={suggestions}
                     style={{ width: 300 }}
-                    onSearch={(text : any) => setsearchterm(text)}
-                    onSelect={(value: any) => {
-                        setsearchterm(value);
-                        getAllproductapi(value);
+                    onSearch={(text : any) => setsearchterm(text.trim())}
+                    onSelect={(value) => {
+                         router.push(`/productdetail/${value}`);
+                                
+                        // setsearchterm(value);
+                        // getAllproductapi(value);
                     }}
                     >
                     <Input
@@ -246,7 +252,7 @@ const NavbarComp = () => {
 
                 <div className='deleivery-and-carts'>
 
-                    <div className="delivery-mobile">
+                    {/* <div className="delivery-mobile">
                         <span className="delivery-time">Delivery in 8 minutes</span>
                         <div className="location-mobile">
                             <span>Select Location</span>
@@ -256,7 +262,7 @@ const NavbarComp = () => {
 
 
 
-                    </div>
+                    </div> */}
                     <div className="actions-mobile">
                         <button className="cart-button-mobile" onClick={gocart}>
                             <img src="./Vectora.svg" alt="cart" />
@@ -277,16 +283,24 @@ const NavbarComp = () => {
                 </div>
 
                 <div className="search-mobile">
-                    <Input
+                    <AutoComplete
+                        options={suggestions}
+                        style={{ width: '100%' }}
+                        onSearch={(text: any) => setsearchterm(text.trim())}
+                        onSelect={(value) => {
+                            router.push(`/productdetail/${value}`);
+                        // setsearchterm(value);
+                        // getAllproductapi(value);
+                        }}
+                    >
+                        <Input
                         className="search-input-mobile"
-                        placeholder="Search by Tomato....."
+                        placeholder="Search by Tomato..."
                         prefix={<SearchOutlined />}
                         style={{ fontSize: 16, fontWeight: 400 }}
-                        onChange={(e:any) => { setsearchterm(e.target.value) }}
-                    />
-                </div>
-
-
+                        />
+                    </AutoComplete>
+                    </div>
             </div>
         </>
 
