@@ -38,7 +38,7 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    // getAllproductapi(); // fetch products on mount
+    getAllproductapi(); // fetch products on mount
   }, []);
 
   // Reusable loader or carousel renderer
@@ -49,13 +49,13 @@ export default function HomePage() {
     <div className="home-wrapper">
       <NavbarComp />
       <div className="home-content">
-        {/* Banner Section */}
+        {/* Banner Section */} 
         <div className="banner-section">
           <div className="forBanner">
             <Carousel autoplay dots>
-              <div><Image src={homeBanner} alt="Banner 1" className="img-1" /></div>
-              <div><Image src={homeBanner} alt="Banner 2" /></div>
-              <div><Image src={homeBanner} alt="Banner 3" /></div>
+              <div><Image src={homeBanner} alt="Banner 1" className="img-1 carousel-image" /></div>
+              <div><Image src={homeBanner} alt="Banner 2" className="carousel-image" /></div>
+              <div><Image src={homeBanner} alt="Banner 3" className="carousel-image"/></div>
             </Carousel>
           </div>
           <div className="forCargoBanner"><Image src={homeCargoBanner} alt="Cargo" /></div>

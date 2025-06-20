@@ -105,13 +105,19 @@ const NavbarComp = () => {
 
                 <div className="divider"></div>
 
-                <div className="menu-item">
-                    <UserIcon className="profile-logo h-6 w-6 text-green-600" />
+                <div className="menu-item" onClick={()=>{
+                     localStorage.removeItem('user');
+                    router.push('/userprofile');
+                }}>
+                    <UserIcon className="profile-logo h-6 w-6 text-black" />
                     <span>Profile</span>
                 </div>
 
-                <div className="menu-item">
-                    <ShoppingBagIcon className="myorder-logo h-6 w-6 text-green-600" />
+                <div className="menu-item"  onClick={() => {
+                    localStorage.removeItem('user');
+                    router.push('/ordertracking');
+                }}>
+                    <ShoppingBagIcon className="myorder-logo h-6 w-6 text-black" />
                     <span>My Orders</span>
                 </div>
 
@@ -121,7 +127,7 @@ const NavbarComp = () => {
                     localStorage.removeItem('user');
                     router.push('/login');
                 }}>
-                    <ArrowRightOnRectangleIcon className="h-6 w-6 text-red-600 group-hover:text-red-800 transition-colors duration-200" />
+                    <ArrowRightOnRectangleIcon className="logout-logo h-6 w-6 text-black" />
 
                     <span>Logout</span>
                 </div>
@@ -168,7 +174,7 @@ const NavbarComp = () => {
                 <div className="actions-tab-surface">
                     {loggedInUser ? (
                         <Dropdown overlay={dropdownContent} trigger={['click']} placement="bottomRight">
-                            <Badge dot color="green" className="avatar-badge">
+                            <Badge className="avatar-badge">
                                 <Avatar shape="circle" src={loggedInUser?.avatarUrl || "/user.png"} icon={!loggedInUser?.avatarUrl && <UserOutlined />} />
                             </Badge>
                         </Dropdown>
@@ -214,7 +220,7 @@ const NavbarComp = () => {
                 <div className="actions">
                     {loggedInUser ? (
                         <Dropdown overlay={dropdownContent} trigger={['click']} placement="bottomRight">
-                            <Badge dot color="green" className="avatar-badge">
+                            <Badge className="avatar-badge">
                                 <Avatar shape="circle" src={loggedInUser?.avatarUrl || "/user.png"} icon={!loggedInUser?.avatarUrl && <UserOutlined />} />
                             </Badge>
                         </Dropdown>
@@ -250,17 +256,38 @@ const NavbarComp = () => {
 
 
                 <div className='deleivery-and-carts'>
-                    <img className="logo" src="/BCL-Green-1.svg" alt="Logo" />
+                    <img className="logo-mobile" src="/BCL-Green-1.svg" alt="Logo" />
 
+                    <div className="lang">
+                        <select
+                            value={language}
+                            onChange={(e) => {
+                                const lang = e.target.value;
+                                setLanguage(lang);
+                                getAllproductapi(searchterm); // update product list in selected language
 
+                            }}
+                            className="bg-transparent outline-none  ma"
+                        >
+                            <option value="en">English</option>
+                            <option value="ta">Tamil</option>
+                        </select>
+                    </div>
                     <div className="actions-mobile">
-                        <button className="cart-button-mobile" onClick={gocart}>
-                            <img src="./Vectora.svg" alt="cart" className='bg-black' />
-                        </button>
+                        {loggedInUser && (
+                            <button className="cart-button-mobile" onClick={gocart}>
+                                <ShoppingBagIcon className="myorder-logo h-6 w-6 text-black" />
+                            </button>
+                        )}
+
                         {loggedInUser ? (
                             <Dropdown overlay={dropdownContent} trigger={['click']} placement="bottomRight">
-                                <Badge dot color="green" className="avatar-badge">
-                                    <Avatar shape="circle" src={loggedInUser?.avatarUrl || "/user.png"} icon={!loggedInUser?.avatarUrl && <UserOutlined />} />
+                                <Badge className="avatar-badge">
+                                    <Avatar
+                                        shape="circle"
+                                        src={loggedInUser?.avatarUrl || "/user.png"}
+                                        icon={!loggedInUser?.avatarUrl && <UserOutlined />}
+                                    />
                                 </Badge>
                             </Dropdown>
                         ) : (
@@ -281,6 +308,8 @@ const NavbarComp = () => {
                         onChange={(e) => { setsearchterm(e.target.value) }}
                     />
                 </div>
+
+                {/* <div className='bg-amber-200 w-[90%] flex flex-col pt-3'><span>delivery to addess</span> <span>in 8 minutes</span></div> */}
 
 
             </div>
