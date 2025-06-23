@@ -10,73 +10,73 @@ let loginUrl: any = `${baseURL}/api/e-commercelogin`;
 let url: any = `${baseURL}/user/get-all-user`;
 let Carturl: any = `${baseURL}/cart/createcart`;
 let Loginurl: any = `${baseURL}/user/login`;
-let siginurl : any = `${baseURL}/user/create-user`;
-let updateuserurl : any = `${baseURL}/user/update-user`;
-let getallproducturl : any =`${baseURL}/product/get-all-product`;
-let getproductusingidurl : any = `${baseURL}/product/get-product`;
-let getCartListurl : any = `${baseURL}/cart/getcart`;
-let updateCarturl : any = `${baseURL}/cart/updatecart`;
+let siginurl: any = `${baseURL}/user/create-user`;
+let updateuserurl: any = `${baseURL}/user/update-user`;
+let getallproducturl: any = `${baseURL}/product/get-all-product`;
+let getproductusingidurl: any = `${baseURL}/product/get-product`;
+let getCartListurl: any = `${baseURL}/cart/getcart`;
+let updateCarturl: any = `${baseURL}/cart/updatecart`;
 
 const bclAxiosAPi = {
     getUserAddressListAxios: (payload: any) => {
-        
+
         return Method.dataQuery(payload, loginUrl)
     },
-    getUserListAxios:(payload: any) => {
+    getUserListAxios: (payload: any) => {
         return Method.dataQuery(payload, url)
 
     },
 
-    addtoCartListAxios :(payload:any)=>{
+    addtoCartListAxios: (payload: any) => {
         return Method.dataQuery(payload, Carturl)
 
     },
 
-    loginListAxios : (payload:any) => {
+    loginListAxios: (payload: any) => {
 
-        return Method.dataQuery(payload ,Loginurl)
+        return Method.dataQuery(payload, Loginurl)
 
     },
 
-    siginListAxios :(payload:any) => {
+    siginListAxios: (payload: any) => {
         return Method.dataQuery(payload, siginurl)
 
     },
 
-    updateuserListAxios :(payload:any) => {
+    updateuserListAxios: (payload: any) => {
         return Method.dataPut(payload, updateuserurl)
 
     },
-  
-    getallproductListAxios :(payload:any) => {
-        return Method.dataQuery(payload, getallproducturl)
+
+    getallproductListAxios: () => {
+        return Method.get(getallproducturl)
 
     },
-    getproductusingidListAxios : (payload:any) =>{
-        return Method.dataQuery(payload,getproductusingidurl )
+    getproductusingidListAxios: (payload: any) => {
+        return Method.dataQuery(payload, getproductusingidurl)
 
     },
     getallproductListbyQueryAxios: (name: string) => {
         const urlWithQuery = `${getallproducturl}?name=${encodeURIComponent(name)}`;
         return Method.get(urlWithQuery);
     },
-    
-    getCartListtAxios : (payload:any) =>{
-        return Method.dataQuery(payload,getCartListurl )
+
+    getCartListtAxios: (payload: any) => {
+        return Method.dataQuery(payload, getCartListurl)
 
     },
-    updatecartListAxios :(payload:any) => {
+    updatecartListAxios: (payload: any) => {
         return Method.dataPut(payload, updateCarturl)
 
     },
-    
+
 }
 
 const Method = {
     async dataQuery(body: any, url: any) {
         return await new Promise((resolve, reject) => {
             http.post(url, {
-                 body,
+                body,
             }, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ const Method = {
     async dataPut(body: any, url: any) {
         return await new Promise((resolve, reject) => {
             http.put(url, {
-                 body,
+                body,
             }, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -225,9 +225,9 @@ const Method = {
             });
         });
     }
-    
 
-    
+
+
 }
 
 
