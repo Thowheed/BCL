@@ -239,17 +239,17 @@ export function* updatecartListsaga(action: any): SagaIterator {
     }
 }
 
-// export function* getProductsByQuerySaga(action: any): any {
-//   try {
-//     const response = yield call(bclAxiosAPi.getallproductListbyQueryAxios, action.payload.name);
-//     yield put({
-//       type: "GET_ALL_PRODUCT_LIST_BYQUERY_SUCCESS",
-//       payload: response.result.data, // Adjust if the API wraps data
-//     });
-//   } catch (error) {
-//     yield put({
-//       type: "GET_ALL_PRODUCT_LIST_BYQUERY_FAILURE",
-//       error,
-//     });
-//   }
-// }
+export function* getProductsByQuerySaga(action: any): any {
+  try {
+    const response = yield call(bclAxiosAPi.getallproductListbyQueryAxios, action.payload.name);
+    yield put({
+      type: "GET_ALL_PRODUCT_LIST_BYQUERY_SUCCESS",
+      payload: response.result.data, // Adjust if the API wraps data
+    });
+  } catch (error) {
+    yield put({
+      type: "GET_ALL_PRODUCT_LIST_BYQUERY_FAILURE",
+      error,
+    });
+  }
+}

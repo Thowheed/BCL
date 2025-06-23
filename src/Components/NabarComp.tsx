@@ -2,6 +2,7 @@
 
 import { Dropdown, Badge, Avatar, Input, AutoComplete } from 'antd';
 import { DownOutlined, UserOutlined, SearchOutlined } from '@ant-design/icons';
+import "../styles/navbar.scss";
 import "../styles/userprofile.scss";
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,8 +17,8 @@ import { ShoppingBagIcon, UserIcon, ArrowRightOnRectangleIcon } from '@heroicons
 const NavbarComp = () => {
     //language
     const [language, setLanguage] = useState("en");
-    const [suggestions, setSuggestions] = useState([]);
-    
+    // const [suggestions, setSuggestions] = useState([]);
+
 
     const router = useRouter()
 
@@ -40,18 +41,18 @@ const NavbarComp = () => {
 
     useEffect(() => {
         if (searchterm) {
-          const timer = setTimeout(() => {
-            fetchSuggestions(searchterm); //  trigger suggestions
-            getAllproductapi(searchterm); // optional: update store
-          }, 500);
-      
-          return () => clearTimeout(timer); // cancel timeout if term changes
+            const timer = setTimeout(() => {
+                fetchSuggestions(searchterm); //  trigger suggestions
+                getAllproductapi(searchterm); // optional: update store
+            }, 500);
+
+            return () => clearTimeout(timer); // cancel timeout if term changes
         }
         else {
-          setSuggestions([]); // clear suggestions if input is empty
+            setSuggestions([]); // clear suggestions if input is empty
         }
-      }, [searchterm]);
-      
+    }, [searchterm]);
+
 
     const getAllproductapi = (value: any) => {
 
@@ -59,41 +60,41 @@ const NavbarComp = () => {
         let paylaod = {
 
             name: value,
-            
-            
+
+
         }
 
         dispatch(getallproductListLoad(paylaod))
     }
 
-    
-    
+
+
     const fetchSuggestions = async (text: string) => {
         try {
-          const response = await fetch(
-            `https://api.purfull.com/product/get-all-product?name=${encodeURIComponent(text)}&lang=${language}`
-          );
-      
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-      
-          const result = await response.json();
-          const products = result?.data || [];
-      
-          const formattedSuggestions = products.map((item: any) => ({
-            value: item.id.toString(),
-            label: item.name,
-            //id: item.id,
-           
-          }));
-      
-          setSuggestions(formattedSuggestions);
+            const response = await fetch(
+                `https://api.purfull.com/product/get-all-product?name=${encodeURIComponent(text)}`
+            );
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const products = result?.data || [];
+
+            const formattedSuggestions = products.map((item: any) => ({
+                value: item.id.toString(),
+                label: item.name.en,
+                //id: item.id,
+
+            }));
+
+            setSuggestions(formattedSuggestions);
         } catch (error) {
-          console.error("Suggestion error:", error);
-          setSuggestions([]);
+            console.error("Suggestion error:", error);
+            setSuggestions([]);
         }
-      };
+    };
     const [suggestions, setSuggestions] = useState([]);
 
     //   const getAllproductapi = (value:any) => {
@@ -111,13 +112,13 @@ const NavbarComp = () => {
     //     }
     //     });
     //   };
-        const { t, i18n, ready } = useTranslation();
-      useEffect(() => {
+    const { t, i18n, ready } = useTranslation();
+    useEffect(() => {
 
-            i18n.changeLanguage(language);
-      }, [language])
-    
-    
+        i18n.changeLanguage(language);
+    }, [language])
+
+
 
     const dropdownContent = (
         <div className="drop-down">
@@ -133,15 +134,15 @@ const NavbarComp = () => {
 
                 <div className="divider"></div>
 
-                <div className="menu-item" onClick={()=>{
-                     localStorage.removeItem('user');
+                <div className="menu-item" onClick={() => {
+                    localStorage.removeItem('user');
                     router.push('/userprofile');
                 }}>
                     <UserIcon className="profile-logo h-6 w-6 text-black" />
                     <span>Profile</span>
                 </div>
 
-                <div className="menu-item"  onClick={() => {
+                <div className="menu-item" onClick={() => {
                     localStorage.removeItem('user');
                     router.push('/ordertracking');
                 }}>
@@ -217,14 +218,14 @@ const NavbarComp = () => {
                     </button>
                 </div>
 
-                    <AutoComplete 
+                <AutoComplete className='search'
                     options={suggestions}
-                    style={{ width: 300 }}
-                    onSearch={(text : any) => setsearchterm(text.trim())}
+                    // style={{ width: 800 }}
+                    onSearch={(text: any) => setsearchterm(text.trim())}
 
                     onSelect={(value) => {
-                         router.push(`/productdetail/${value}`);
-                                
+                        router.push(`/productdetail/${value}`);
+
                         // setsearchterm(value);
                         // getAllproductapi(value);
                     }}
@@ -266,7 +267,7 @@ const NavbarComp = () => {
                         </Badge>
                     </Dropdown> */}
                     <button className="cart-button" onClick={gocart}>
-                        <img src="./Vectora.svg" alt="cart" />
+                        <img src="./Vectora.svg" />
                         <span>{t("cart")}</span>
                     </button>
                 </div>
@@ -276,8 +277,6 @@ const NavbarComp = () => {
 
 
             </div>
-
-
 
 
             {/* /// mobile nav bar */}
@@ -331,29 +330,23 @@ const NavbarComp = () => {
 
                 </div>
 
-                <div className="search-mobile">
+                <div className='search-mobile'>
                     <AutoComplete
                         options={suggestions}
                         style={{ width: '100%' }}
                         onSearch={(text: any) => setsearchterm(text.trim())}
                         onSelect={(value) => {
                             router.push(`/productdetail/${value}`);
-                        // setsearchterm(value);
-                        // getAllproductapi(value);
                         }}
                     >
                         <Input
-                        className="search-input-mobile"
-                        placeholder="Search by Tomato..."
-                        prefix={<SearchOutlined />}
-                        style={{ fontSize: 16, fontWeight: 400 }}
-
+                            className="search-input-mobile"
+                            placeholder="Search by Tomato..."
+                            prefix={<SearchOutlined />}
+                            style={{ fontSize: 16, fontWeight: 400 }}
+                            onChange={(e) => setsearchterm(e.target.value)} // ✅ Correct placement
                         />
                     </AutoComplete>
-                    </div>
-
-                        onChange={(e) => { setsearchterm(e.target.value) }}
-                    />
                 </div>
 
                 {/* <div className='bg-amber-200 w-[90%] flex flex-col pt-3'><span>delivery to addess</span> <span>in 8 minutes</span></div> */}
