@@ -33,17 +33,14 @@ export default function LoginCompo() {
 
     const [messageApi, contextHolder] = message.useMessage();
 
-
-    // const handleSubmit = () => {
-    //     router.push("/dashboard/reports");
-    // };
+    //spinner
+    const [loginButtonLoading, setLoginButtonLoading] = useState(false);
 
     const handleSubmit = () => {
         router.push("/signin")
 
     }
-
-
+    
     const { loginLoad, loginData } = useSelector((state: any) => state.bcl);
     console.log(loginLoad);
     console.log("loginData==>", loginData);
@@ -60,26 +57,36 @@ export default function LoginCompo() {
 
         dispatch(loginListLoad(payload));
         setLoginDataSuccess(true)
-
+        setLoginButtonLoading(true);
     }
 
     useEffect(() => {
+
+        
+
         if (loginDataSuccess && !loginLoad) {
             console.log("inside success");
             setUser(loginData?.user?.user)
-            setLoginDataSuccess(false)
+            setLoginDataSuccess(false);
+            setLoginButtonLoading(false);
             console.log("login success");
-
             messageApi.open({ type: "success", content: "login successfully" })
             router.push("/home")
-
-
-
         }
-        else if (!loginDataSuccess && !loginLoad) {
+        else {
+            console.log("llllllllll",loginData);
+            
+
+            setLoginButtonLoading(false); // ✅ Hide spinner
             messageApi.open({ type: "error", content: "Login failed" });
 
-
+            if (loginData?.message === "Invalid credentials") {
+                console.log("innnnnnnnnn");
+                
+                // setinvaildcreaditdata("Invalid email or password"); // ⬅️ Set custom field error
+            } else {
+                messageApi.open({ type: "error", content: "Login failed" });
+            }
         }
     }, [loginDataSuccess, loginLoad]);
 
@@ -102,7 +109,7 @@ export default function LoginCompo() {
 
 
 
-                    <Form form={form} onFinish={Loginapi}>
+                    <Form form={form} onFinish={Loginapi} className="gap-4" >
 
                         <p className="input-labels">Email </p>
 
@@ -124,13 +131,16 @@ export default function LoginCompo() {
                                 iconRender={(visible) =>
                                     visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
                                 }
-                                onChange={(e: any) => setnewloginData({
-                                    ...TempLoginData,
-                                    password: e.target.value
-                                })}
+                                onChange={(e: any) => {
+                                    setnewloginData({
+                                        ...TempLoginData,
+                                        password: e.target.value
+                                    })
+                                }}
                             />
 
                         </Form.Item>
+
 
                         <div className="options-row">
                             {login && (
@@ -139,7 +149,7 @@ export default function LoginCompo() {
                                 </a></div>
                             )}
                         </div>
-                        <Button className="sign-in-button" htmlType="submit" type="primary"  >
+                        <Button className="Login-button" htmlType="submit" type="primary" loading={loginButtonLoading}>
                             Login
                         </Button>
 
