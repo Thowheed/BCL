@@ -1,14 +1,39 @@
-.product-detail-container {
+.product-main {
+    margin: 125px auto 0;
 
+    .product-box-row-img {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 20px;
+        width: 100%;
+        gap: 25px;
+    }
+}
+
+.product-detail-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     // margin: 3% 3% 25px 3%;
     gap: 15px;
 
     .product-image {
-        border: 1px solid #CCCCCCBF;
+        // border: 1px solid #CCCCCCBF;
         border-radius: 10px;
-        padding: 10px;
+
+
+        .main-product-img {
+            // border: 1px solid #eee;
+            width: 100%;
+            border-radius: 10px;
+
+        }
+        .carousel-main-image{
+            height: 450px;
+            width: 550px;
+        border: 1px solid #eee;
+
+}
     }
 
     .product-detail-content {
@@ -33,7 +58,7 @@
                 font-weight: 600;
             }
 
-            .product-weight{
+            .product-weight {
                 margin-bottom: 20px;
                 color: #666666;
             }
@@ -78,7 +103,7 @@
                 font-weight: 600;
             }
 
-            .product-description{
+            .product-description {
                 color: #666666
             }
         }
@@ -86,12 +111,54 @@
 }
 
 .image-list-container {
-    // margin: 0% 1% 0% 3%;
     border: 1px solid #CCCCCCBF;
     width: fit-content;
-    // height: 100vh;
     display: flex;
     border-radius: 10px;
     cursor: pointer;
-    // padding: 10px;
+}
+
+@media screen and (max-width:1024px) {
+ .carousel-main-image{
+    height: 350px !important;
+    width: 450px !important;
+ }
+}
+
+@media screen and (max-width:720px) {
+
+
+    .product-main {
+        margin: 10px auto 0;
+
+    }
+
+    .product-image {
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-detail-container {
+        flex-direction: column;
+    }
+
+    .product-detail-content {
+        width: 95% !important;
+
+    }
+
+    .product-box-row-img {
+        flex-direction: column;
+        margin-top: 20px;
+        gap: 24px;
+
+
+    }
+
+
+
 }

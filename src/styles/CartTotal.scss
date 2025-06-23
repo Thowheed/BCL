@@ -34,7 +34,13 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+// @media screen and (max-width:1024px) {
+
+//      .cart-total-container{
+//      }
+// }
+
+@media screen and (max-width: 1023px) {
     .cart-total-container {
         width: 95%;
         margin: 20px 10px;

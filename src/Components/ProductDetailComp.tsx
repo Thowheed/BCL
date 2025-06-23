@@ -1,123 +1,137 @@
-'use client'
-import appImages from "@/Globals/AppImages";
-import { getproductusingidListLoad } from "@/store/reducer/indexSlice";
+'use client';
+// import appImages from "@/public/Images/Grass.svg";
 import { Button } from "antd";
 import dynamic from "next/dynamic";
-import Image from "next/image"
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const NavbarComp = dynamic(() => import('./NabarComp'));
 const FooterComp = dynamic(() => import('./FooterCompo'));
 const ProductSlide = dynamic(() => import('./ProductSlide'));
 
 const ProductDetail = () => {
+  const [product, setProduct] = useState<any>(null);
+  const [imageList, setImageList] = useState<string[]>([]);
+  const [selectedImage, setSelectedImage] = useState<string>("");
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        // Dummy image list
+        const list = [
+          "/Images/Grass.svg",
+          "/Images/next.svg",
+          "/Images/Grass.svg",
+        ];
 
-  
-    // / getproduct using id 
-    
-    const { getproductusingidLoad, getproductusingidData,getProductIdData } = useSelector((state: any) => state.bcl);
-    // console.log(getproductusingidLoad);
-    // console.log(getproductusingidData);
+        // Dummy product details
+        const data = {
+          id: 1,
+          name: "Fresh Organic Grass",
+          price: 39,
+          quantity_available: 250,
+          description:
+            "Grown naturally without pesticides. Ideal for pets and eco-living. Rich in nutrients and freshness.",
+        };
 
-    console.log("getProductIdData",getProductIdData);
+        setProduct(data);
+        setImageList(list);
+        setSelectedImage(list[0]);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
 
-    const dispatch = useDispatch();
+    fetchProduct();
+  }, []);
+  useEffect(() => {
+    console.log("gggggg");
 
+  }, [selectedImage])
+  if (!product) return <div className="p-8 text-lg">Loading product...</div>;
 
-    const getproductusingidapi = ()=> {
+  return (
+    <div className="product-main p-8 ">
+      <div className="product-detail-container">
+        <div className="product-image ">
+          <img
+            src={selectedImage}
+            alt="Selected Product"
+            // width={600}
+            // height={400}
+            className="carousel-main-image rounded shadow"
+          />
 
-        let payload = {
+          <div className="product-box-row-img flex gap-4 mt-4">
+            {imageList.map((item, index) => (
+              <div
+                key={index}
+                // onClick={() => setSelectedImage(item)}
+                onClick={() => {
+                  console.log("Clicked image:", item);
+                  setSelectedImage(item);
+                }}
 
-            id:"1"
-        }
-
-        dispatch(getproductusingidListLoad(payload))
-
-    }
-
-    useEffect(()=>{
-        getproductusingidapi()
-    } ,[])
-
-
-
-
-    let list = new Array(5).fill(0);
-    return (
-        <div style={{ margin: "16vh auto 0" }}>
-            <div className="product-detail-container">
-                <div className="product-image">
-                    <Image src={appImages?.GRASS_IMAGE} alt="Product" width={600} height={200} />
-                </div>
-                <div className="product-detail-content">
-                    <div className="product-title-conatainer">
-                        <div className="product-breadcrumbs">
-                            {getProductIdData?.name}
-                        </div>
-                        <div className="product-title">{getProductIdData?.name}</div>
-                        <div className="product-weight">{getProductIdData?.quantity_available+"gm"}</div>
-
-                        <div className="border-line"></div>
-                        <div className="card-price-container">
-                            <div className="card-price">
-                                $ {getProductIdData?.price}
-                            </div>
-                            <Button className="card-button" >Add</Button>
-                        </div>
-                    </div>
-
-                    <div className="product-description-container">
-                        <div className="product-details">
-                            <div className="product-detail-title">Product Details</div>
-                        </div>
-                        <div className="product-description">
-                            {/* Packed with nutritions - rich in iron, vitamin A and C, and antioxidants for a
-                            healthy diet.<br />
-                            Farm fresh quality - Harvest at peak freshness to retain taste and nutritions.
-                            <br />
-                            Versatile and Delicious - Perfect for salads, smoothies, soups and stir-fries.
-                            <br />
-                            Naturally grown - Sourced and from trusted farms with no harmful additives.
-                            <br />
-                            Boosts Health - Supports immunity, heart health, and overall wellness. */}
-                            {getProductIdData?.description}
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div className="flex items-center flex-row mt-5 gap-6 ml-[6.5%] ">
-                {list.map((item: any, index: any) => {
-                    return (
-                        <div className="image-list-container" key={index}>
-                            <Image src={appImages?.GRASS_IMAGE} alt="Product" width={103} height={150} />
-                        </div>
-                    )
-                })}
-            </div>
-
+                className={`cursor-pointer p-1 border-2 rounded-xl ${selectedImage === item ? "border-green-200" : "border-gray-300"
+                  }`}
+              >
+                <img
+                  src={item}
+                  alt={`Product ${index}`}
+                  width={100}
+                  height={100}
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-    )
-}
+
+        <div className="product-detail-content">
+          <div className="product-title-conatainer">
+            <div className="product-breadcrumbs text-gray-500">{product.name}</div>
+            <div className="product-title text-xl font-bold">{product.name}</div>
+            <div className="product-weight text-sm">{product.quantity_available} gm</div>
+            <div className="border border-gray-300 my-4"></div>
+
+            <div className="card-price-container flex justify-between items-center">
+              <div className="card-price text-2xl font-semibold text-green-700">$ {product.price}</div>
+              <Button className="card-button bg-green-500 text-white">Add</Button>
+            </div>
+          </div>
+
+          <div className="product-description-container mt-8">
+            <div className="product-details">
+              <div className="product-detail-title font-semibold text-lg mb-2">Product Details</div>
+            </div>
+            <div className="product-description text-gray-700 leading-relaxed">
+              {product.description}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ProductDetailComp = () => {
+  return (
+    <div className="">
+      <NavbarComp />
 
-    return (
-        <div className="">
-            <NavbarComp />
+      <ProductDetail />
 
-            <ProductDetail />
-            <div className=' text-bold py-10 flex justify-between !text-lg mx-18 mt-10' >
-                <span>More Items</span>
-                <span className="text-[#2EAF4B]">View All</span>
-            </div>
-            <div className="mx-12 pb-[8vh] ">
-                <ProductSlide />
-            </div>
-            <FooterComp />
-        </div>
-    )
+      <div className="text-bold py-10 flex justify-between !text-lg mx-18 mt-10">
+        <span>More Items</span>
+        <span className="text-[#2EAF4B] cursor-pointer">View All</span>
+      </div>
+
+      <div className="mx-12 pb-[8vh]">
+        <ProductSlide />
+      </div>
+
+      <FooterComp />
+    </div>
+  );
 };
 
 export default ProductDetailComp;

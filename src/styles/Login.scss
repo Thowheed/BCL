@@ -1,188 +1,156 @@
-.login-form-container {
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  background-color: #fff;
+
+  .login-card {
+    width: 90%;
+    max-width: 450px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .login-form-container {
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 20px;
     margin: auto;
+    width: 100%;
 
     .welcome-message {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #000000;
-        margin-bottom: 20px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 20px;
+
+      .small-text {
+        font-size: 12px;
+        color: #575757;
+        font-weight: 300;
+        line-height: 150%;
+        margin-top: 10px;
+      }
     }
 
     .signin-message {
-        color: #676b7b;
-        margin-bottom: 15px;
+      color: #676b7b;
+      margin-bottom: 15px;
     }
 
-
-    .sign-in-button {
-        color: #fff !important;
-        background-color: #2EAF4B !important;
-        padding: 20px 20px !important;
-        font-weight: 600;
-        width: 100%;
+    .input-labels {
+      margin: 8px 0;
+      font-size: 13px;
+      color: #424040;
+      font-weight: 400;
     }
 
-    .sign-in-button.clicked {
-        opacity: 0.3 !important;
+    .ant-input {
+      height: 45px;
+      width: 100%;
+      display: flex;
+      align-items: center;
     }
 
     .options-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: #3b4056;
-        margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #3b4056;
+      margin-bottom: 20px;
+      font-weight: 500;
+
+      .forget-password-div {
+        width: 100%;
+        text-align: end;
+
+        .forgot-password {
+          color: #58bf6f;
+          margin-top: 10px;
+          text-align: end;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .Login-button {
+      width: 100%;
+      font-weight: 600;
+      border: none;
+      color: #fff !important;
+      background-color: #2eaf4b !important;
+      padding: 20px !important;
+
+      &.clicked {
+        opacity: 0.3 !important;
+      }
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 30px 0;
+
+      .line {
+        width: 45%;
+        border: 1px solid #d9d9d9;
+      }
+
+      .or-text {
         font-weight: 500;
+        color: #3b4056;
+      }
     }
 
-    .forgot-password {
-        color: #58BF6F;
-        // margin-top: 20px;
-        // margin-left: 65%;
-        // text-align: end;
-        // text-decoration: none;
+    .toggle-login {
+      text-align: center;
+      margin-bottom: 20px;
+
+      .toggle-text {
+        font-weight: 500;
+      }
+
+      .toggle-link {
+        color: #2eaf4b;
+        font-weight: 500;
+        text-decoration: none;
+      }
     }
-
-
+  }
 }
 
 .brand-login {
-
-    width: 300px;
-    height: 70px;
-    margin: 0 0 30px;
-
-
-}
-
-.login-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 0;
-    background-color: #fff;
-
-    .login-card {
-        width: 90%;
-        max-width: 450px;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        padding: 24px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .login-form-container {
-        width: 100%;
-    }
-}
-
-
-.small-text {
-    font-size: 12px;
-    color: #575757;
-    font-weight: 300;
-    line-height: 150%;
-    margin-top: 10px;
+  width: 300px;
+  height: 70px;
+  margin-bottom: 30px;
 }
 
 .login-logo {
-    width: 120px;
-    margin-bottom: 20px;
+  width: 120px;
+  margin-bottom: 20px;
 }
 
-
-.ant-input {
-    height: 45px;
-    width: 100%;
-}
-
-.options-row {
-
-    text-align: center;
-    margin: 0 16px 16px 0;
-
-    .forget-password-div{
-        width: 100%;
-        text-align: end;
-    }
-}
-
-
-.input-labels {
-
-    margin: 8px;
-    margin-left: 0%;
-    font-size: 13px;
-    color: #424040;
-    font-weight: 400;
-
-}
-
-.sign-in-button {
-    width: 100%;
-    font-weight: 500;
-    border: none;
-    margin-top: 10px;
-    color: white;
-}
-
-.divider {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 20px 0;
-
-
-    .line {
-        width: 45%;
-        border: 1px solid #d9d9d9;
-    }
-
-    .or-text {
-        font-weight: 500;
-        color: #3b4056;
-    }
-}
-
-
-.toggle-login {
-    text-align: center;
-    margin-bottom: 20px;
-    
-
-
-    .toggle-text {
-        // color: #3b4056;
-        font-weight: 500;
-    }
-
-}
-
-.toggle-link {
-    color: #2EAF4B;
-    font-weight: 500;
-    text-decoration: none;
-}
-
+// Optional/Unused styles (only include if used elsewhere in UI)
 .terms-text {
-    font-size: 12px;
-    font-weight: 500;
-    color: #6b7280;
-    text-align: center;
-    margin-top: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .terms-link {
-    color: #374151;
+  color: #374151;
 }
 
 .google-text {
-    color: #3b4056;
-    font-weight: 500;
-    margin-left: 8px;
+  color: #3b4056;
+  font-weight: 500;
+  margin-left: 8px;
 }

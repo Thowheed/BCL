@@ -1,80 +1,5 @@
-.drop-down {
-    height: 370px;
-    width: 360px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-
-    .drop-down-inside {
-        height: 93%;
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-    }
-
-}
-
-
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-
-    .user-details {
-        display: flex;
-        flex-direction: column;
-        font-size: 14px;
-    }
-
-    .avatar {
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-    }
-
-}
-
-.divider {
-    border-bottom: 1px solid #eee;
-    margin: 10px 0;
-}
-
-.menu-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 6px 0;
-    cursor: pointer;
-
-}
-
-.menu-item:hover {
-    background-color: #457b52;
-    color: white;
-}
-
-.icon {
-    width: 20px;
-    height: 20px;
-}
-
-.logout {
-    color: red;
-}
-
-
-
-
-
-
 .user-wrapper {
-    
+
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -103,14 +28,9 @@
         font-size: 16px;
     }
 }
-
-
-
-
 .profile-card {
     padding: 40px;
     width: 75%;
-    // padding-bottom: 50px;
     border: 1px solid #CCCCCC;
     border-radius: 8px;
 
