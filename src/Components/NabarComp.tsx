@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getallproductListLoad } from '@/store/reducer/indexSlice';
 import { useRouter } from "next/navigation";
+
+import { useTranslation } from "react-i18next";
 import { ShoppingBagIcon, UserIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline'; // or /solid
 
 
@@ -87,9 +89,13 @@ const NavbarComp = () => {
     //     }
     //     });
     //   };
+        const { t, i18n, ready } = useTranslation();
+      useEffect(() => {
 
-
-
+            i18n.changeLanguage(language);
+      }, [language])
+    
+    
 
     const dropdownContent = (
         <div className="drop-down">
@@ -185,7 +191,7 @@ const NavbarComp = () => {
                     )}
                     <button className="cart-button" onClick={gocart}>
                         <img src="./Vectora.svg" alt="cart" />
-                        <span>Cart</span>
+                        <span>{t("cart")}</span>
                     </button>
                 </div>
 
@@ -236,7 +242,7 @@ const NavbarComp = () => {
                     </Dropdown> */}
                     <button className="cart-button" onClick={gocart}>
                         <img src="./Vectora.svg" alt="cart" />
-                        <span>Cart</span>
+                        <span>{t("cart")}</span>
                     </button>
                 </div>
 
