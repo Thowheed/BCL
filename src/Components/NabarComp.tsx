@@ -16,7 +16,8 @@ import { ShoppingBagIcon, UserIcon, ArrowRightOnRectangleIcon } from '@heroicons
 const NavbarComp = () => {
     //language
     const [language, setLanguage] = useState("en");
-
+    const [suggestions, setSuggestions] = useState([]);
+    
 
     const router = useRouter()
 
@@ -29,6 +30,7 @@ const NavbarComp = () => {
     }
 
     const goToLogin = () => router.push("/login");
+    //const goToProductdetail = () => router.push("/productdetail");
 
     const [searchterm, setsearchterm] = useState<any>(null);
     const [debouncedTerm, setDebouncedTerm] = useState(searchterm);
@@ -37,41 +39,61 @@ const NavbarComp = () => {
 
 
     useEffect(() => {
-
-
         if (searchterm) {
-            console.log("inside this useeffct");
-
-
-            const timer = setTimeout(() => {
-
-                getAllproductapi(searchterm)
-
-
-            }, 500);
-
-
-
-            return () => {
-                clearTimeout(timer); // Cancel the timeout if value changes
-            };
-
+          const timer = setTimeout(() => {
+            fetchSuggestions(searchterm); //  trigger suggestions
+            getAllproductapi(searchterm); // optional: update store
+          }, 500);
+      
+          return () => clearTimeout(timer); // cancel timeout if term changes
         }
-
-    }, [searchterm])
+        else {
+          setSuggestions([]); // clear suggestions if input is empty
+        }
+      }, [searchterm]);
+      
 
     const getAllproductapi = (value: any) => {
 
 
         let paylaod = {
 
-            name: value
-
+            name: value,
+            
+            
         }
 
         dispatch(getallproductListLoad(paylaod))
     }
 
+    
+    
+    const fetchSuggestions = async (text: string) => {
+        try {
+          const response = await fetch(
+            `https://api.purfull.com/product/get-all-product?name=${encodeURIComponent(text)}&lang=${language}`
+          );
+      
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+      
+          const result = await response.json();
+          const products = result?.data || [];
+      
+          const formattedSuggestions = products.map((item: any) => ({
+            value: item.id.toString(),
+            label: item.name,
+            //id: item.id,
+           
+          }));
+      
+          setSuggestions(formattedSuggestions);
+        } catch (error) {
+          console.error("Suggestion error:", error);
+          setSuggestions([]);
+        }
+      };
     const [suggestions, setSuggestions] = useState([]);
 
     //   const getAllproductapi = (value:any) => {
@@ -195,13 +217,16 @@ const NavbarComp = () => {
                     </button>
                 </div>
 
-                <AutoComplete
+                    <AutoComplete 
                     options={suggestions}
-                    className='search'
-                    onSearch={(text) => setsearchterm(text)}
+                    style={{ width: 300 }}
+                    onSearch={(text : any) => setsearchterm(text.trim())}
+
                     onSelect={(value) => {
-                        setsearchterm(value);
-                        getAllproductapi(value);
+                         router.push(`/productdetail/${value}`);
+                                
+                        // setsearchterm(value);
+                        // getAllproductapi(value);
                     }}
                 >
                     <Input
@@ -279,6 +304,7 @@ const NavbarComp = () => {
                             <option value="ta">Tamil</option>
                         </select>
                     </div>
+
                     <div className="actions-mobile">
                         {loggedInUser && (
                             <button className="cart-button-mobile" onClick={gocart}>
@@ -306,11 +332,26 @@ const NavbarComp = () => {
                 </div>
 
                 <div className="search-mobile">
-                    <Input
+                    <AutoComplete
+                        options={suggestions}
+                        style={{ width: '100%' }}
+                        onSearch={(text: any) => setsearchterm(text.trim())}
+                        onSelect={(value) => {
+                            router.push(`/productdetail/${value}`);
+                        // setsearchterm(value);
+                        // getAllproductapi(value);
+                        }}
+                    >
+                        <Input
                         className="search-input-mobile"
-                        placeholder="Search by Tomato....."
+                        placeholder="Search by Tomato..."
                         prefix={<SearchOutlined />}
                         style={{ fontSize: 16, fontWeight: 400 }}
+
+                        />
+                    </AutoComplete>
+                    </div>
+
                         onChange={(e) => { setsearchterm(e.target.value) }}
                     />
                 </div>

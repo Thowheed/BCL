@@ -3,6 +3,24 @@
     padding: 0;
 }
 
+// .step-done-icon {
+//     color: #12B76A; // or any green shade you prefer
+//     font-size: 20px;
+//   }
+  
+//   .ant-steps-item-tail::after {
+//     background-color: #D1D5DB !important; // Tailwind grey-300
+//   }
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb; // optional, for visual separation
+  }
+   
+  
 .account-header {
     padding: 24px;
     width: 75%;
