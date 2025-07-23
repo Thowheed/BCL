@@ -52,29 +52,29 @@ const CardComponent = (props: any) => {
         }
     }, [productLoad])
 
-    useEffect(() => {
-        i18n.changeLanguage("tr");
-    }, []);
+    // useEffect(() => {
+    //     i18n.changeLanguage("tr");
+    // }, []);
     
     return (
-        <div className="card-container" style={{ flex: '0 0 auto', cursor: 'pointer' }} onClick={handleSetRedux}>
-            <div className="image-container" >
+        <div className="card-container" style={{ flex: '0 0 auto', cursor: 'pointer' }} >
+            <div className="image-container" onClick={handleSetRedux}>
                 <Image src={appImages?.GRASS_IMAGE} height={200} width={200} alt={""} />
             </div>
-            <div className="card-title">
+            <div className="card-title" onClick={handleSetRedux}>
                 {/* {changeLanguage(data?.name) } */}
                 {t("Apple_iPhone_13")}
             </div>
-            <div className="card-weight">
+            <div className="card-weight" onClick={handleSetRedux}>
                 {t(data?.quantity)} kg
             </div>
-            <div className="card-price-container">
+            <div className="card-price-container" onClick={handleSetRedux}>
                 <div className="card-price">
                     $ {t(data?.price)}
                 </div>
                 <Button className="card-button" onClick={Cartapi} disabled={isadded}> {isadded ? "View Cart" : "Add"} </Button>
             </div>
-            <div>{t("localization_testing")}</div>
+            {/* <div>{t("localization_testing")}</div> */}
         </div>
     )
 }
