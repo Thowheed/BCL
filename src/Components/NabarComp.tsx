@@ -113,10 +113,10 @@ const NavbarComp = () => {
     //     });
     //   };
     const { t, i18n, ready } = useTranslation();
-    useEffect(() => {
+    // useEffect(() => {
 
-        i18n.changeLanguage(language);
-    }, [language])
+    //     i18n.changeLanguage(language);
+    // }, [language])
 
 
 

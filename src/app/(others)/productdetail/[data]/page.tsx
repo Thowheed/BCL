@@ -9,7 +9,7 @@ const ProductDetail = () => {
   const params = useParams()
     return (
         <div>
-            <ProductDetailComp params={params} />
+            <ProductDetailComp />
         </div>
     )   
 }

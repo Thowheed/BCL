@@ -155,7 +155,7 @@ const ProductDetailComp = () => {
       </div>
  
       <div className="mx-12 pb-[8vh] ">
-        <ProductSlide/>
+        <ProductSlide />
       </div>
 
       <FooterComp />
