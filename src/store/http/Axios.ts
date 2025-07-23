@@ -15,7 +15,7 @@ let siginurl: any = `${baseURL}/user/create-user`;
 let updateuserurl: any = `${baseURL}/user/update-user`;
 let getallproducturl: any = `${baseURL}/product/get-all-product`;
 let getproductusingidurl: any = `${baseURL}/product/get-product`;
-let getCartListurl: any = `${baseURL}/cart/getcart`;
+let getCartListurl: any = `${baseURL}/cart/get-cart`;
 let updateCarturl: any = `${baseURL}/cart/updatecart`;
 
 // const getProductSuggestions = (name: string, lang: string) => {

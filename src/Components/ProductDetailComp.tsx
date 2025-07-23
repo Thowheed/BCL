@@ -1,46 +1,49 @@
-'use client';
+"use client";
 // import appImages from "@/public/Images/Grass.svg";
 import { Button } from "antd";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+// import i18n from "@/lib/i18n";
+import { useTranslation } from "react-i18next";
 
-const NavbarComp = dynamic(() => import('./NabarComp'));
-const FooterComp = dynamic(() => import('./FooterCompo'));
-const ProductSlide = dynamic(() => import('./ProductSlide'));
+const NavbarComp = dynamic(() => import("./NabarComp"));
+const FooterComp = dynamic(() => import("./FooterCompo"));
+const ProductSlide = dynamic(() => import("./ProductSlide"));
 
 const ProductDetail = () => {
+  const { t, i18n } = useTranslation();
   const [product, setProduct] = useState<any>(null);
   const [imageList, setImageList] = useState<string[]>([]);
   const [selectedImage, setSelectedImage] = useState<string>("");
-    const params = useParams()
+  const params = useParams();
 
   useEffect(() => {
-    const fetchProduct = async (catagory: any) => {
+    const fetchProduct = async () => {
       try {
-            const response = await fetch(
-                `https://api.purfull.com/product/get-product/${params.data}?catagory=${catagory}`
-            );
+        const response = await fetch(
+          // ?catagory=${catagory}
+          `https://api.purfull.com/product/get-product/${params.data}`
+        );
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
         const list = [
           "/Images/Grass.svg",
           "/Images/next.svg",
           "/Images/Grass.svg",
         ];
-            const result = await response.json();
-
+        const result = await response.json();
 
         setProduct(result.data);
         setImageList(list);
         setSelectedImage(list[0]);
-        } catch (error) {
-            console.error("Suggestion error:", error);
-        }
+      } catch (error) {
+        console.error("Suggestion error:", error);
+      }
       // try {
       //   // Dummy image list
       //   const list = [
@@ -70,11 +73,52 @@ const ProductDetail = () => {
     fetchProduct();
   }, []);
 
-
   useEffect(() => {
     console.log("gggggg");
+  }, [selectedImage]);
 
-  }, [selectedImage])
+  const handleAddToCart = async () => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const payload = {
+      productId: product.id,
+      quantity: 1,
+      userId: user?.id,
+    };
+    try {
+      const response = await fetch("https://api.purfull.com/cart/add-to-cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log("Added to cart successfully:", result);
+        // optionally show a toast or update UI
+      } else {
+        console.error("Failed to add to cart:", result.message || result);
+        // optionally show error toast
+      }
+    } catch (error) {
+      console.error("Network or server error:", error);
+      // optionally show error toast
+    }
+  };
+
+  if (!product) return <div className="p-8 text-lg">Loading product...</div>;
+
+  const lang = i18n.language;
+  console.log("llllllllllll", lang);
+
+  const productName = product?.name?.[lang] || product?.name?.en || "Unnamed";
+  const productDescription =
+    product?.description?.[lang] ||
+    product?.description?.en ||
+    "No description available";
+
   if (!product) return <div className="p-8 text-lg">Loading product...</div>;
 
   return (
@@ -98,9 +142,11 @@ const ProductDetail = () => {
                   console.log("Clicked image:", item);
                   setSelectedImage(item);
                 }}
-
-                className={`cursor-pointer p-1 border-2 rounded-xl ${selectedImage === item ? "border-green-200" : "border-gray-300"
-                  }`}
+                className={`cursor-pointer p-1 border-2 rounded-xl ${
+                  selectedImage === item
+                    ? "border-green-200"
+                    : "border-gray-300"
+                }`}
               >
                 <img
                   src={item}
@@ -116,23 +162,36 @@ const ProductDetail = () => {
 
         <div className="product-detail-content">
           <div className="product-title-conatainer">
-            <div className="product-breadcrumbs text-gray-500">{product?.name}</div>
-            <div className="product-title text-xl font-bold">{product?.name}</div>
-            <div className="product-weight text-sm">{product?.quantity_available} gm</div>
+            <div className="product-breadcrumbs text-gray-500">
+              {productName}
+            </div>
+            <div className="product-title text-xl font-bold">{productName}</div>
+            <div className="product-weight text-sm">
+              {product?.quantity_available} gm
+            </div>
             <div className="border border-gray-300 my-4"></div>
 
             <div className="card-price-container flex justify-between items-center">
-              <div className="card-price text-2xl font-semibold text-green-700">$ {product?.price}</div>
-              <Button className="card-button bg-green-500 text-white">Add</Button>
+              <div className="card-price text-2xl font-semibold text-green-700">
+                $ {product?.price}
+              </div>
+              <Button
+                className="card-button bg-green-500 text-white"
+                onClick={handleAddToCart}
+              >
+                Add
+              </Button>
             </div>
           </div>
 
           <div className="product-description-container mt-8">
             <div className="product-details">
-              <div className="product-detail-title font-semibold text-lg mb-2">Product Details</div>
+              <div className="product-detail-title font-semibold text-lg mb-2">
+                Product Details
+              </div>
             </div>
             <div className="product-description text-gray-700 leading-relaxed">
-              {product?.description}
+              {productDescription}
             </div>
           </div>
         </div>
@@ -151,11 +210,10 @@ const ProductDetailComp = () => {
       <div className="text-bold py-10 flex justify-between !text-lg mx-18 mt-10">
         <span>More Items</span>
         <span className="text-[#2EAF4B] cursor-pointer">View All</span>
-
       </div>
- 
+
       <div className="mx-12 pb-[8vh] ">
-        <ProductSlide />
+        <ProductSlide getallProductData={[]} />
       </div>
 
       <FooterComp />

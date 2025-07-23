@@ -136,6 +136,8 @@ const FooterComp = dynamic(() => import('./FooterCompo'));
 const CartComponent = () => {
 
     const [loading, setLoading] = useState(false);
+    const [reRun, setReRun] = useState(false);
+  const [cartData, setCartData] = useState([]);
     const { addtocartLoad, addtocartData } = useSelector((state: any) => state.bcl);
 
     const dispatch = useDispatch();
@@ -160,10 +162,29 @@ const CartComponent = () => {
         };
         dispatch(updatecartListLoad(payload));
     };
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const response = await fetch(`https://api.purfull.com/cart/get-cart?userId=${user.id}`);
+        const result = await response.json();
 
-    useEffect(() => {
-        fetchCart();
-    }, []);
+        if (response.ok) {
+          setCartData(result.data); // Adjust based on your API's response structure
+          console.log("Cart loaded:", result.data);
+        } else {
+          console.error("Failed to fetch cart:", result.message || result);
+        }
+      } catch (error) {
+        console.error("Error fetching cart:", error);
+      }
+    };
+
+    if (user?.id) {
+      fetchCart();
+    }
+  }, [user?.id, reRun]);
+
 
     return (
         <div className="cart-container">
@@ -178,8 +199,8 @@ const CartComponent = () => {
                 </div>
 
                 <div className="cart-body">
-                    <CartTable />
-                    <CartTotal />
+                    <CartTable data={cartData} reRun={setReRun} />
+                    <CartTotal data={cartData} reRun={setReRun} />
                 </div>
             </div>
 

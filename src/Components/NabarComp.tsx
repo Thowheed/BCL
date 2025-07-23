@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getallproductListLoad } from '@/store/reducer/indexSlice';
 import { useRouter } from "next/navigation";
-
+import i18n from "@/lib/i18n"; 
 import { useTranslation } from "react-i18next";
 import { ShoppingBagIcon, UserIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline'; // or /solid
 
@@ -112,11 +112,11 @@ const NavbarComp = () => {
     //     }
     //     });
     //   };
-    const { t, i18n, ready } = useTranslation();
-    // useEffect(() => {
+    const { t, ready } = useTranslation();
+    useEffect(() => {
 
-    //     i18n.changeLanguage(language);
-    // }, [language])
+        i18n.changeLanguage(language);
+    }, [language])
 
 
 
@@ -192,7 +192,7 @@ const NavbarComp = () => {
                         className="bg-transparent outline-none  ma"
                     >
                         <option value="en">English</option>
-                        <option value="ta">Tamil</option>
+                        <option value="tn">Tamil</option>
                     </select>
                     {/* <img src="./Border.svg" alt="dropdown" /> */}
                 </div>

@@ -140,15 +140,19 @@ const ProductCarousel = ({ getallProductData }: ProductCarouselProps) => {
           gap: '16px',
         }}
       >
-        {Array.isArray(getallProductData) && getallProductData.length >= 5 ? (
+        {/*  && getallProductData.length >= 5 ? */}
+        {Array.isArray(getallProductData) && (
           getallProductData.map((item, index) => (
             <CardComponent key={index} data={item} />
           ))
-        ) : (
-          <div className="text-gray-500 text-center w-full ">
-            <CardComponent/>
-          </div>
-        )}
+        ) 
+        // : (
+        //   <div className="text-gray-500 text-center w-full ">
+        //     <CardComponent data={getallProductData} />
+        //   </div>
+        // )
+        
+        }
       </div>
 
       {/* Right button only if enough items */}
