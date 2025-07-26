@@ -72,6 +72,19 @@ const CartTotal = ({ data, reRun }: { data: any; reRun: any }) => {
           body: JSON.stringify({
             items: stripeItems,
             payment_methods: ["card"],
+            customer_info: {
+              name: user?.name,
+              email: user?.email,
+              phone: user?.phone,
+              address: {
+                line1: address,
+                // line2: "Apt 4B",
+                // city: "New York",
+                // state: "NY",
+                postal_code: zipCode,
+                country: country,
+              },
+            },
           }),
         }
       );
@@ -138,7 +151,6 @@ const CartTotal = ({ data, reRun }: { data: any; reRun: any }) => {
         <div className="address-payment-container flex flex-col items-center justify-between mt-3">
           <div className="address-details flex flex-row items-center justify-between w-[90%]">
             <div className="flex flex-row items-center w-full">
-             
               <div className="my-3 mx-2 w-full">
                 {isEditing ? (
                   <div className="flex flex-col gap-2">
@@ -148,7 +160,7 @@ const CartTotal = ({ data, reRun }: { data: any; reRun: any }) => {
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
                       className=" rounded px-2 py-1"
-                      style={{border: "1px solid #CCCCCCBF"}}
+                      style={{ border: "1px solid #CCCCCCBF" }}
                     />
                     <input
                       type="text"
@@ -156,7 +168,7 @@ const CartTotal = ({ data, reRun }: { data: any; reRun: any }) => {
                       value={zipCode}
                       onChange={(e) => setZipCode(e.target.value)}
                       className=" rounded px-2 py-1"
-                      style={{border: "1px solid #CCCCCCBF"}}
+                      style={{ border: "1px solid #CCCCCCBF" }}
                     />
                     <input
                       type="text"
@@ -164,7 +176,7 @@ const CartTotal = ({ data, reRun }: { data: any; reRun: any }) => {
                       value={country}
                       onChange={(e) => setCountry(e.target.value)}
                       className=" rounded px-2 py-1"
-                      style={{border: "1px solid #CCCCCCBF"}}
+                      style={{ border: "1px solid #CCCCCCBF" }}
                     />
                     <button
                       onClick={handleSave}
@@ -177,41 +189,39 @@ const CartTotal = ({ data, reRun }: { data: any; reRun: any }) => {
                   user && (
                     <div className="flex flex-row items-center justify-between w-full">
                       <div className="flex">
-                        
-                       <Image
-                src={appImages?.LOCATION_ICON}
-                alt="Location"
-                width={30}
-                height={30}
-              />
-                    <div className="my-3 mx-2">
-                      {user.address?.address}, {user.address?.zip_code},{" "}
-                      {user.address?.country}
-                    </div>
+                        <Image
+                          src={appImages?.LOCATION_ICON}
+                          alt="Location"
+                          width={30}
+                          height={30}
+                        />
+                        <div className="my-3 mx-2">
+                          {address}, {zipCode},{" "}
+                          {country}
+                        </div>
                       </div>
-            <Image
-              src={appImages?.EDIT_ICON}
-              alt="Edit"
-              width={30}
-              height={30}
-              className="cursor-pointer"
-              onClick={() => setIsEditing(true)}
-            />
+                      <Image
+                        src={appImages?.EDIT_ICON}
+                        alt="Edit"
+                        width={30}
+                        height={30}
+                        className="cursor-pointer"
+                        onClick={() => setIsEditing(true)}
+                      />
                     </div>
                   )
                 )}
               </div>
             </div>
-
           </div>
 
           <button
             type="button"
             className={`payment-button flex flex-row items-center justify-between mt-5 ${
-              (loading || totalKg < 150 || isEditing) ? "" : "active"
+              loading || totalKg < 150 || isEditing ? "" : "active"
             }`}
             onClick={handleClick}
-            disabled={(loading || totalKg < 150 || isEditing)}
+            disabled={loading || totalKg < 150 || isEditing}
           >
             <div>{loading ? "Processing..." : "Proceed to payment"}</div>
             <ArrowRightOutlined />

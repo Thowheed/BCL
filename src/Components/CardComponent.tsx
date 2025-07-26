@@ -1,3 +1,4 @@
+"use client";
 import appImages from "@/Globals/AppImages";
 import { getUser } from "@/Globals/Localstorage";
 import {
@@ -84,8 +85,29 @@ const CardComponent = (props: any) => {
   const lang = i18n.language;
   console.log("gggg", lang, data?.name?.en);
 
-  const productName = data?.name?.[lang] || "No name";
-  const productDescription = data?.description?.[lang] || "";
+  // Parse name and description
+type LangMap = {
+  [key: string]: string;
+};
+
+let parsedName: LangMap = {};
+let parsedDescription: LangMap = {};
+
+try {
+  parsedName = JSON.parse(data?.name || "{}");
+} catch (err) {
+  console.error("Failed to parse name:", err);
+}
+
+try {
+  parsedDescription = JSON.parse(data?.description || "{}");
+} catch (err) {
+  console.error("Failed to parse description:", err);
+}
+
+const productName = parsedName[lang] || "No name";
+const productDescription = parsedDescription[lang] || "";
+
 
   return (
     <div
@@ -94,7 +116,7 @@ const CardComponent = (props: any) => {
     >
       <div className="image-container" onClick={handleSetRedux}>
         <Image
-          src={appImages?.GRASS_IMAGE}
+          src={data?.thumbnailImage || "/Images/Grass.svg"}
           height={200}
           width={200}
           alt={productName}

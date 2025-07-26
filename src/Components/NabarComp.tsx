@@ -135,7 +135,7 @@ const NavbarComp = () => {
                 <div className="divider"></div>
 
                 <div className="menu-item" onClick={() => {
-                    localStorage.removeItem('user');
+                    // localStorage.removeItem('user');
                     router.push('/userprofile');
                 }}>
                     <UserIcon className="profile-logo h-6 w-6 text-black" />
@@ -143,7 +143,7 @@ const NavbarComp = () => {
                 </div>
 
                 <div className="menu-item" onClick={() => {
-                    localStorage.removeItem('user');
+                    // localStorage.removeItem('user');
                     router.push('/ordertracking');
                 }}>
                     <ShoppingBagIcon className="myorder-logo h-6 w-6 text-black" />
@@ -214,7 +214,7 @@ const NavbarComp = () => {
                     )}
                     <button className="cart-button" onClick={gocart}>
                         <img src="./Vectora.svg" alt="cart" />
-                        <span>{t("cart")}</span>
+                        <span>cart</span>
                     </button>
                 </div>
 

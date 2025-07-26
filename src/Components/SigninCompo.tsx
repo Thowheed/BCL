@@ -41,6 +41,7 @@ export default function LoginCompo() {
             let payload = {
                 name: formData?.name,
                 email: formData?.email,
+                phone: formData?.mobileNo,
                 password: formData?.password,
                 address: formData?.address,
                 country: formData?.country,

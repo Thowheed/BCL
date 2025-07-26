@@ -14,7 +14,7 @@ const ProductSlide = dynamic(() => import("./ProductSlide"));
 
 const ProductDetail = () => {
   const { t, i18n } = useTranslation();
-  const [product, setProduct] = useState<any>(null);
+const [product, setProduct] = useState<any>(null);
   const [imageList, setImageList] = useState<string[]>([]);
   const [selectedImage, setSelectedImage] = useState<string>("");
   const params = useParams();
@@ -39,8 +39,8 @@ const ProductDetail = () => {
         const result = await response.json();
 
         setProduct(result.data);
-        setImageList(list);
-        setSelectedImage(list[0]);
+        setImageList(result.data?.galleryImage);
+        setSelectedImage(result.data?.galleryImage[0]);
       } catch (error) {
         console.error("Suggestion error:", error);
       }
@@ -134,7 +134,7 @@ const ProductDetail = () => {
           />
 
           <div className="product-box-row-img flex gap-4 mt-4">
-            {imageList.map((item, index) => (
+            {imageList?.map((item, index) => (
               <div
                 key={index}
                 // onClick={() => setSelectedImage(item)}
@@ -201,6 +201,29 @@ const ProductDetail = () => {
 };
 
 const ProductDetailComp = () => {
+  const [allProduct, setAllProduct] = useState<any>(null);
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch(
+          // ?catagory=${catagory}
+          `https://api.purfull.com/product/get-all-product`
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        setAllProduct(result.data);
+      } catch (error) {
+        console.error("Suggestion error:", error);
+      }
+    };
+
+    fetchProduct();
+  }, []);
   return (
     <div className="">
       <NavbarComp />
@@ -213,7 +236,7 @@ const ProductDetailComp = () => {
       </div>
 
       <div className="mx-12 pb-[8vh] ">
-        <ProductSlide getallProductData={[]} />
+        <ProductSlide getallProductData={allProduct} />
       </div>
 
       <FooterComp />

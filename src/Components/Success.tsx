@@ -1,55 +1,164 @@
-'use client';
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import "../styles/Success.scss";
+import axios from "axios";
+
+interface AddressType {
+  city?: string | null;
+  country?: string | null;
+  line1?: string | null;
+  line2?: string | null;
+  postal_code?: string | null;
+  state?: string | null;
+}
+
+interface LineItem {
+  description: string;
+  quantity: number;
+  amount_total: number;
+  currency: string;
+}
+
 interface SessionType {
   customer_details?: {
     name?: string;
     email?: string;
+    address?: AddressType;
+    phone?: string;
+  };
+  amount_total?: number;
+  currency?: string;
+  payment_status?: string;
+  line_items?: {
+    data: LineItem[];
   };
 }
-
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation"; 
-import '../styles/Success.scss';
 
 export default function Success() {
   const searchParams = useSearchParams();
   const session_id = searchParams.get("session_id");
 
   const [session, setSession] = useState<SessionType | null>(null);
+  const [orderCreated, setOrderCreated] = useState(false);
+  const storedUser = localStorage.getItem("user");
+  const user = storedUser ? JSON.parse(storedUser) : null;
 
   useEffect(() => {
-    // if (!session_id) return;
+    if (!session_id) return;
 
-    fetch(`https://api.purfull.com/payment/get-session?session_id=${session_id}`)
-      .then(res => res.json())
-      .then(data => setSession(data));
-  }, [session_id]);
+    const fetchSessionAndCreateOrder = async () => {
+      try {
+        const res = await fetch(`https://api.purfull.com/payment/get-session?session_id=${session_id}`);
+        const data = await res.json();
+        setSession(data);
 
-  useEffect(() => {
-    console.log("session", session);
-  }, [session]);
+        // Create order once session is received
+        if (!orderCreated) {
+          await createOrder(data);
+          setOrderCreated(true); // Avoid duplicate orders
+        }
+      } catch (error) {
+        console.error("Error fetching session or creating order:", error);
+      }
+    };
 
-  if (!session) return <p>Loading...</p>;
+    fetchSessionAndCreateOrder();
+  }, []);
+
+  const createOrder = async (data: SessionType) => {
+    try {
+      const payload = {
+        customer_id: user?.id , // Replace if available
+        payment_id: data?.id,
+        customer_detials: {
+          name: data.customer_details?.name || "",
+          email: data.customer_details?.email || "",
+          phone: data.customer_details?.phone || "",
+          address: data.customer_details?.address || {},
+        },
+        order_detials: data.line_items?.data.map((item) => ({
+          name: item.description,
+          quantity: item.quantity,
+          price: item.amount_total / 100,
+          currency: item.currency,
+        })) || [],
+        asign_to: null,
+        totalValue: data?.amount_total! / 100,
+        type: "Online",
+        remarks: "Created from success page",
+        status: "Pending",
+      };
+
+      await axios.post("https://api.purfull.com/order/create-order", payload);
+      console.log("Order created successfully.");
+    } catch (error) {
+      console.error("Failed to create order:", error);
+    }
+  };
+
+  if (!session) return <div className="success-loader">Loading...</div>;
 
   return (
-    <div>
-      <p><strong>Name:</strong> {session?.customer_details?.name}</p>
-      <p><strong>Email:</strong> {session?.customer_details?.email}</p>
-      <p><strong>Billing Address:</strong></p>
+    <div className="success-wrapper">
+      <div className="success-card">
+        <img src="/success.png" alt="Success" className="success-icon" />
+        <h1 className="success-title">Payment Successful</h1>
+        <p className="success-message">
+          Thank you, <strong>{session.customer_details?.name || "Customer"}</strong>!
+        </p>
+        <p className="success-subtext">
+          A receipt has been sent to <strong>{session.customer_details?.email}</strong>
+        </p>
+
+        <div className="success-summary">
+          <p>
+            <strong>Total Paid:</strong> ${(session.amount_total! / 100).toFixed(2)}
+          </p>
+          <p>
+            <strong>Status:</strong> {session.payment_status}
+          </p>
+          <p>
+            <strong>Address:</strong> {session.customer_details?.address?.line1},{" "}
+            {session.customer_details?.address?.postal_code},{" "}
+            {session.customer_details?.address?.country}
+          </p>
+        </div>
+
+        <div className="success-items">
+          <h3>Order Summary</h3>
+          {session.line_items?.data.map((item, index) => (
+            <div key={index} className="item-row">
+              <div className="item-info">
+                <p className="item-name">{item.description}</p>
+                <p className="item-qty">Qty: {item.quantity}</p>
+              </div>
+              <p className="item-price">
+                ${(item.amount_total / 100).toFixed(2)}{" "}
+                {item.currency.toUpperCase()}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <a href="/" className="back-home-button">← Back to Home</a>
+      </div>
     </div>
   );
 }
 
 
 // {
-//     "id": "cs_test_b1FtqwENIlYOwfkCAmuWLkdDpn5fBbfa3MmNphK6Ex915gPUt3ej70two5",
+//     "id": "cs_test_b1broQk0cDVSA6iGG3a23X415qoRAlOu4iVyAZyC3U18KzpJ7FbLP0fcYW",
 //     "object": "checkout.session",
 //     "adaptive_pricing": {
 //         "enabled": true
 //     },
 //     "after_expiration": null,
 //     "allow_promotion_codes": null,
-//     "amount_subtotal": 6010000,
-//     "amount_total": 6010000,
+//     "amount_subtotal": 6001400,
+//     "amount_total": 6001400,
 //     "automatic_tax": {
 //         "enabled": false,
 //         "liability": null,
@@ -57,13 +166,15 @@ export default function Success() {
 //         "status": null
 //     },
 //     "billing_address_collection": null,
-//     "cancel_url": "https://yourdomain.com/cancel",
+//     "cancel_url": "http://localhost:3000/cancel",
 //     "client_reference_id": null,
 //     "client_secret": null,
-//     "collected_information": null,
+//     "collected_information": {
+//         "shipping_details": null
+//     },
 //     "consent": null,
 //     "consent_collection": null,
-//     "created": 1753283188,
+//     "created": 1753526289,
 //     "currency": "usd",
 //     "currency_conversion": null,
 //     "custom_fields": [],
@@ -73,18 +184,18 @@ export default function Success() {
 //         "submit": null,
 //         "terms_of_service_acceptance": null
 //     },
-//     "customer": null,
-//     "customer_creation": "if_required",
+//     "customer": "cus_SkafYqlWHqyU4f",
+//     "customer_creation": null,
 //     "customer_details": {
 //         "address": {
 //             "city": null,
-//             "country": "IN",
-//             "line1": null,
+//             "country": "India",
+//             "line1": "54 test asdnflkan sdhfhsdaio iosdafoiajdoifh",
 //             "line2": null,
-//             "postal_code": null,
+//             "postal_code": "629002",
 //             "state": null
 //         },
-//         "email": "sanjaysaravanakumar31@gmail.com",
+//         "email": "sanjay@gmail.com",
 //         "name": "sanjay",
 //         "phone": null,
 //         "tax_exempt": "none",
@@ -92,7 +203,7 @@ export default function Success() {
 //     },
 //     "customer_email": null,
 //     "discounts": [],
-//     "expires_at": 1753369588,
+//     "expires_at": 1753612689,
 //     "invoice": null,
 //     "invoice_creation": {
 //         "enabled": false,
@@ -110,7 +221,7 @@ export default function Success() {
 //         "object": "list",
 //         "data": [
 //             {
-//                 "id": "li_1Ro4FUHFYikR0iYEeJpVPdZA",
+//                 "id": "li_1Rp5UTHFYikR0iYEkS225wMc",
 //                 "object": "item",
 //                 "amount_discount": 0,
 //                 "amount_subtotal": 6000000,
@@ -119,11 +230,11 @@ export default function Success() {
 //                 "currency": "usd",
 //                 "description": "Apple",
 //                 "price": {
-//                     "id": "price_1Ro4FUHFYikR0iYEi16yHQbn",
+//                     "id": "price_1Rp5UTHFYikR0iYEGeDjoQvJ",
 //                     "object": "price",
 //                     "active": false,
 //                     "billing_scheme": "per_unit",
-//                     "created": 1753283188,
+//                     "created": 1753526289,
 //                     "currency": "usd",
 //                     "custom_unit_amount": null,
 //                     "livemode": false,
@@ -142,47 +253,47 @@ export default function Success() {
 //                 "quantity": 200
 //             },
 //             {
-//                 "id": "li_1Ro4FUHFYikR0iYEBPSRccFN",
+//                 "id": "li_1Rp5UTHFYikR0iYEug6IfDGY",
 //                 "object": "item",
 //                 "amount_discount": 0,
-//                 "amount_subtotal": 10000,
+//                 "amount_subtotal": 1400,
 //                 "amount_tax": 0,
-//                 "amount_total": 10000,
+//                 "amount_total": 1400,
 //                 "currency": "usd",
-//                 "description": "orange",
+//                 "description": "Unknown Product",
 //                 "price": {
-//                     "id": "price_1Ro4FUHFYikR0iYEMyyKER3o",
+//                     "id": "price_1Rp5UTHFYikR0iYEZ0Q46PwT",
 //                     "object": "price",
 //                     "active": false,
 //                     "billing_scheme": "per_unit",
-//                     "created": 1753283188,
+//                     "created": 1753526289,
 //                     "currency": "usd",
 //                     "custom_unit_amount": null,
 //                     "livemode": false,
 //                     "lookup_key": null,
 //                     "metadata": {},
 //                     "nickname": null,
-//                     "product": "prod_SjWdDygDl8ADGE",
+//                     "product": "prod_SjWA5vqWabWi2M",
 //                     "recurring": null,
 //                     "tax_behavior": "unspecified",
 //                     "tiers_mode": null,
 //                     "transform_quantity": null,
 //                     "type": "one_time",
-//                     "unit_amount": 10000,
-//                     "unit_amount_decimal": "10000"
+//                     "unit_amount": 1400,
+//                     "unit_amount_decimal": "1400"
 //                 },
 //                 "quantity": 1
 //             }
 //         ],
 //         "has_more": false,
-//         "url": "/v1/checkout/sessions/cs_test_b1FtqwENIlYOwfkCAmuWLkdDpn5fBbfa3MmNphK6Ex915gPUt3ej70two5/line_items"
+//         "url": "/v1/checkout/sessions/cs_test_b1broQk0cDVSA6iGG3a23X415qoRAlOu4iVyAZyC3U18KzpJ7FbLP0fcYW/line_items"
 //     },
 //     "livemode": false,
 //     "locale": null,
 //     "metadata": {},
 //     "mode": "payment",
 //     "origin_context": null,
-//     "payment_intent": "pi_3Ro4FrHFYikR0iYE0JDOjS9o",
+//     "payment_intent": "pi_3Rp5UyHFYikR0iYE1HCUFtTk",
 //     "payment_link": null,
 //     "payment_method_collection": "if_required",
 //     "payment_method_configuration_details": null,
@@ -200,7 +311,13 @@ export default function Success() {
 //         "enabled": false
 //     },
 //     "recovered_from": null,
-//     "saved_payment_method_options": null,
+//     "saved_payment_method_options": {
+//         "allow_redisplay_filters": [
+//             "always"
+//         ],
+//         "payment_method_remove": "disabled",
+//         "payment_method_save": null
+//     },
 //     "setup_intent": null,
 //     "shipping_address_collection": null,
 //     "shipping_cost": null,

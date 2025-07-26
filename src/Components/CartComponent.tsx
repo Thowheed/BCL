@@ -36,7 +36,6 @@
 //     console.log(addtocartLoad);
 //     console.log(addtocartData);
 
-
 //     const dispatch = useDispatch();
 
 //     const handlePaymentClick = () => {
@@ -71,7 +70,7 @@
 //         }
 
 //         dispatch(updatecartListLoad(payload))
-        
+
 //     }
 
 //     // useEffect(() => {
@@ -79,7 +78,7 @@
 //     //     updateCart()
 
 //     // }, [])
-    
+
 //     const router = useRouter();
 //     return (
 //         <div>
@@ -97,7 +96,7 @@
 
 //                     {/* {/* <Elements stripe={stripePromise} options={options}> */}
 //                         {/* <CartTotal /> */}
-//                     {/* </Elements> */} 
+//                     {/* </Elements> */}
 
 //                 </div>
 
@@ -115,58 +114,65 @@
 
 // export default CartComponent;
 
-'use client';
+"use client";
 
-import { addtocartListload, getCartLoad, updatecartListLoad } from '@/store/reducer/indexSlice';
-import { ArrowLeftOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
-import dynamic from 'next/dynamic';
+import {
+  addtocartListload,
+  getCartLoad,
+  updatecartListLoad,
+} from "@/store/reducer/indexSlice";
+import { ArrowLeftOutlined } from "@ant-design/icons";
+import { Button } from "antd";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "@/Globals/Localstorage";
 import { updateCartItems } from "@/Globals/Localstorage";
 import "../styles/CartComponent.scss";
 
-const CartTable = dynamic(() => import('./CartTable'));
-const CartTotal = dynamic(() => import('./CartTotal'));
-const NavbarComp = dynamic(() => import('./NabarComp'));
-const FooterComp = dynamic(() => import('./FooterCompo'));
+const CartTable = dynamic(() => import("./CartTable"));
+const CartTotal = dynamic(() => import("./CartTotal"));
+const NavbarComp = dynamic(() => import("./NabarComp"));
+const FooterComp = dynamic(() => import("./FooterCompo"));
 
 const CartComponent = () => {
-
-    const [loading, setLoading] = useState(false);
-    const [reRun, setReRun] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [reRun, setReRun] = useState(false);
   const [cartData, setCartData] = useState([]);
-    const { addtocartLoad, addtocartData } = useSelector((state: any) => state.bcl);
+  const { addtocartLoad, addtocartData } = useSelector(
+    (state: any) => state.bcl
+  );
 
-    const dispatch = useDispatch();
-    const router = useRouter();
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-    const handlePaymentClick = () => {
-        // CheckoutPage({ loading, setLoading });
+  const handlePaymentClick = () => {
+    // CheckoutPage({ loading, setLoading });
+  };
+
+  const fetchCart = () => {
+    let payload = {
+      userId: getUser()?.id,
     };
+    dispatch(getCartLoad(payload));
+  };
 
-    const fetchCart = () => {
-        let payload = {
-            userId: getUser()?.id,
-        };
-        dispatch(getCartLoad(payload));
+  const updateCart = () => {
+    let payload = {
+      userId: updateCartItems()?.id,
+      productId: "",
+      isDeleted: "",
     };
-
-    const updateCart = () => {
-        let payload = {
-            userId: updateCartItems()?.id,
-            productId: "",
-            isDeleted: "",
-        };
-        dispatch(updatecartListLoad(payload));
-    };
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
-useEffect(() => {
+    dispatch(updatecartListLoad(payload));
+  };
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  useEffect(() => {
     const fetchCart = async () => {
       try {
-        const response = await fetch(`https://api.purfull.com/cart/get-cart?userId=${user.id}`);
+        const response = await fetch(
+          `https://api.purfull.com/cart/get-cart?userId=${user.id}`
+        );
         const result = await response.json();
 
         if (response.ok) {
@@ -185,28 +191,27 @@ useEffect(() => {
     }
   }, [user?.id, reRun]);
 
+  return (
+    <div className="cart-container">
+      <NavbarComp />
 
-    return (
-        <div className="cart-container">
-            <NavbarComp />
-
-            <div className="cart-content">
-                <div className="cart-header">
-                    <div className="back-to-home" onClick={() => router.push('/home')}>
-                        <ArrowLeftOutlined />
-                        <span>Home</span>
-                    </div>
-                </div>
-
-                <div className="cart-body">
-                    <CartTable data={cartData} reRun={setReRun} />
-                    <CartTotal data={cartData} reRun={setReRun} />
-                </div>
-            </div>
-
-            <FooterComp />
+      <div className="cart-content">
+        <div className="cart-header">
+          <div className="back-to-home" onClick={() => router.push("/home")}>
+            <ArrowLeftOutlined />
+            <span>Home</span>
+          </div>
         </div>
-    );
+
+        <div className="cart-body">
+          <CartTable data={cartData} reRun={setReRun} />
+          <CartTotal data={cartData} reRun={setReRun} />
+        </div>
+      </div>
+
+      <FooterComp />
+    </div>
+  );
 };
 
 export default CartComponent;
