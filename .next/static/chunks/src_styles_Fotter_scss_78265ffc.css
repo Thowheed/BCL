@@ -1,0 +1,146 @@
+/* [project]/src/styles/Fotter.scss.css [app-client] (css) */
+.footer-main-con {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+}
+
+.footer-inside-con {
+  color: #000;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 95%;
+  padding: 16px;
+  display: flex;
+}
+
+.first-con {
+  width: 22%;
+}
+
+.footer-second-con {
+  flex-direction: column;
+  gap: 16px;
+  width: 10%;
+  font-size: 16px;
+  display: flex;
+}
+
+.footer-third-con {
+  flex-direction: column;
+  gap: 15px;
+  width: 15%;
+  font-size: 16px;
+  display: flex;
+}
+
+.footer-fourth-con {
+  width: 25%;
+}
+
+.span-first-con {
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.footer-first-logo-session {
+  justify-content: space-between;
+  align-items: center;
+  width: 6rem;
+  margin-top: 28px;
+  display: flex;
+}
+
+.footer-fourth-con {
+  flex-direction: column;
+  justify-content: space-evenly;
+  display: flex;
+}
+
+.logo-text {
+  align-items: flex-start;
+  gap: 12px;
+  display: flex;
+}
+
+.icon-margin-top {
+  margin-top: 4px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-top-40 {
+  margin-top: 50px;
+}
+
+.mobile-design-two-and-third {
+  display: none;
+}
+
+@media screen and (width >= 768px) and (width <= 1024px) {
+  .mobile-design-two-and-third {
+    justify-content: center;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .footer-main-con {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .footer-inside-con {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .first-con, .footer-fourth-con {
+    width: 100%;
+    padding: 15px 0 0 15px;
+  }
+
+  .footer-second-con, .footer-third-con {
+    display: none;
+  }
+
+  .footer-first-logo-session {
+    justify-content: flex-start;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .logo-text {
+    gap: 8px;
+  }
+
+  .footer-fourth-con {
+    justify-content: flex-start;
+  }
+
+  .margin-top-40 {
+    margin-top: 50px;
+  }
+
+  .mobile-design-two-and-third {
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    display: flex;
+  }
+
+  .mobile-footer-second-con, .mobile-footer-third-con {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    display: flex;
+  }
+}
+
+
+/*# sourceMappingURL=src_styles_Fotter_scss_78265ffc.css.map*/

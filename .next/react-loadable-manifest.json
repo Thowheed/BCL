@@ -1,0 +1,232 @@
+{
+  "..\\node_modules\\i18next-http-backend\\esm\\request.js -> cross-fetch": {
+    "id": 95120,
+    "files": [
+      "static/chunks/5120.436e0b87554493e5.js"
+    ]
+  },
+  "..\\node_modules\\next\\dist\\client\\index.js -> ../pages/_app": {
+    "id": 90472,
+    "files": [
+      "static/chunks/472.2c08b965bd9148e2.js"
+    ]
+  },
+  "..\\node_modules\\next\\dist\\client\\index.js -> ../pages/_error": {
+    "id": 99341,
+    "files": [
+      "static/chunks/9341.3ca6eb08eac1d97b.js"
+    ]
+  },
+  "Components\\CartComponent.tsx -> ./CartTable": {
+    "id": 30742,
+    "files": [
+      "static/chunks/719-db09dee4177de193.js",
+      "static/chunks/8950-37b9643c80dc65fd.js",
+      "static/chunks/5431-596d52187b25c43b.js",
+      "static/chunks/1323-ad5715913c430900.js",
+      "static/chunks/5102-06a298c33f544f13.js",
+      "static/chunks/6409-35a5010da4d92003.js",
+      "static/chunks/2463-35b5abd556a2b31f.js",
+      "static/chunks/7282-cb9e2776f8d61adb.js",
+      "static/chunks/1264-bc835f7e7f2de8b3.js",
+      "static/chunks/6766-fed87fed415fc40e.js",
+      "static/chunks/2219.25b4cf08425965a9.js",
+      "static/chunks/9008.bb83eeb84c091bbb.js",
+      "static/chunks/742.48671e74b36a0be1.js"
+    ]
+  },
+  "Components\\CartComponent.tsx -> ./CartTotal": {
+    "id": 60916,
+    "files": [
+      "static/chunks/719-db09dee4177de193.js",
+      "static/chunks/8950-37b9643c80dc65fd.js",
+      "static/chunks/5431-596d52187b25c43b.js",
+      "static/chunks/6766-fed87fed415fc40e.js",
+      "static/chunks/3380.77a96673c84b142c.js",
+      "static/chunks/916.9c9ff90b84e40e96.js"
+    ]
+  },
+  "Components\\CartComponent.tsx -> ./FooterCompo": {
+    "id": 45283,
+    "files": [
+      "static/css/1895e2a548a49965.css",
+      "static/chunks/6766-fed87fed415fc40e.js",
+      "static/chunks/7664.a9702330126b7293.js"
+    ]
+  },
+  "Components\\CartComponent.tsx -> ./NabarComp": {
+    "id": 38221,
+    "files": [
+      "static/css/9dba133efe3c42fd.css",
+      "static/css/5024297d5a5604ac.css",
+      "static/chunks/719-db09dee4177de193.js",
+      "static/chunks/8950-37b9643c80dc65fd.js",
+      "static/chunks/5431-596d52187b25c43b.js",
+      "static/chunks/1323-ad5715913c430900.js",
+      "static/chunks/5102-06a298c33f544f13.js",
+      "static/chunks/6409-35a5010da4d92003.js",
+      "static/chunks/6722-36eef0a4b999ec81.js",
+      "static/chunks/2463-35b5abd556a2b31f.js",
+      "static/chunks/7282-cb9e2776f8d61adb.js",
+      "static/chunks/1264-bc835f7e7f2de8b3.js",
+      "static/chunks/8487-a91bf672dab77c34.js",
+      "static/chunks/1218-79f7885cec7ee657.js",
+      "static/chunks/3472-e98a706209c06477.js",
+      "static/chunks/8221-621e67826a92ba34.js",
+      "static/chunks/907.d7352ce3df4bcf16.js"
+    ]
+  },
+  "Components\\Home.tsx -> ./FaqComponent": {
+    "id": 51697,
+    "files": [
+      "static/css/1c3d0ed44a9d9bc0.css",
+      "static/chunks/9842-21f629752ffbbaef.js",
+      "static/chunks/1697.c1fd45a4c884a08e.js"
+    ]
+  },
+  "Components\\Home.tsx -> ./FooterCompo": {
+    "id": 45283,
+    "files": [
+      "static/css/1895e2a548a49965.css",
+      "static/chunks/5283.a9702330126b7293.js"
+    ]
+  },
+  "Components\\Home.tsx -> ./NabarComp": {
+    "id": 38221,
+    "files": [
+      "static/css/9dba133efe3c42fd.css",
+      "static/css/5024297d5a5604ac.css",
+      "static/chunks/8950-37b9643c80dc65fd.js",
+      "static/chunks/9842-21f629752ffbbaef.js",
+      "static/chunks/1323-ad5715913c430900.js",
+      "static/chunks/6409-35a5010da4d92003.js",
+      "static/chunks/2463-35b5abd556a2b31f.js",
+      "static/chunks/7282-cb9e2776f8d61adb.js",
+      "static/chunks/1264-bc835f7e7f2de8b3.js",
+      "static/chunks/8487-a91bf672dab77c34.js",
+      "static/chunks/1218-79f7885cec7ee657.js",
+      "static/chunks/3472-e98a706209c06477.js",
+      "static/chunks/8221-621e67826a92ba34.js",
+      "static/chunks/5695.001e6acb6f73ea25.js"
+    ]
+  },
+  "Components\\Home.tsx -> ./ProductSlide": {
+    "id": 35502,
+    "files": [
+      "static/chunks/8950-37b9643c80dc65fd.js",
+      "static/chunks/9842-21f629752ffbbaef.js",
+      "static/chunks/1323-ad5715913c430900.js",
+      "static/chunks/6409-35a5010da4d92003.js",
+      "static/chunks/2463-35b5abd556a2b31f.js",
+      "static/chunks/1218-79f7885cec7ee657.js",
+      "static/chunks/9868-207fff4e68706f58.js",
+      "static/chunks/1999.8643e3fe82c52078.js"
+    ]
+  },
+  "Components\\Home.tsx -> ./TestimonialCarosel": {
+    "id": 24060,
+    "files": [
+      "static/css/b660c836b37d74c2.css",
+      "static/chunks/4060.41dcefa18a924dcd.js"
+    ]
+  },
+  "Components\\ProductDetailComp.tsx -> ./FooterCompo": {
+    "id": 45283,
+    "files": [
+      "static/css/1895e2a548a49965.css",
+      "static/chunks/6766-fed87fed415fc40e.js",
+      "static/chunks/7664.a9702330126b7293.js"
+    ]
+  },
+  "Components\\ProductDetailComp.tsx -> ./NabarComp": {
+    "id": 38221,
+    "files": [
+      "static/css/9dba133efe3c42fd.css",
+      "static/css/5024297d5a5604ac.css",
+      "static/chunks/9842-21f629752ffbbaef.js",
+      "static/chunks/1323-ad5715913c430900.js",
+      "static/chunks/5102-06a298c33f544f13.js",
+      "static/chunks/6722-36eef0a4b999ec81.js",
+      "static/chunks/7282-cb9e2776f8d61adb.js",
+      "static/chunks/1264-bc835f7e7f2de8b3.js",
+      "static/chunks/8487-a91bf672dab77c34.js",
+      "static/chunks/3472-e98a706209c06477.js",
+      "static/chunks/8221-621e67826a92ba34.js",
+      "static/chunks/9944.b40b0f7b69bdba69.js"
+    ]
+  },
+  "Components\\ProductDetailComp.tsx -> ./ProductSlide": {
+    "id": 35502,
+    "files": [
+      "static/chunks/9842-21f629752ffbbaef.js",
+      "static/chunks/1323-ad5715913c430900.js",
+      "static/chunks/6722-36eef0a4b999ec81.js",
+      "static/chunks/6766-fed87fed415fc40e.js",
+      "static/chunks/9868-207fff4e68706f58.js",
+      "static/chunks/8028.6b7215fa5eb4171a.js"
+    ]
+  },
+  "app\\(others)\\ordertracking\\page.tsx -> ../../../Components/NabarComp": {
+    "id": 38221,
+    "files": [
+      "static/css/9dba133efe3c42fd.css",
+      "static/css/5024297d5a5604ac.css",
+      "static/chunks/719-db09dee4177de193.js",
+      "static/chunks/8950-37b9643c80dc65fd.js",
+      "static/chunks/5431-596d52187b25c43b.js",
+      "static/chunks/9842-21f629752ffbbaef.js",
+      "static/chunks/1323-ad5715913c430900.js",
+      "static/chunks/5102-06a298c33f544f13.js",
+      "static/chunks/6409-35a5010da4d92003.js",
+      "static/chunks/6722-36eef0a4b999ec81.js",
+      "static/chunks/2463-35b5abd556a2b31f.js",
+      "static/chunks/7282-cb9e2776f8d61adb.js",
+      "static/chunks/1264-bc835f7e7f2de8b3.js",
+      "static/chunks/8487-a91bf672dab77c34.js",
+      "static/chunks/1218-79f7885cec7ee657.js",
+      "static/chunks/3472-e98a706209c06477.js",
+      "static/chunks/8221-621e67826a92ba34.js",
+      "static/chunks/4884.8bfcbdfd074707c7.js"
+    ]
+  },
+  "app\\(others)\\ordertracking\\page.tsx -> ../../../Components/OrdertrackComponent": {
+    "id": 86822,
+    "files": [
+      "static/css/ffe030cb7d7fb095.css",
+      "static/css/1c3d0ed44a9d9bc0.css",
+      "static/chunks/719-db09dee4177de193.js",
+      "static/chunks/8950-37b9643c80dc65fd.js",
+      "static/chunks/5431-596d52187b25c43b.js",
+      "static/chunks/9842-21f629752ffbbaef.js",
+      "static/chunks/1323-ad5715913c430900.js",
+      "static/chunks/5102-06a298c33f544f13.js",
+      "static/chunks/6409-35a5010da4d92003.js",
+      "static/chunks/2463-35b5abd556a2b31f.js",
+      "static/chunks/7282-cb9e2776f8d61adb.js",
+      "static/chunks/1264-bc835f7e7f2de8b3.js",
+      "static/chunks/2219.25b4cf08425965a9.js",
+      "static/chunks/2044.d92d44f033036868.js",
+      "static/chunks/6822.7695fcd5b7ccf93b.js"
+    ]
+  },
+  "app\\(others)\\productdetail\\[data]\\page.tsx -> ../../../../Components/ProductDetailComp": {
+    "id": 9595,
+    "files": [
+      "static/chunks/719-db09dee4177de193.js",
+      "static/chunks/8950-37b9643c80dc65fd.js",
+      "static/chunks/5431-596d52187b25c43b.js",
+      "static/chunks/6409-35a5010da4d92003.js",
+      "static/chunks/2463-35b5abd556a2b31f.js",
+      "static/chunks/1218-79f7885cec7ee657.js",
+      "static/chunks/6529.57523739964cf89f.js"
+    ]
+  },
+  "app\\(others)\\success-page\\page.tsx -> ../../../Components/Success": {
+    "id": 98661,
+    "files": [
+      "static/css/f459fd70a306c7b0.css",
+      "static/chunks/3464-3d255b0fc27ba782.js",
+      "static/chunks/8661.13a85eadb4ba7bd1.js"
+    ]
+  }
+}

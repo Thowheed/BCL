@@ -1,0 +1,194 @@
+/* [project]/src/styles/home.scss.css [app-client] (css) */
+.home-wrapper {
+  width: 100%;
+}
+
+.home-content {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 8%;
+}
+
+.banner-section {
+  gap: 10px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+.forCargoBanner {
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+  display: flex;
+}
+
+.forCargoBanner img {
+  width: 100%;
+}
+
+.forBanner {
+  width: 55%;
+  height: auto;
+}
+
+.carousel-image {
+  width: 100% !important;
+}
+
+.banner-image {
+  object-fit: cover;
+  width: auto;
+  height: auto;
+}
+
+.section-header {
+  justify-content: space-between;
+  padding: 2.5rem 0;
+  display: flex;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.view-all {
+  color: #2eaf4b;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+@media screen and (width <= 768px) and (width >= 481px) {
+  .banner-section {
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+  }
+
+  .forBanner {
+    width: 55%;
+    height: 100%;
+  }
+
+  .home-content {
+    padding-top: 15%;
+  }
+
+  .forCargoBanner {
+    width: 40%;
+    height: auto;
+  }
+}
+
+@media screen and (width <= 1024px) and (width >= 768px) {
+  .banner-section {
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+  }
+
+  .forBanner {
+    width: 55%;
+    height: 100%;
+  }
+
+  .home-content {
+    padding-top: 15%;
+  }
+
+  .forCargoBanner {
+    width: 40%;
+    height: auto;
+  }
+
+  .forCargoBanner img {
+    width: 100%;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1.5rem 0;
+  }
+
+  .section-title, .view-all {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (width <= 767px) and (width >= 481px) {
+  .home-content {
+    padding-top: 20%;
+  }
+
+  .forBanner {
+    object-fit: cover;
+    width: 55%;
+  }
+
+  .forCargoBanner {
+    width: 40%;
+  }
+}
+
+@media screen and (width <= 480px) {
+  .home-content {
+    padding-top: 37px;
+  }
+
+  .banner-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+  .view-all {
+    margin-top: .5rem;
+    font-size: 1.1rem;
+  }
+
+  .forBanner {
+    width: 100%;
+    height: 100%;
+  }
+
+  .forCargoBanner, .forBanner .ant-carousel {
+    width: 100%;
+  }
+
+  .forBanner .ant-carousel, .forBanner .ant-carousel .slick-slide img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .forCargoBanner {
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .forCargoBanner img {
+    width: 100%;
+  }
+
+  .banner-image {
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=src_styles_home_scss_css_f9ee138c._.single.css.map*/

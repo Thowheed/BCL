@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/DEl%CC%A5l%CC%A5/Desktop/bcl-logistic-client/BCL/src/styles/userprofile.scss.css"],"sourcesContent":[".user-wrapper{width:100%;display:flex;flex-direction:column;align-items:center;padding-bottom:15px;justify-content:space-evenly}.user-wrapper .account-header{padding:24px;width:75%;color:#000;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:16px;margin-top:100px}.user-wrapper .account-title{font-weight:700;font-size:20px}.user-wrapper .account-description{font-size:16px}.profile-card{padding:40px;width:75%;border:1px solid #ccc;border-radius:8px}.profile-card .profile-title{color:#000;font-weight:700;font-size:18px;margin-bottom:12px;display:block}.profile-card .profile-inputs{padding:8px}.profile-card .profile-inputs .input-label{margin:12px;margin-left:0%;font-size:14px;font-weight:500}.profile-card .profile-inputs .ant-input{height:50px}.primary-button{display:flex;padding:12px 16px;background-color:#22c55e;color:#fff;border:none;border-radius:6px;font-weight:bold}"],"names":[],"mappings":"AAAA;;;;;;;;;AAAgI;;;;;;;;;;;;AAA2K;;;;;AAA4D;;;;AAAkD;;;;;;;AAA6E;;;;;;;;AAAwG;;;;AAA0C;;;;;;AAAqG;;;;AAAqD","debugId":null}}]
+}

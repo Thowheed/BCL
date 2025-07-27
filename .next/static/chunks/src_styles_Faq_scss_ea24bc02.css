@@ -1,0 +1,75 @@
+/* [project]/src/styles/Faq.scss.css [app-client] (css) */
+.faq-container {
+  max-width: 80%;
+  margin: 0 auto 10vh;
+  padding: 2rem 1rem;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.faq-subtitle {
+  text-align: center;
+  color: #2eaf4b;
+  margin-bottom: 1.5rem;
+  padding: 10px 0;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.faq-item {
+  margin-bottom: .75rem;
+  box-shadow: 0 2px 6px #080f340f;
+}
+
+.faq-question {
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #9fdaac;
+  border-radius: 6px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.7rem 1rem;
+  display: flex;
+}
+
+.faq-question.open {
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+
+.question-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.faq-answer {
+  background-color: #fff;
+  border: 1px solid #9fdaac;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: .75rem 1rem;
+  transition: all .3s ease-in-out;
+}
+
+.answer-paragraph {
+  margin-bottom: .5rem;
+}
+
+@media screen and (width <= 768px) {
+  .faq-subtitle {
+    padding: 5px 0;
+    font-size: 30px;
+  }
+
+  .faq-title {
+    padding: 10px;
+    font-size: 20px;
+  }
+}
+
+
+/*# sourceMappingURL=src_styles_Faq_scss_ea24bc02.css.map*/

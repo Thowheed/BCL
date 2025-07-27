@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/styles/CardComponent.scss.css"],"sourcesContent":[".card-container{background:#fff !important;padding:10px;border:1px solid hsla(0,0%,80%,.7490196078);width:fit-content;border-radius:10px}.card-container .card-title{margin-bottom:5px;color:#000 !important;font-weight:600}.card-container .card-weight{font-size:12px;color:#666 !important;margin-bottom:5px}.card-container .card-price-container{display:flex;justify-content:space-between;align-items:center}.card-container .card-price-container .card-price{color:#000 !important;font-weight:600}.card-container .card-price-container .card-button{background-color:#eaf7ed !important;color:var(--primary-color) !important;border:1px solid #2eaf4b !important;border-radius:8px;width:70px}"],"names":[],"mappings":"AAAA;;;;;;;;AAAyI;;;;;;AAAoF;;;;;;AAAoF;;;;;;AAAoG;;;;;AAAwF"}}]
+}

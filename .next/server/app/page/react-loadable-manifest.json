@@ -1,0 +1,49 @@
+{
+  "[project]/src/Components/TestimonialCarosel.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/Components/TestimonialCarosel.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/src_styles_TestimonialCarosel_scss_78962fa2.css",
+      "static/chunks/src_Components_TestimonialCarosel_tsx_22dbda46._.js",
+      "static/chunks/src_Components_TestimonialCarosel_tsx_00922cd2._.js"
+    ]
+  },
+  "[project]/src/Components/FooterCompo.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/Components/FooterCompo.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/src_styles_Fotter_scss_78265ffc.css",
+      "static/chunks/src_Components_FooterCompo_tsx_8e5e5109._.js",
+      "static/chunks/src_Components_FooterCompo_tsx_00922cd2._.js"
+    ]
+  },
+  "[project]/src/Components/FaqComponent.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/Components/FaqComponent.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/src_Components_5d78412e._.js",
+      "static/chunks/_04be1dcc._.js",
+      "static/chunks/src_styles_Faq_scss_ea24bc02.css",
+      "static/chunks/src_Components_FaqComponent_tsx_00922cd2._.js"
+    ]
+  },
+  "[project]/src/Components/ProductSlide.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/Components/ProductSlide.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_3594ff9b._.js",
+      "static/chunks/src_e2dd6d14._.js",
+      "static/chunks/src_Components_ProductSlide_tsx_00922cd2._.js"
+    ]
+  },
+  "[project]/src/Components/NabarComp.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/Components/NabarComp.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_cross-fetch_dist_browser-ponyfill_133e593d.js",
+      "static/chunks/node_modules_antd_es_43dfc6f6._.js",
+      "static/chunks/node_modules_rc-menu_es_d0fe5480._.js",
+      "static/chunks/node_modules_rc-field-form_es_4fb5d7cb._.js",
+      "static/chunks/node_modules_rc-select_es_b53f2576._.js",
+      "static/chunks/node_modules_d79d3544._.js",
+      "static/chunks/src_74df712e._.js",
+      "static/chunks/src_styles_userprofile_scss_110d6384.css",
+      "static/chunks/src_Components_NabarComp_tsx_00922cd2._.js"
+    ]
+  }
+}

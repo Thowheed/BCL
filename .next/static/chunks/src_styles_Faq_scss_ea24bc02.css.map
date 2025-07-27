@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/DEl%CC%A5l%CC%A5/Desktop/bcl-logistic-client/BCL/src/styles/Faq.scss.css"],"sourcesContent":[".faq-container{max-width:80%;margin:0 auto;padding:2rem 1rem;margin-bottom:10vh}.faq-title{text-align:center;font-weight:bold;font-size:20px}.faq-subtitle{text-align:center;font-size:40px;font-weight:600;color:#2eaf4b;padding:10px 0;margin-bottom:1.5rem}.faq-item{margin-bottom:.75rem;box-shadow:0 2px 6px rgba(8,15,52,.06)}.faq-question{display:flex;justify-content:space-between;align-items:center;padding:1.7rem 1rem;border:1px solid #9fdaac;border-radius:6px;cursor:pointer;background-color:#fff}.faq-question.open{border-bottom:none;border-radius:6px 6px 0 0}.question-text{font-weight:600;font-size:1.125rem}.faq-answer{border:1px solid #9fdaac;border-top:none;border-radius:0 0 6px 6px;padding:.75rem 1rem;background-color:#fff;transition:all .3s ease-in-out}.answer-paragraph{margin-bottom:.5rem}@media screen and (max-width: 768px){.faq-subtitle{font-size:30px;padding:5px 0}.faq-title{font-size:20px;padding:10px}}"],"names":[],"mappings":"AAAA;;;;;;AAAgF;;;;;;AAA6D;;;;;;;;;AAAiH;;;;;AAAsE;;;;;;;;;;;AAAgL;;;;;AAAgE;;;;;AAAkD;;;;;;;;;AAAwJ;;;;AAAsC;EAAqC;;;;;EAA2C","debugId":null}}]
+}
