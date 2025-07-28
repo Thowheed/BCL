@@ -71,7 +71,7 @@ export default function Success() {
     try {
       const payload = {
         customer_id: user?.id , // Replace if available
-        payment_id: data?.id,
+        // payment_id: data?.id,
         customer_detials: {
           name: data.customer_details?.name || "",
           email: data.customer_details?.email || "",

@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   output: 'export',
   images: {
     domains: ['api.purfull.com'], 
+    unoptimized: true
   },
 };
 

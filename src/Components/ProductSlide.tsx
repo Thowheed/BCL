@@ -94,7 +94,7 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import CardComponent from './CardComponent';
 
 interface ProductCarouselProps {
-  getallProductData: any[];
+  getallProductData: [];
 }
 
 const ProductCarousel = ({ getallProductData }: ProductCarouselProps) => {

@@ -1,12 +1,12 @@
 'use client'; 
 
 import dynamic from 'next/dynamic';
-import { useParams } from 'next/navigation';
+// import { useParams } from 'next/navigation';
 
 const ProductDetailComp = dynamic(() => import('../../../../Components/ProductDetailComp'));
 
 const ProductDetail = () => {
-  const params = useParams()
+//   const params = useParams()
     return (
         <div>
             <ProductDetailComp />

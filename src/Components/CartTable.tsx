@@ -254,14 +254,14 @@
 // export default CartTable;
 
 "use client";
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 import { InputNumber, Table } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import appImages from "@/Globals/AppImages";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { updatecartListLoad } from "@/store/reducer/indexSlice";
-import { getUser } from "@/Globals/Localstorage";
+// import { updatecartListLoad } from "@/store/reducer/indexSlice";
+// import { getUser } from "@/Globals/Localstorage";
 
 const CartTable = ({ data, reRun }: { data: any; reRun: any }) => {
   const dispatch = useDispatch();

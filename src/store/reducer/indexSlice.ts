@@ -1,7 +1,7 @@
-import { PayloadAction, createSlice, current } from "@reduxjs/toolkit";
-import { stat } from "fs";
-import { get } from "http";
-import { act } from "react";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+// import { stat } from "fs";
+// import { get } from "http";
+// import { act } from "react";
 
 const initialState = {
     isOpen: false,
@@ -57,7 +57,7 @@ const bcl = createSlice({
     name: "bcl",
     initialState: initialState,
     reducers: {
-        getUserAddressListLoad: (state, action: PayloadAction<any>) => {
+        getUserAddressListLoad: (state) => {
             state.isOpen = true;
         },
         getUserAddressListSuccess: (state, action: PayloadAction<any>) => {

@@ -1,12 +1,12 @@
 'use client';
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { DownOutlined, RightOutlined } from '@ant-design/icons';
 
 // Lazy-loaded components
-const NavbarComp = dynamic(() => import('./NabarComp'));
-const ProductCarousel = dynamic(() => import('./ProductSlide'));
-const FooterComp = dynamic(() => import('./FooterCompo'));
+// const NavbarComp = dynamic(() => import('./NabarComp'));
+// const ProductCarousel = dynamic(() => import('./ProductSlide'));
+// const FooterComp = dynamic(() => import('./FooterCompo'));
 import '../styles/Faq.scss';
 
 export default function Faq() {

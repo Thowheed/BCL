@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 const LoginCompo = dynamic(() => import('../../../Components/LoginCompo'));
 
 
-const FooterCompo = dynamic(() => import("../../../Components/FooterCompo"));
+// const FooterCompo = dynamic(() => import("../../../Components/FooterCompo"));
 
 
 

@@ -3,19 +3,19 @@ import { takeEvery } from "redux-saga/effects";
 
 import {
     addtocartListload,
-    addtocartListSuccess,
+    // addtocartListSuccess,
     getUserAddressListLoad,
     getUserListLoad,
     loginListLoad,
-    loginSuccess,
+    // loginSuccess,
     siginListLoad,
-    siginSuccess,
+    // siginSuccess,
     updateuserListLoad,
-    updateuserSuccess,
+    // updateuserSuccess,
     getallproductListLoad,
-    getallprodctSuccess,
+    // getallprodctSuccess,
     getproductusingidListLoad,
-    getproductusingidSuccess,
+    // getproductusingidSuccess,
     getCartLoad,
     updatecartListLoad,
     
@@ -24,7 +24,7 @@ import {
 
 
 import { addtoCartListSaga, getUserAddressListSaga, getUserListSaga, loginListsaga , siginListsaga  , updateuserListsaga ,
-     getallproductListSaga , getproductusingidListsaga,getCartSaga, updatecartListsaga, getProductsByQuerySaga } from "./bclsaga";
+     getallproductListSaga , getproductusingidListsaga,getCartSaga, updatecartListsaga } from "./bclsaga";
 
 export function* baclSaga() {
     yield takeEvery(getUserAddressListLoad, getUserAddressListSaga);
@@ -37,7 +37,5 @@ export function* baclSaga() {
     yield takeEvery (getproductusingidListLoad ,getproductusingidListsaga )
     yield takeEvery (getCartLoad , getCartSaga)
     yield takeEvery (updatecartListLoad , updatecartListsaga)
-    yield takeEvery("GET_ALL_PRODUCT_LIST_BY_QUERY", getProductsByQuerySaga);
+    // yield takeEvery("GET_ALL_PRODUCT_LIST_BY_QUERY", getProductsByQuerySaga);
 }
-
-
