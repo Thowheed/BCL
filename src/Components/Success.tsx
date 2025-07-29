@@ -3,6 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import "../styles/Success.scss";
+import Image from "next/image"
+import Link from "next/link";
+
 import axios from "axios";
 
 interface AddressType {
@@ -45,33 +48,55 @@ export default function Success() {
   const storedUser = localStorage.getItem("user");
   const user = storedUser ? JSON.parse(storedUser) : null;
 
-  useEffect(() => {
-    if (!session_id) return;
+  // useEffect(() => {
+  //   if (!session_id) return;
 
-    const fetchSessionAndCreateOrder = async () => {
-      try {
-        const res = await fetch(`https://api.purfull.com/payment/get-session?session_id=${session_id}`);
-        const data = await res.json();
-        setSession(data);
+  //   const fetchSessionAndCreateOrder = async () => {
+  //     try {
+  //       const res = await fetch(`https://api.purfull.com/payment/get-session?session_id=${session_id}`);
+  //       const data = await res.json();
+  //       setSession(data);
 
-        // Create order once session is received
-        if (!orderCreated) {
-          await createOrder(data);
-          setOrderCreated(true); // Avoid duplicate orders
-        }
-      } catch (error) {
-        console.error("Error fetching session or creating order:", error);
-      }
-    };
+  //       // Create order once session is received
+  //       if (!orderCreated) {
+  //         await createOrder(data);
+  //         setOrderCreated(true); // Avoid duplicate orders
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching session or creating order:", error);
+  //     }
+  //   };
 
-    fetchSessionAndCreateOrder();
-  }, []);
+  //   fetchSessionAndCreateOrder();
+  // }, []);
+
+//     useEffect(() => {
+//   if (!session_id) return;
+
+//   const fetchSessionAndCreateOrder = async () => {
+//     try {
+//       const res = await fetch(`https://api.purfull.com/payment/get-session?session_id=${session_id}`);
+//       const data = await res.json();
+//       setSession(data);
+
+//       if (!orderCreated) {
+//         await createOrder(data);
+//         setOrderCreated(true);
+//       }
+//     } catch (error) {
+//       console.error("Error fetching session or creating order:", error);
+//     }
+//   };
+
+//   fetchSessionAndCreateOrder();
+// }, [session_id, orderCreated]); // ✅ Add dependencies here
+useEffect(() => {
+  if (!session_id) return;
 
   const createOrder = async (data: SessionType) => {
     try {
       const payload = {
-        customer_id: user?.id , // Replace if available
-        // payment_id: data?.id,
+        customer_id: user?.id,
         customer_detials: {
           name: data.customer_details?.name || "",
           email: data.customer_details?.email || "",
@@ -85,7 +110,9 @@ export default function Success() {
           currency: item.currency,
         })) || [],
         asign_to: null,
-        totalValue: data?.amount_total! / 100,
+        // totalValue: (data.amount_total ?? 0) / 100,
+        totalValue: (data.amount_total ?? 0) / 100,
+
         type: "Online",
         remarks: "Created from success page",
         status: "Pending",
@@ -98,12 +125,63 @@ export default function Success() {
     }
   };
 
+  const fetchSessionAndCreateOrder = async () => {
+    try {
+      const res = await fetch(`https://api.purfull.com/payment/get-session?session_id=${session_id}`);
+      const data = await res.json();
+      setSession(data);
+
+      if (!orderCreated) {
+        await createOrder(data);
+        setOrderCreated(true);
+      }
+    } catch (error) {
+      console.error("Error fetching session or creating order:", error);
+    }
+  };
+
+  fetchSessionAndCreateOrder();
+}, [session_id, orderCreated, user]); // include `user` also if used inside
+
+
+  // const createOrder = async (data: SessionType) => {
+  //   try {
+  //     const payload = {
+  //       customer_id: user?.id , // Replace if available
+  //       // payment_id: data?.id,
+  //       customer_detials: {
+  //         name: data.customer_details?.name || "",
+  //         email: data.customer_details?.email || "",
+  //         phone: data.customer_details?.phone || "",
+  //         address: data.customer_details?.address || {},
+  //       },
+  //       order_detials: data.line_items?.data.map((item) => ({
+  //         name: item.description,
+  //         quantity: item.quantity,
+  //         price: item.amount_total / 100,
+  //         currency: item.currency,
+  //       })) || [],
+  //       asign_to: null,
+  //       totalValue: data?.amount_total! / 100,
+  //       type: "Online",
+  //       remarks: "Created from success page",
+  //       status: "Pending",
+  //     };
+
+  //     await axios.post("https://api.purfull.com/order/create-order", payload);
+  //     console.log("Order created successfully.");
+  //   } catch (error) {
+  //     console.error("Failed to create order:", error);
+  //   }
+  // };
+
   if (!session) return <div className="success-loader">Loading...</div>;
 
   return (
     <div className="success-wrapper">
       <div className="success-card">
-        <img src="/success.png" alt="Success" className="success-icon" />
+        {/* <img src="/success.png" alt="Success" className="success-icon" /> */}
+        <Image src="/success.png" alt="Success" width={100} height={100} className="success-icon" />
         <h1 className="success-title">Payment Successful</h1>
         <p className="success-message">
           Thank you, <strong>{session.customer_details?.name || "Customer"}</strong>!
@@ -114,7 +192,7 @@ export default function Success() {
 
         <div className="success-summary">
           <p>
-            <strong>Total Paid:</strong> ${(session.amount_total! / 100).toFixed(2)}
+            <strong>Total Paid:</strong> ${((session.amount_total ?? 0) / 100).toFixed(2)}
           </p>
           <p>
             <strong>Status:</strong> {session.payment_status}
@@ -142,7 +220,8 @@ export default function Success() {
           ))}
         </div>
 
-        <a href="/" className="back-home-button">← Back to Home</a>
+        {/* <a href="/" className="back-home-button">← Back to Home</a> */}
+        <Link href="/" className="back-home-button">← Back to Home</Link>
       </div>
     </div>
   );
