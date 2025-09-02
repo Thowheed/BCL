@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[5695],{35695:(e,u,r)=>{var s=r(18999);r.o(s,"useParams")&&r.d(u,{useParams:function(){return s.useParams}}),r.o(s,"useRouter")&&r.d(u,{useRouter:function(){return s.useRouter}}),r.o(s,"useSearchParams")&&r.d(u,{useSearchParams:function(){return s.useSearchParams}})}}]);
