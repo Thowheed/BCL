@@ -1,7 +1,9 @@
 'use client';
 
 import { Dropdown, Badge, Avatar, Input, AutoComplete } from 'antd';
-import { DownOutlined, UserOutlined, SearchOutlined } from '@ant-design/icons';
+import { 
+    // DownOutlined, 
+    UserOutlined, SearchOutlined } from '@ant-design/icons';
 import "../styles/navbar.scss";
 import "../styles/userprofile.scss";
 import { useEffect, useState } from 'react';
@@ -11,6 +13,7 @@ import { useRouter } from "next/navigation";
 import i18n from "@/lib/i18n"; 
 import { useTranslation } from "react-i18next";
 import { ShoppingBagIcon, UserIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline'; // or /solid
+import Image from 'next/image';
 
 
 
@@ -34,7 +37,7 @@ const NavbarComp = () => {
     //const goToProductdetail = () => router.push("/productdetail");
 
     const [searchterm, setsearchterm] = useState<any>(null);
-    const [debouncedTerm, setDebouncedTerm] = useState(searchterm);
+    // const [debouncedTerm, setDebouncedTerm] = useState(searchterm);
 
     const dispatch = useDispatch();
 
@@ -56,15 +59,16 @@ const NavbarComp = () => {
 
     const getAllproductapi = (value: any) => {
 
+console.log(value);
 
-        let paylaod = {
+        // const paylaod = {
 
-            name: value,
+        //     name: value,
 
 
-        }
+        // }
 
-        dispatch(getallproductListLoad(paylaod))
+        dispatch(getallproductListLoad())
     }
 
 
@@ -112,7 +116,7 @@ const NavbarComp = () => {
     //     }
     //     });
     //   };
-    const { t, ready } = useTranslation();
+    const { t } = useTranslation();
     useEffect(() => {
 
         i18n.changeLanguage(language);
@@ -125,7 +129,7 @@ const NavbarComp = () => {
             <div className="drop-down-inside">
 
                 <div className="user-info">
-                    <img src="/user.png" alt="user" className="avatar" />
+                    <Image src="/user.png" alt="user" className="avatar" />
                     <div className="user-details">
                         <span className="name">{loggedInUser?.name || 'User Name'}</span>
                         <span className="email">{loggedInUser?.email || 'user@example.com'}</span>
@@ -168,7 +172,7 @@ const NavbarComp = () => {
         <>
             <div className="navbar">
 
-                <img className="logo" src="/BCL-Green-1.svg" alt="Logo" />
+                <Image className="logo" src="/BCL-Green-1.svg" alt="Logo" />
 
                 {/* <div className="delivery">
                     <span className="delivery-time">Language</span>
@@ -213,7 +217,7 @@ const NavbarComp = () => {
                         </button>
                     )}
                     <button className="cart-button" onClick={gocart}>
-                        <img src="./Vectora.svg" alt="cart" />
+                        <Image src="./Vectora.svg" alt="cart" />
                         <span>cart</span>
                     </button>
                 </div>
@@ -267,7 +271,7 @@ const NavbarComp = () => {
                         </Badge>
                     </Dropdown> */}
                     <button className="cart-button" onClick={gocart}>
-                        <img src="./Vectora.svg" />
+                        <Image alt='' src="./Vectora.svg" />
                         <span>{t("cart")}</span>
                     </button>
                 </div>
@@ -286,7 +290,7 @@ const NavbarComp = () => {
 
 
                 <div className='deleivery-and-carts'>
-                    <img className="logo-mobile" src="/BCL-Green-1.svg" alt="Logo" />
+                    <Image className="logo-mobile" src="/BCL-Green-1.svg" alt="Logo" />
 
                     <div className="lang">
                         <select

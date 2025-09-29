@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import Image from "next/image";
+// import Image from "next/image";
 import "../styles/index.scss"
 
 const HomePage = dynamic(() => import('../Components/Home'))

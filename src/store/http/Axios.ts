@@ -1,22 +1,22 @@
 import ApiConstants from "@/Globals/ApiConstants";
 import { http } from "./Http";
 import { message } from "antd";
-import { retry } from "redux-saga/effects";
-import axios from "axios";
+// import { retry } from "redux-saga/effects";
+// import axios from "axios";
 
 // const baseURL = 'http://localhost:4400';
 const baseURL = 'https://api.purfull.com'
 
-let loginUrl: any = `${baseURL}/api/e-commercelogin`;
-let url: any = `${baseURL}/user/get-all-user`;
-let Carturl: any = `${baseURL}/cart/createcart`;
-let Loginurl: any = `${baseURL}/user/login`;
-let siginurl: any = `${baseURL}/user/create-user`;
-let updateuserurl: any = `${baseURL}/user/update-user`;
-let getallproducturl: any = `${baseURL}/product/get-all-product`;
-let getproductusingidurl: any = `${baseURL}/product/get-product`;
-let getCartListurl: any = `${baseURL}/cart/get-cart`;
-let updateCarturl: any = `${baseURL}/cart/updatecart`;
+const loginUrl: any = `${baseURL}/api/e-commercelogin`;
+const url: any = `${baseURL}/user/get-all-user`;
+const Carturl: any = `${baseURL}/cart/createcart`;
+const Loginurl: any = `${baseURL}/user/login`;
+const siginurl: any = `${baseURL}/user/create-user`;
+const updateuserurl: any = `${baseURL}/user/update-user`;
+const getallproducturl: any = `${baseURL}/product/get-all-product`;
+const getproductusingidurl: any = `${baseURL}/product/get-product`;
+const getCartListurl: any = `${baseURL}/cart/get-cart`;
+const updateCarturl: any = `${baseURL}/cart/updatecart`;
 
 // const getProductSuggestions = (name: string, lang: string) => {
 //     return axios.get(`${getallproducturl}?name=${encodeURIComponent(name)}&lang=${lang}`);
@@ -122,7 +122,7 @@ const Method = {
                         err.response.status !== undefined
                     ) {
                         if (err.response.status == 401) {
-                            let unauthorizedStatus = err.response.status;
+                            const unauthorizedStatus = err.response.status;
                             if (unauthorizedStatus == 401) {
                                 // Logout();
                                 message.error("401 unauthorized");
@@ -185,7 +185,7 @@ const Method = {
                         err.response.status !== undefined
                     ) {
                         if (err.response.status == 401) {
-                            let unauthorizedStatus = err.response.status;
+                            const unauthorizedStatus = err.response.status;
                             if (unauthorizedStatus == 401) {
                                 // Logout();
                                 message.error("401 unauthorized");

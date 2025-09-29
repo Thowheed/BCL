@@ -8,6 +8,7 @@ import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { siginListLoad } from "@/store/reducer/indexSlice";
+import Image from "next/image";
 
 const formTemp = {
     name: "",
@@ -38,17 +39,17 @@ export default function LoginCompo() {
 
     const Siginapi = () => {
         if (!login) {
-            let payload = {
-                name: formData?.name,
-                email: formData?.email,
-                phone: formData?.mobileNo,
-                password: formData?.password,
-                address: formData?.address,
-                country: formData?.country,
-                zip_code: formData?.zip_code,
-                location: formData?.location,
-            }
-            dispatch(siginListLoad(payload));
+            // const payload = {
+            //     name: formData?.name,
+            //     email: formData?.email,
+            //     phone: formData?.mobileNo,
+            //     password: formData?.password,
+            //     address: formData?.address,
+            //     country: formData?.country,
+            //     zip_code: formData?.zip_code,
+            //     location: formData?.location,
+            // }
+            dispatch(siginListLoad());
             setsigninDataSuccess(true);
             setsigninButtonLoading(true);
         } else {
@@ -70,7 +71,7 @@ export default function LoginCompo() {
         <div className="login-wrapper">
             <div className="login-card">
                 <div className="login-form-container">
-                    <img className="brand-login" src="/BCL-Green-1.svg" alt="Logo" />
+                    <Image className="brand-login" src="/BCL-Green-1.svg" alt="Logo" />
 
                     <div className="welcome-message">
                         <span className="title">
@@ -224,7 +225,7 @@ export default function LoginCompo() {
                                 </Form.Item>
 
                                 <div className="gps-container">
-                                    <img src="/Vector.svg" alt="logo" />
+                                    <Image src="/Vector.svg" alt="logo" />
                                     <div className="gps-text">
                                         <span className="current-gps">Current Location</span><br />
                                         <span className="using-gps">Using GPS</span>
@@ -235,7 +236,7 @@ export default function LoginCompo() {
 
                         <Button className="sign-in-button" type="primary" htmlType="submit" loading={signinButtonLoading}>
                             {login ? "Continue" : "Register"}
-                            {!login && <img className="arrow-logo" src="/arrow.svg" alt="arrow" />}
+                            {!login && <Image className="arrow-logo" src="/arrow.svg" alt="arrow" />}
                         </Button>
                     </Form>
 

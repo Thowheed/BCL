@@ -6,18 +6,18 @@ import { Alert } from "antd";
 import Image from "next/image";
 import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 // 🟢 Move stripePromise outside component
 const stripePromise = loadStripe(
   "pk_test_51RWKcSHFYikR0iYEytCYmqQadWE8PxWu29bAJmqZDw2aMLs4KFuEcMzBrlyCDfzsKBxGfkyhkuqOD8mqcx3bIk1f00B5pL4zrl"
 );
 
-const CartTotal = ({ data, reRun }: { data: any; reRun: any }) => {
+const CartTotal = ({ data }: { data: any; reRun: any }) => {
   const [loading, setLoading] = useState(false);
   const storedUser = localStorage.getItem("user");
   const user = storedUser ? JSON.parse(storedUser) : null;
-  const router = useRouter();
+  // const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
   const [address, setAddress] = useState(user?.address?.address || "");
   const [zipCode, setZipCode] = useState(user?.address?.zip_code || "");
@@ -39,20 +39,20 @@ const CartTotal = ({ data, reRun }: { data: any; reRun: any }) => {
   const handleClick = async () => {
     setLoading(true);
 
-    const items = [
-      {
-        name: "Wireless Mouse",
-        amount: 2000,
-        quantity: 2,
-        currency: "usd",
-      },
-      {
-        name: "Mechanical Keyboard",
-        amount: 3000,
-        quantity: 1,
-        currency: "usd",
-      },
-    ];
+    // const items = [
+    //   {
+    //     name: "Wireless Mouse",
+    //     amount: 2000,
+    //     quantity: 2,
+    //     currency: "usd",
+    //   },
+    //   {
+    //     name: "Mechanical Keyboard",
+    //     amount: 3000,
+    //     quantity: 1,
+    //     currency: "usd",
+    //   },
+    // ];
     const stripeItems = data.map((item: any) => {
       const price = parseFloat(item?.Product?.price || "0");
 

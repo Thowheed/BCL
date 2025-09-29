@@ -17,11 +17,11 @@ import { Form, Input, Button } from "antd";
 import "../styles/userprofile.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getUserListLoad,
+  // getUserListLoad,
   updateuserListLoad,
 } from "@/store/reducer/indexSlice";
 import { useEffect, useState } from "react";
-import { getUser } from "@/Globals/Localstorage";
+// import { getUser } from "@/Globals/Localstorage";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -29,9 +29,9 @@ import "react-loading-skeleton/dist/skeleton.css";
 const Usercompo = () => {
   const [form] = Form.useForm();
   const [userData, setUserData] = useState<UserData | null>(null);
-  const [reRun, setRerun] = useState(false)
+  const [reRun] = useState(false)
   const dispatch = useDispatch();
-  const userList = getUser();
+  // const userList = getUser();
   
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   useEffect(() => {
@@ -58,7 +58,7 @@ const Usercompo = () => {
     }
   }, [user?.id, reRun]);
 
-  const { updateuserLoad, updateuserData } = useSelector(
+  const { updateuserLoad } = useSelector(
     (state: any) => state.bcl
   );
   console.log("updateuserData", updateuserLoad);
@@ -66,20 +66,20 @@ const Usercompo = () => {
   // Update API call
   const updateUserapi = (values: any) => {
     console.log("values", values);
-    const payload = {
-      id: userList?.id,
-      name: values?.name,
-      email: values?.email,
-      phone: values?.phone,
-      password: userList?.password,
-      address: {
-        address: values?.address,
-        country: values?.country,
-        zip_code: values?.zip_code,
-        location: values?.location,
-      },
-    };
-    const result = dispatch(updateuserListLoad(payload));
+    // const payload = {
+    //   id: userList?.id,
+    //   name: values?.name,
+    //   email: values?.email,
+    //   phone: values?.phone,
+    //   password: userList?.password,
+    //   address: {
+    //     address: values?.address,
+    //     country: values?.country,
+    //     zip_code: values?.zip_code,
+    //     location: values?.location,
+    //   },
+    // };
+    const result = dispatch(updateuserListLoad());
     console.log(result);
     
   };

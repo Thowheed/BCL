@@ -254,18 +254,22 @@
 // export default CartTable;
 
 "use client";
-import React, { useState, useEffect } from "react";
+import React
+// { useState, useEffect } 
+from "react";
 import { InputNumber, Table } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
-import appImages from "@/Globals/AppImages";
+// import appImages from "@/Globals/AppImages";
 import Image from "next/image";
-import { useDispatch, useSelector } from "react-redux";
-import { updatecartListLoad } from "@/store/reducer/indexSlice";
-import { getUser } from "@/Globals/Localstorage";
+// import { 
+//    useDispatch, 
+//   useSelector } from "react-redux";
+// import { updatecartListLoad } from "@/store/reducer/indexSlice";
+// import { getUser } from "@/Globals/Localstorage";
 
 const CartTable = ({ data, reRun }: { data: any; reRun: any }) => {
-  const dispatch = useDispatch();
-  const { getCartData } = useSelector((state: any) => state.bcl);
+  // const dispatch = useDispatch();
+  // const { getCartData } = useSelector((state: any) => state.bcl);
 
   const handleDeleteProduct = async (record: any,) => {
     console.log(record);
@@ -339,15 +343,15 @@ const CartTable = ({ data, reRun }: { data: any; reRun: any }) => {
     }
   };
 
-  const dataSource = getCartData?.map((item: any, index: number) => ({
-    key: item?.id || index.toString(),
-    productId: item?.productId || item?.id,
-    productImage: item?.productImage || appImages?.GRASS_IMAGE,
-    productName: item?.productName,
-    price: item?.price,
-    quantity: item?.quantity,
-    subtotal: (item?.price * item?.quantity).toFixed(2),
-  }));
+  // const dataSource = getCartData?.map((item: any, index: number) => ({
+  //   key: item?.id || index.toString(),
+  //   productId: item?.productId || item?.id,
+  //   productImage: item?.productImage || appImages?.GRASS_IMAGE,
+  //   productName: item?.productName,
+  //   price: item?.price,
+  //   quantity: item?.quantity,
+  //   subtotal: (item?.price * item?.quantity).toFixed(2),
+  // }));
 
   const columns = [
     {

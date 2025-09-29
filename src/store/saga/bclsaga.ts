@@ -4,13 +4,18 @@ import { SagaIterator } from "redux-saga";
 import { call, put } from "redux-saga/effects";
 import {
     addtocartListSuccess, getallprodctSuccess, getproductusingidSuccess, getUserAddressListSuccess, getUserListSuccess,
-    loginListLoad, loginSuccess, siginListLoad, siginSuccess, updateuserListLoad, updateuserSuccess, getCartSuccess
+    // loginListLoad, 
+    loginSuccess, 
+    // siginListLoad, 
+    siginSuccess,
+    //  updateuserListLoad, 
+     updateuserSuccess, getCartSuccess
 } from "../reducer/indexSlice";
 import { bclAxiosAPi } from "../http/Axios";
 
 function* failSaga(result: any) {
     yield put({ type: ApiConstants.API_USER_FAIL });
-    let msg = result.result.data
+    const msg = result.result.data
         ? result.result.data.message
         : ApiConstants?.SOMETHING_WENT_WRONG;
     message.config({
@@ -39,7 +44,7 @@ export function* getUserAddressListSaga(action: any): SagaIterator {
         const response = yield call(bclAxiosAPi.getUserAddressListAxios, action.payload);
 
         if (response.status == 1) {
-            let result: any = {
+            const result: any = {
                 status: response.status,
                 result: response.result.data.data,
             };
@@ -60,7 +65,7 @@ export function* getUserListSaga(action: any): SagaIterator {
         const response = yield call(bclAxiosAPi.getUserListAxios, action?.payload);
 
         if (response.status == 1) {
-            let result: any = {
+            const result: any = {
                 status: response.status,
                 result: response.result.data.data,
             };
@@ -81,7 +86,7 @@ export function* addtoCartListSaga(action: any): SagaIterator {
         const response = yield call(bclAxiosAPi.addtoCartListAxios, action?.payload);
 
         if (response.status == 1) {
-            let result: any = {
+            const result: any = {
                 status: response.status,
                 result: response.result.data.data,
             };
@@ -102,7 +107,7 @@ export function* loginListsaga(action: any): SagaIterator {
         const response = yield call(bclAxiosAPi.loginListAxios, action?.payload);
         console.log("response==>", response);
         if (response.status == 1) {
-            let result: any = {
+            const result: any = {
                 status: response.status,
                 result: response.result.data,
             };
@@ -123,7 +128,7 @@ export function* siginListsaga(action: any): SagaIterator {
         const response = yield call(bclAxiosAPi.siginListAxios, action?.payload);
 
         if (response.status == 1) {
-            let result: any = {
+            const result: any = {
                 status: response.status,
                 result: response.result.data.data,
             };
@@ -144,7 +149,7 @@ export function* updateuserListsaga(action: any): SagaIterator {
         const response = yield call(bclAxiosAPi.updateuserListAxios, action?.payload);
 
         if (response.status == 1) {
-            let result: any = {
+            const result: any = {
                 status: response.status,
                 result: response.result.data.data,
             };
@@ -166,7 +171,7 @@ export function* getallproductListSaga(): SagaIterator {
 
         console.log("response==>", response)
         if (response.status == 1) {
-            let result: any = {
+            const result: any = {
                 status: response?.status,
                 result: response?.result?.data?.data,
             };
@@ -188,7 +193,7 @@ export function* getproductusingidListsaga(action: any): SagaIterator {
         const response = yield call(bclAxiosAPi.getproductusingidListAxios, action?.payload);
 
         if (response.status == 1) {
-            let result: any = {
+            const result: any = {
                 status: response.status,
                 result: response.result.data.data,
             };
@@ -206,7 +211,7 @@ export function* getCartSaga(action: any): SagaIterator {
         const response = yield call(bclAxiosAPi.getCartListtAxios, action?.payload);
 
         if (response.status == 1) {
-            let result: any = {
+            const result: any = {
                 status: response.status,
                 result: response.result.data.data,
             };
@@ -226,7 +231,7 @@ export function* updatecartListsaga(action: any): SagaIterator {
         const response = yield call(bclAxiosAPi.updatecartListAxios, action?.payload);
 
         if (response.status == 1) {
-            let result: any = {
+            const result: any = {
                 status: response.status,
                 result: response.result.data.data,
             };

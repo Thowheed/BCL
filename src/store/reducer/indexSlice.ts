@@ -1,7 +1,9 @@
-import { PayloadAction, createSlice, current } from "@reduxjs/toolkit";
-import { stat } from "fs";
-import { get } from "http";
-import { act } from "react";
+import { PayloadAction, createSlice
+    // current 
+} from "@reduxjs/toolkit";
+// import { stat } from "fs";
+// import { get } from "http";
+// import { act } from "react";
 
 const initialState = {
     isOpen: false,
@@ -57,7 +59,7 @@ const bcl = createSlice({
     name: "bcl",
     initialState: initialState,
     reducers: {
-        getUserAddressListLoad: (state, action: PayloadAction<any>) => {
+        getUserAddressListLoad: (state) => {
             state.isOpen = true;
         },
         getUserAddressListSuccess: (state, action: PayloadAction<any>) => {
@@ -78,7 +80,7 @@ const bcl = createSlice({
 
         //my code 
 
-        addtocartListload: (state, action: PayloadAction<any>) => {
+        addtocartListload: (state) => {
             state.addtocartLoad = true;
 
         },
@@ -93,7 +95,7 @@ const bcl = createSlice({
 
         //login code ////
 
-        loginListLoad: (state, action: PayloadAction<any>) => {
+        loginListLoad: (state) => {
 
             state.loginLoad = true
         },
@@ -107,31 +109,31 @@ const bcl = createSlice({
 
         // sigin code 
 
-        siginListLoad: (state, action: PayloadAction<any>) => {
+        siginListLoad: (state) => {
             state.siginLoad = true
         },
 
         siginSuccess: (state, action: PayloadAction<any>) => {
-            state.siginLoad = false,
+            state.siginLoad = false;
                 state.siginData = action?.payload.result
 
         },
 
         //update user code
 
-        updateuserListLoad: (state, action: PayloadAction<any>) => {
+        updateuserListLoad: (state) => {
             state.updateuserLoad = true
         },
 
         updateuserSuccess: (state, action: PayloadAction<any>) => {
-            state.updateuserLoad = false,
+            state.updateuserLoad = false;
                 state.updateuserData = action?.payload.result
         },
 
         //  get all product product api 
 
 
-        getallproductListLoad: (state, action: PayloadAction<any>) => {
+        getallproductListLoad: (state) => {
             state.getallProductLoad = true
         },
 
@@ -144,7 +146,7 @@ const bcl = createSlice({
         //  getusingproduct id  product product api 
 
 
-        getproductusingidListLoad: (state, action: PayloadAction<any>) => {
+        getproductusingidListLoad: (state) => {
             state.getproductusingidLoad = true
         },
 
@@ -157,7 +159,7 @@ const bcl = createSlice({
             state.getProductIdData = action?.payload
         },
 
-        getCartLoad: (state, action: PayloadAction<any>) => {
+        getCartLoad: (state) => {
             state.getCartListLoad = true
         },
         getCartSuccess: (state, action: PayloadAction<any>) => {
@@ -167,12 +169,12 @@ const bcl = createSlice({
 
         //update cart code
 
-        updatecartListLoad: (state, action: PayloadAction<any>) => {
+        updatecartListLoad: (state) => {
             state.updatecartLoad = true
         },
 
         updatecartSuccess: (state, action: PayloadAction<any>) => {
-            state.updatecartLoad = false,
+            state.updatecartLoad = false;
                 state.updatecartData = action?.payload.result
         },
 

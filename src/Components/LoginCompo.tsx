@@ -1,6 +1,6 @@
 'use client';
-import Image from "next/image";
-import Logo from "../../public/BCL-Green-1.svg"
+// import Image from "next/image";
+// import Logo from "../../public/BCL-Green-1.svg"
 import "../styles/Login.scss";
 import { useRouter } from "next/navigation";
 import { Button, Form, Input, message } from "antd";
@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginListLoad } from "@/store/reducer/indexSlice";
 import { setUser } from "@/Globals/Localstorage";
 import 'antd/dist/reset.css'; // for Ant Design v5
+import Image from "next/image";
 
 const tempLogin = {
 
@@ -28,7 +29,7 @@ export default function LoginCompo() {
 
     const router = useRouter();
     const [form] = Form.useForm();
-    const [login, setLogin] = useState(true);
+    const [login] = useState(true);
     const [loginDataSuccess, setLoginDataSuccess] = useState(false);
 
     const [messageApi, contextHolder] = message.useMessage();
@@ -50,12 +51,12 @@ export default function LoginCompo() {
 
     const Loginapi = () => {
 
-        let payload = {
-            email: TempLoginData?.email,
-            password: TempLoginData?.password,
-        }
+        // const payload = {
+        //     email: TempLoginData?.email,
+        //     password: TempLoginData?.password,
+        // }
 
-        dispatch(loginListLoad(payload));
+        dispatch(loginListLoad());
         setLoginDataSuccess(true)
         setLoginButtonLoading(true);
     }
@@ -92,16 +93,17 @@ export default function LoginCompo() {
 
 
     return (
+        
         <div className="login-wrapper">
-
+{contextHolder}  
             <div className="login-card">
 
                 <div className="login-form-container">
 
-                    <img className="brand-login" src="/BCL-Green-1.svg" alt="Logo" />
+                    <Image className="brand-login" src="/BCL-Green-1.svg" alt="Logo" />
 
                     <div className="welcome-message">
-                        <span>Complete Your Purchase – Log In to Continue!" </span>
+                        <span>Complete Your Purchase – Log In to Continue! </span>
                         <div className="small-text">
                             <span>To proceed with payment and enjoy a seamless shopping experience, please log in to your account.</span>
                         </div>
@@ -164,7 +166,7 @@ export default function LoginCompo() {
 
                     <div className="toggle-login">
                         <span className="toggle-text">
-                            Don't have an account ?
+                            {"Don't have an account ?"}
                         </span>
 
                         {/* <span className="toggle-link"> Register</span> */}

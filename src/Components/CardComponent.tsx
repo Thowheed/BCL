@@ -1,8 +1,8 @@
 "use client";
-import appImages from "@/Globals/AppImages";
-import { getUser } from "@/Globals/Localstorage";
+// import appImages from "@/Globals/AppImages";
+// import { getUser } from "@/Globals/Localstorage";
 import {
-  addtocartListload,
+  // addtocartListload,
   getProductWiseIdLoad,
 } from "@/store/reducer/indexSlice";
 import { Button, message } from "antd";
@@ -10,19 +10,21 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, 
+  // useSelector
+ } from "react-redux";
 
 const CardComponent = (props: any) => {
-  const { t, i18n } = useTranslation();
+  const {  i18n } = useTranslation();
 
   const { data } = props;
   const router = useRouter();
-  const { addtocartLoad, addtocartData } = useSelector(
-    (state: any) => state.bcl
-  );
+  // const { addtocartLoad, addtocartData } = useSelector(
+  //   (state: any) => state.bcl
+  // );
   const [productLoad, setProductLoad] = useState(false);
   const [isadded, setnewadded] = useState(false);
-  const user = getUser();
+  // const user = getUser();
   const dispatch = useDispatch();
 
   const Cartapi = async (e: any) => {
@@ -91,7 +93,7 @@ type LangMap = {
 };
 
 let parsedName: LangMap = {};
-let parsedDescription: LangMap = {};
+// let parsedDescription: LangMap = {};
 
 try {
   parsedName = JSON.parse(data?.name || "{}");
@@ -99,14 +101,14 @@ try {
   console.error("Failed to parse name:", err);
 }
 
-try {
-  parsedDescription = JSON.parse(data?.description || "{}");
-} catch (err) {
-  console.error("Failed to parse description:", err);
-}
+// try {
+//   parsedDescription = JSON.parse(data?.description || "{}");
+// } catch (err) {
+//   console.error("Failed to parse description:", err);
+// }
 
 const productName = parsedName[lang] || "No name";
-const productDescription = parsedDescription[lang] || "";
+// const productDescription = parsedDescription[lang] || "";
 
 
   return (

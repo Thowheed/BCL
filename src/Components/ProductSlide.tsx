@@ -94,7 +94,7 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import CardComponent from './CardComponent';
 
 interface ProductCarouselProps {
-  getallProductData: any[];
+  getallProductData?: any[];
 }
 
 const ProductCarousel = ({ getallProductData }: ProductCarouselProps) => {
@@ -115,7 +115,7 @@ const ProductCarousel = ({ getallProductData }: ProductCarouselProps) => {
   return (
     <div style={{ position: 'relative', padding: '10px 0px' }}>
       {/* Show left button only if enough items */}
-      {getallProductData?.length >= 5 && (
+      {(getallProductData?.length ?? 0) >= 5 && (
         <Button
           icon={<LeftOutlined style={{ color: 'white' }} />}
           onClick={scrollLeft}
@@ -156,7 +156,7 @@ const ProductCarousel = ({ getallProductData }: ProductCarouselProps) => {
       </div>
 
       {/* Right button only if enough items */}
-      {getallProductData?.length >= 5 && (
+      {(getallProductData?.length ?? 0) >= 5 && (
         <Button
           icon={<RightOutlined style={{ color: 'white' }} />}
           onClick={scrollRight}

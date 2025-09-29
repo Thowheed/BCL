@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import "../styles/Success.scss";
 import axios from "axios";
+import Link from "next/link";
+import Image from "next/image";
 
 interface AddressType {
   city?: string | null;
@@ -22,6 +24,7 @@ interface LineItem {
 }
 
 interface SessionType {
+  id: string,
   customer_details?: {
     name?: string;
     email?: string;
@@ -85,7 +88,8 @@ export default function Success() {
           currency: item.currency,
         })) || [],
         asign_to: null,
-        totalValue: data?.amount_total! / 100,
+        // totalValue: data?.amount_total! / 100,
+        totalValue: (data?.amount_total ?? 0) / 100,
         type: "Online",
         remarks: "Created from success page",
         status: "Pending",
@@ -103,7 +107,7 @@ export default function Success() {
   return (
     <div className="success-wrapper">
       <div className="success-card">
-        <img src="/success.png" alt="Success" className="success-icon" />
+        <Image src="/success.png" alt="Success" className="success-icon" />
         <h1 className="success-title">Payment Successful</h1>
         <p className="success-message">
           Thank you, <strong>{session.customer_details?.name || "Customer"}</strong>!
@@ -142,7 +146,7 @@ export default function Success() {
           ))}
         </div>
 
-        <a href="/" className="back-home-button">← Back to Home</a>
+        <Link href="/" className="back-home-button">← Back to Home</Link>
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
 'use client';
 
-import { Input } from "antd";
-import Logo from "/BCL-Green-1.svg"
-import Frame from "../../public/Frame.svg"
-import Search from "../../public/Framesearch (1).svg"
+// import { Input } from "antd";
+// import Logo from "/BCL-Green-1.svg"
+// import Frame from "../../public/Frame.svg"
+// import Search from "../../public/Framesearch (1).svg"
+import Image from 'next/image';
 import "../styles/Fotter.scss";
 
 
@@ -16,7 +17,7 @@ const FotterComp = () => {
 
                 <div className="first-con">
 
-                    <img className="" src="/BCL-Green-1.svg" alt="Logo" />
+                    <Image className="" src="/BCL-Green-1.svg" alt="Logo" />
 
                     <div className="span-first-con">
                         <span >Bringing Sri Lanka’s finest veggies and cargo to the UK & France—fresh, fast, and reliable. Quality you trust, delivered with care!</span>
@@ -24,9 +25,9 @@ const FotterComp = () => {
                     </div>
 
                     <div className="footer-first-logo-session ">
-                        <img className="" src="/fb.svg" alt="Logo" />
-                        <img className="" src="/instagram.svg" alt="Logo" />
-                        <img className="" src="/x.svg" alt="Logo" />
+                        <Image className="" src="/fb.svg" alt="Logo" />
+                        <Image className="" src="/instagram.svg" alt="Logo" />
+                        <Image className="" src="/x.svg" alt="Logo" />
 
                     </div>
                 </div>
@@ -87,7 +88,7 @@ const FotterComp = () => {
 
                 <div className="footer-fourth-con">
                     <div className="logo-text">
-                        <img className="icon-margin-top" src="/location.svg" />
+                        <Image alt='' className="icon-margin-top" src="/location.svg" />
                         <span>
                             123 Harvest Lane,<br />
                             Freshville, CA 12345
@@ -95,12 +96,12 @@ const FotterComp = () => {
                     </div>
 
                     <div className="logo-text margin-top-20">
-                        <img src="/phone.svg" />
+                        <Image alt='' src="/phone.svg" />
                         <span>(234) 567-8900</span>
                     </div>
 
                     <div className="logo-text margin-top-20">
-                        <img src="/message.svg" />
+                        <Image alt='' src="/message.svg" />
                         <span>info@veggieverse.com</span>
                     </div>
 

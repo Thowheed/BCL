@@ -3,6 +3,7 @@
 import "../styles/TestimonialCarosel.scss";
 import React, { useEffect, useState } from 'react';
 import { Carousel } from 'antd';
+import Image from "next/image";
 
 const testimonials = [
     {
@@ -64,7 +65,7 @@ export default function Testimonial() {
                     {testimonials.map((t, index) => (
                         <div key={index} className="testimonial-warpper-new" style={{maxWidth: "33%", backgroundColor:"red"}}>
                             <div className="testimonial-card">
-                                <img
+                                <Image
                                     className="testimonial-image"
                                     src={t.image}
                                     alt={t.place}
@@ -78,7 +79,7 @@ export default function Testimonial() {
                                     </div>
                                     <div>
                                         <h3 className="testimonial-location">
-                                            <img src="/locationtest.svg" className="location-icon" />
+                                            <Image alt='' src="/locationtest.svg" className="location-icon" />
                                             {t.place}
                                         </h3>
                                     </div>

@@ -3,6 +3,7 @@
 import { Button } from "antd";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+// import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 // import i18n from "@/lib/i18n";
@@ -13,7 +14,7 @@ const FooterComp = dynamic(() => import("./FooterCompo"));
 const ProductSlide = dynamic(() => import("./ProductSlide"));
 
 const ProductDetail = () => {
-  const { t, i18n } = useTranslation();
+  const {  i18n } = useTranslation();
 const [product, setProduct] = useState<any>(null);
   const [imageList, setImageList] = useState<string[]>([]);
   const [selectedImage, setSelectedImage] = useState<string>("");
@@ -31,11 +32,11 @@ const [product, setProduct] = useState<any>(null);
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const list = [
-          "/Images/Grass.svg",
-          "/Images/next.svg",
-          "/Images/Grass.svg",
-        ];
+        // const list = [
+        //   "/Images/Grass.svg",
+        //   "/Images/next.svg",
+        //   "/Images/Grass.svg",
+        // ];
         const result = await response.json();
 
         setProduct(result.data);
@@ -125,7 +126,7 @@ const [product, setProduct] = useState<any>(null);
     <div className="product-main p-8 ">
       <div className="product-detail-container">
         <div className="product-image ">
-          <img
+          <Image
             src={selectedImage}
             alt="Selected Product"
             // width={600}
@@ -148,7 +149,7 @@ const [product, setProduct] = useState<any>(null);
                     : "border-gray-300"
                 }`}
               >
-                <img
+                <Image
                   src={item}
                   alt={`Product ${index}`}
                   width={100}

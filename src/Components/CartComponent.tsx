@@ -116,19 +116,21 @@
 
 "use client";
 
-import {
-  addtocartListload,
-  getCartLoad,
-  updatecartListLoad,
-} from "@/store/reducer/indexSlice";
+// import {
+//   // addtocartListload,
+//   getCartLoad,
+//   updatecartListLoad,
+// } from "@/store/reducer/indexSlice";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+// import { Button } from "antd";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "@/Globals/Localstorage";
-import { updateCartItems } from "@/Globals/Localstorage";
+// import { useDispatch
+//     useSelector
+//    } from "react-redux";
+// import { getUser } from "@/Globals/Localstorage";
+// import { updateCartItems } from "@/Globals/Localstorage";
 import "../styles/CartComponent.scss";
 
 const CartTable = dynamic(() => import("./CartTable"));
@@ -137,35 +139,35 @@ const NavbarComp = dynamic(() => import("./NabarComp"));
 const FooterComp = dynamic(() => import("./FooterCompo"));
 
 const CartComponent = () => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [reRun, setReRun] = useState(false);
   const [cartData, setCartData] = useState([]);
-  const { addtocartLoad, addtocartData } = useSelector(
-    (state: any) => state.bcl
-  );
+  // const { addtocartLoad, addtocartData } = useSelector(
+  //   (state: any) => state.bcl
+  // );
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const router = useRouter();
 
-  const handlePaymentClick = () => {
-    // CheckoutPage({ loading, setLoading });
-  };
+  // const handlePaymentClick = () => {
+  //   // CheckoutPage({ loading, setLoading });
+  // };
 
-  const fetchCart = () => {
-    let payload = {
-      userId: getUser()?.id,
-    };
-    dispatch(getCartLoad(payload));
-  };
+  // const fetchCart = () => {
+  //   let payload = {
+  //     userId: getUser()?.id,
+  //   };
+  //   dispatch(getCartLoad(payload));
+  // };
 
-  const updateCart = () => {
-    let payload = {
-      userId: updateCartItems()?.id,
-      productId: "",
-      isDeleted: "",
-    };
-    dispatch(updatecartListLoad(payload));
-  };
+  // const updateCart = () => {
+  //   let payload = {
+  //     userId: updateCartItems()?.id,
+  //     productId: "",
+  //     isDeleted: "",
+  //   };
+  //   dispatch(updatecartListLoad(payload));
+  // };
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   useEffect(() => {
     const fetchCart = async () => {

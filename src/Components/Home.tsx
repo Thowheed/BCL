@@ -191,7 +191,7 @@ export default function HomePage() {
         </div>
 
         {/* Vegetables */}
-        {vegetable.length > 0 &&
+        {vegetable?.length > 0 &&
           <div className="">
             <div className="text-bold py-10 flex justify-between !text-lg">
               <span className="section-title">Vegetables</span>
@@ -204,7 +204,7 @@ export default function HomePage() {
 
         {/* Fruits */}
 
-        {fruit.length > 0 &&
+        {fruit?.length > 0 &&
           <div>
             <div className="text-bold py-10 flex justify-between !text-lg">
               <span className="section-title">Fruits</span>
@@ -217,7 +217,7 @@ export default function HomePage() {
         }
 
         {/* Masala */}
-        {masala.length > 0 &&
+        {masala?.length > 0 &&
           <div>
             <div className="text-bold py-10 flex justify-between !text-lg">
               <span className="section-title">Masala</span>
